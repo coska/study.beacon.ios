@@ -35,12 +35,12 @@ class BeaconDetailViewController: UIViewController
         if self.detailMode == .Add
         {
             self.title = "Add Beacon"
+            self.navigationItem.rightBarButtonItem = nil
+            self.deleteButton.hidden = true
         }
         else
         {
             self.title = "Edit Beacon"
-            self.navigationItem.rightBarButtonItem = nil
-            self.deleteButton.hidden = true
         }
     }
 
