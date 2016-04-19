@@ -25,6 +25,7 @@ class BeaconDetailViewController: UIViewController
     }()
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var deleteButton: UIButton!
     
     override func viewDidLoad()
     {
@@ -38,7 +39,8 @@ class BeaconDetailViewController: UIViewController
         else
         {
             self.title = "Edit Beacon"
-            self.navigationItem.leftBarButtonItem = nil
+            self.navigationItem.rightBarButtonItem = nil
+            self.deleteButton.hidden = true
         }
     }
 
