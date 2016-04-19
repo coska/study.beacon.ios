@@ -22,6 +22,16 @@
 		2B161A8A1CC427D400E6DB9A /* TaskBeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B161A891CC427D400E6DB9A /* TaskBeaconViewController.swift */; };
 		2B161A8D1CC4301A00E6DB9A /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B161A8C1CC4301A00E6DB9A /* TaskDetailViewController.swift */; };
 		BC0C596BA3E57973E3E1317D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1C8DCCE1738E3E05723E34 /* Pods.framework */; };
+		E98EA7451CC5B00E0082D1E9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA73B1CC5B00E0082D1E9 /* Action.swift */; };
+		E98EA7461CC5B00E0082D1E9 /* Applicable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA73C1CC5B00E0082D1E9 /* Applicable.swift */; };
+		E98EA7471CC5B00E0082D1E9 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA73D1CC5B00E0082D1E9 /* Beacon.swift */; };
+		E98EA7481CC5B00E0082D1E9 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA73E1CC5B00E0082D1E9 /* Database.swift */; };
+		E98EA7491CC5B00E0082D1E9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA73F1CC5B00E0082D1E9 /* Location.swift */; };
+		E98EA74A1CC5B00E0082D1E9 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA7401CC5B00E0082D1E9 /* Preference.swift */; };
+		E98EA74B1CC5B00E0082D1E9 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA7411CC5B00E0082D1E9 /* Rule.swift */; };
+		E98EA74C1CC5B00E0082D1E9 /* SmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA7421CC5B00E0082D1E9 /* SmsViewController.swift */; };
+		E98EA74D1CC5B00E0082D1E9 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA7431CC5B00E0082D1E9 /* Task.swift */; };
+		E98EA74E1CC5B00E0082D1E9 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA7441CC5B00E0082D1E9 /* Time.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +55,16 @@
 		2B161A911CC4346A00E6DB9A /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CodeViewController.swift; path = Classes/CodeViewController.swift; sourceTree = "<group>"; };
 		4B1C8DCCE1738E3E05723E34 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C00556AA2FB81D3050EBA2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E98EA73B1CC5B00E0082D1E9 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		E98EA73C1CC5B00E0082D1E9 /* Applicable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Applicable.swift; sourceTree = "<group>"; };
+		E98EA73D1CC5B00E0082D1E9 /* Beacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
+		E98EA73E1CC5B00E0082D1E9 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		E98EA73F1CC5B00E0082D1E9 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		E98EA7401CC5B00E0082D1E9 /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
+		E98EA7411CC5B00E0082D1E9 /* Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
+		E98EA7421CC5B00E0082D1E9 /* SmsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmsViewController.swift; sourceTree = "<group>"; };
+		E98EA7431CC5B00E0082D1E9 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		E98EA7441CC5B00E0082D1E9 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		EB39F225C62B91DAAE8FE076 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -194,6 +214,16 @@
 		2B161A8F1CC4341E00E6DB9A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E98EA73B1CC5B00E0082D1E9 /* Action.swift */,
+				E98EA73C1CC5B00E0082D1E9 /* Applicable.swift */,
+				E98EA73D1CC5B00E0082D1E9 /* Beacon.swift */,
+				E98EA73E1CC5B00E0082D1E9 /* Database.swift */,
+				E98EA73F1CC5B00E0082D1E9 /* Location.swift */,
+				E98EA7401CC5B00E0082D1E9 /* Preference.swift */,
+				E98EA7411CC5B00E0082D1E9 /* Rule.swift */,
+				E98EA7421CC5B00E0082D1E9 /* SmsViewController.swift */,
+				E98EA7431CC5B00E0082D1E9 /* Task.swift */,
+				E98EA7441CC5B00E0082D1E9 /* Time.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -346,14 +376,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B161A711CC41B6C00E6DB9A /* AppDelegate.swift in Sources */,
+				E98EA74C1CC5B00E0082D1E9 /* SmsViewController.swift in Sources */,
+				E98EA74A1CC5B00E0082D1E9 /* Preference.swift in Sources */,
+				E98EA7461CC5B00E0082D1E9 /* Applicable.swift in Sources */,
+				E98EA74B1CC5B00E0082D1E9 /* Rule.swift in Sources */,
+				E98EA7491CC5B00E0082D1E9 /* Location.swift in Sources */,
+				E98EA7451CC5B00E0082D1E9 /* Action.swift in Sources */,
+				E98EA7481CC5B00E0082D1E9 /* Database.swift in Sources */,
 				2B161A841CC4278400E6DB9A /* TaskActionViewController.swift in Sources */,
+				E98EA74E1CC5B00E0082D1E9 /* Time.swift in Sources */,
 				2B161A7A1CC4232800E6DB9A /* TaskListViewController.swift in Sources */,
 				2B161A8A1CC427D400E6DB9A /* TaskBeaconViewController.swift in Sources */,
 				2B161A7D1CC4240D00E6DB9A /* BeaconDetailViewController.swift in Sources */,
+				E98EA74D1CC5B00E0082D1E9 /* Task.swift in Sources */,
 				2B161A741CC41FB300E6DB9A /* HomeViewController.swift in Sources */,
 				2B161A8D1CC4301A00E6DB9A /* TaskDetailViewController.swift in Sources */,
 				2B161A881CC427B900E6DB9A /* TaskRuleViewController.swift in Sources */,
 				2B161A821CC4276600E6DB9A /* TaskNameViewController.swift in Sources */,
+				E98EA7471CC5B00E0082D1E9 /* Beacon.swift in Sources */,
 				2B161A781CC4231900E6DB9A /* BeaconListViewController.swift in Sources */,
 				2B161A861CC427AA00E6DB9A /* TaskActionSetupViewController.swift in Sources */,
 			);
