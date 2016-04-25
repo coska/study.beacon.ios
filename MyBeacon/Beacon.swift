@@ -15,7 +15,7 @@ class Beacon: Object {
 	dynamic var major : Int = 0
 	dynamic var minor : Int = 0
 	
-	dynamic var battery : Int? = 0
+//	dynamic var battery : Int? = 0
 	dynamic var name : String = ""
 	
 	override static func primaryKey() -> String? {
