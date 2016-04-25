@@ -21,6 +21,7 @@
 		2B161A881CC427B900E6DB9A /* TaskRuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B161A871CC427B900E6DB9A /* TaskRuleViewController.swift */; };
 		2B161A8A1CC427D400E6DB9A /* TaskBeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B161A891CC427D400E6DB9A /* TaskBeaconViewController.swift */; };
 		2B161A8D1CC4301A00E6DB9A /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B161A8C1CC4301A00E6DB9A /* TaskDetailViewController.swift */; };
+		34A639A01CCDA6CE00EC8E3C /* BeaconAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A6399F1CCDA6CE00EC8E3C /* BeaconAPI.swift */; };
 		BC0C596BA3E57973E3E1317D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1C8DCCE1738E3E05723E34 /* Pods.framework */; };
 		E98EA7451CC5B00E0082D1E9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA73B1CC5B00E0082D1E9 /* Action.swift */; };
 		E98EA7461CC5B00E0082D1E9 /* Applicable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA73C1CC5B00E0082D1E9 /* Applicable.swift */; };
@@ -53,6 +54,7 @@
 		2B161A891CC427D400E6DB9A /* TaskBeaconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskBeaconViewController.swift; path = Classes/TaskBeaconViewController.swift; sourceTree = "<group>"; };
 		2B161A8C1CC4301A00E6DB9A /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskDetailViewController.swift; path = Classes/TaskDetailViewController.swift; sourceTree = "<group>"; };
 		2B161A911CC4346A00E6DB9A /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CodeViewController.swift; path = Classes/CodeViewController.swift; sourceTree = "<group>"; };
+		34A6399F1CCDA6CE00EC8E3C /* BeaconAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconAPI.swift; sourceTree = "<group>"; };
 		4B1C8DCCE1738E3E05723E34 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C00556AA2FB81D3050EBA2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E98EA73B1CC5B00E0082D1E9 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		2B161A8E1CC4341700E6DB9A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				34A6399C1CCDA58B00EC8E3C /* API */,
 				2B161A8F1CC4341E00E6DB9A /* Model */,
 			);
 			name = Core;
@@ -234,6 +237,14 @@
 				2B161A911CC4346A00E6DB9A /* CodeViewController.swift */,
 			);
 			name = "Code Convention";
+			sourceTree = "<group>";
+		};
+		34A6399C1CCDA58B00EC8E3C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				34A6399F1CCDA6CE00EC8E3C /* BeaconAPI.swift */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 		55F624EC063A13C7C9F2F8A1 /* Pods */ = {
@@ -391,6 +402,7 @@
 				E98EA74D1CC5B00E0082D1E9 /* Task.swift in Sources */,
 				2B161A741CC41FB300E6DB9A /* HomeViewController.swift in Sources */,
 				2B161A8D1CC4301A00E6DB9A /* TaskDetailViewController.swift in Sources */,
+				34A639A01CCDA6CE00EC8E3C /* BeaconAPI.swift in Sources */,
 				2B161A881CC427B900E6DB9A /* TaskRuleViewController.swift in Sources */,
 				2B161A821CC4276600E6DB9A /* TaskNameViewController.swift in Sources */,
 				E98EA7471CC5B00E0082D1E9 /* Beacon.swift in Sources */,
