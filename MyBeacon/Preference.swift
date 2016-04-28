@@ -19,19 +19,25 @@ class Preference: Object {
 		return "id"
 	}
 	
-	static func loadData() -> Preference
+	static func loadAll() -> Preference
 	{
+		// assume we have only one preference
+		
 		return Database.sharedInstance.objects(Preference).first!
 	}
 	
-	static func saveData(pref:Preference) -> Bool
+	static func save(pref:Preference) -> Bool
 	{
-		try! Database.sharedInstance.write {
-			Database.sharedInstance.add(pref, update: true)
+		var ret = false
+		
+		do {
+		 	try! Database.sharedInstance.write {
+				Database.sharedInstance.add(pref, update: true)
+				ret = true
+			}
 		}
 		
-		//TODO
-		return true
+		return ret
 	}
 
 }

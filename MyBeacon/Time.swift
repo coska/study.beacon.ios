@@ -48,7 +48,13 @@ class Time : Object, Applicable {
 	private var _type = TimeType.None
 	
 	dynamic var name = ""
-	dynamic var value = NSDate(timeIntervalSince1970: 1)
+	
+	dynamic var year = 1970
+	dynamic var month = 1
+	dynamic var day = 1
+	dynamic var hour = 0
+	dynamic var minute = 0
+	dynamic var second = 0
 	
 	dynamic var type : String {
 		get {
@@ -61,9 +67,28 @@ class Time : Object, Applicable {
 	
 	func Apply() -> Bool {
 		
-		//TODO check current time and verify with time data 
+		let fmt = NSDateFormatter()
+		fmt.dateFormat = "yyyy-MM-dd hh:mm:ss"
+		let dateVal = fmt.dateFromString("\(year)-\(month)-\(day) \(hour):\(minute):\(second)")
+		let cal = NSCalendar.currentCalendar()
+		let date = cal.components([.Hour, .Minute, .Weekday, .WeekOfMonth, .WeekOfYear], fromDate: dateVal!)
+		let now = cal.components([.Hour, .Minute, .Weekday, .WeekOfMonth, .WeekOfYear], fromDate: NSDate())
 		
-		return false
+		switch (_type)
+		{
+		case .None:
+			return false
+		case .TimeOfDay:
+			return (date.hour == now.hour && date.minute == now.minute)
+		case .DayOfWeek:
+			return (date.weekday == now.weekday)
+		case .WeekOfMonth:
+			return (date.weekOfMonth == now.weekOfMonth)
+		case .MonthOfYear:
+			return (date.weekOfYear == now.weekOfYear)
+			//default:
+			//return false
+		}
 	}
 	
 }

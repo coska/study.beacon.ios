@@ -17,10 +17,7 @@ class Rule: Object, Applicable {
 	dynamic var location : Location?
 	
 	func Apply() -> Bool {
-		
-		//TODO validate time and/or location condition
-		
-		return false
+		return (time!.Apply() && location!.Apply())
 	}
 	
 }
