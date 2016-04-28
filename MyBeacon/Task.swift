@@ -20,18 +20,32 @@ class Task: Object {
 	let actions = List<Action>()
 	let beacons = List<Beacon>()
 	
-	static func loadData() -> [Task]
+	
+	static func loadAll() -> [Task]
 	{
-		//TODO
-		return []
+		let results = Database.sharedInstance.objects(Task)
+		var tasks : [Task] = []
+		
+		for data in results
+		{
+			tasks.append(data)
+		}
+		
+		return tasks
 	}
 	
-	static func saveData(beacons:[Task]) -> Bool
+	static func save(task:Task) -> Bool
 	{
-		//TODO
-		return false
+		var ret = false
+		
+		do {
+			try! Database.sharedInstance.write {
+				Database.sharedInstance.add(task, update: true)
+				ret = true
+			}
+		}
+		
+		return ret
 	}
-	
-	
 	
 }

@@ -22,21 +22,28 @@ class Beacon: Object {
 		return "id"
 	}
 	
-	//TODO index
-//	override static func indexOf() -> String? {
-//		return "name"
-//	}
-	
-	static func loadData() -> [Beacon]
+	static func loadAll() -> [Beacon]
 	{
-		//TODO
-		return []
+		let results = Database.sharedInstance.objects(Beacon)
+		var beacons : [Beacon] = []
+		
+		for data in results
+		{
+			beacons.append(data)
+		}
+		
+		return beacons
 	}
 	
-	static func saveData(beacons:[Beacon]) -> Bool
+	static func save(beacon:Beacon) -> Bool
 	{
-		//TODO
-		return false
+		var ret = false
+		try! Database.sharedInstance.write({
+			Database.sharedInstance.add(beacon, update: true)
+			ret = true
+		})
+		
+		return ret
 	}
 	
 }
