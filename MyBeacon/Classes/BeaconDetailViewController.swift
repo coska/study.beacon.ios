@@ -164,6 +164,14 @@ class BeaconDetailViewController: UIViewController
         }
     }
     
+    @IBAction func deleteButtonTapped(sender: AnyObject) {
+        
+        // Remove Beacon
+//        Beacon.delete(orgBeacon)
+        
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
     // MARK: - Private Functions
     func initializeTableView() {
         tableView.registerNib(UINib.init(nibName: kBeaconNameCell, bundle: nil), forCellReuseIdentifier: kBeaconNameCell)
