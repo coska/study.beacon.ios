@@ -101,8 +101,6 @@ extension BeaconAPI: CLLocationManagerDelegate {
         if (knownBeacons.count > 0) {
             let closestBeacon = knownBeacons[0] as CLBeacon
             
-            print("RSSI: \(closestBeacon.rssi), proximity: \(closestBeacon.proximity.rawValue)")
-            
             self.beaconProtocol?.beaconAPI(self, didRangeBeacon: closestBeacon, inRegion: region)
         } else {
             print("Couldn't find any Beacons. Please check out the detail information of Beacon.")
