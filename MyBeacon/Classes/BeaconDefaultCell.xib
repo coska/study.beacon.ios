@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BeaconDefaultCell" id="KGk-i7-Jjw" customClass="BeaconDefaultCell" customModule="MyBeacon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UUID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KcQ-YG-Yaz" userLabel="UUID">
+                        <rect key="frame" x="8" y="11" width="41" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TYp-DT-GkO" userLabel="txtUUID">
+                        <rect key="frame" x="57" y="7" width="255" height="28"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="TYp-DT-GkO" secondAttribute="bottom" constant="8" id="2oW-qi-j2t"/>
+                    <constraint firstItem="KcQ-YG-Yaz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="9TR-5h-6G8"/>
+                    <constraint firstAttribute="trailing" secondItem="TYp-DT-GkO" secondAttribute="trailing" constant="8" id="Hfu-JQ-edO"/>
+                    <constraint firstItem="TYp-DT-GkO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="Lj2-oQ-hbE"/>
+                    <constraint firstAttribute="bottom" secondItem="KcQ-YG-Yaz" secondAttribute="bottom" constant="11" id="Utm-eU-DG5"/>
+                    <constraint firstItem="KcQ-YG-Yaz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="jIy-my-cKV"/>
+                    <constraint firstItem="TYp-DT-GkO" firstAttribute="leading" secondItem="KcQ-YG-Yaz" secondAttribute="trailing" constant="8" id="ne3-N9-4hV"/>
+                    <constraint firstItem="TYp-DT-GkO" firstAttribute="leading" secondItem="KcQ-YG-Yaz" secondAttribute="trailing" constant="8" id="zrN-mQ-jKn"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lblTitle" destination="KcQ-YG-Yaz" id="rfm-Vx-ECL"/>
+                <outlet property="txtValue" destination="TYp-DT-GkO" id="Z2Y-IJ-zC8"/>
+            </connections>
+            <point key="canvasLocation" x="164" y="362"/>
+        </tableViewCell>
+    </objects>
+</document>
