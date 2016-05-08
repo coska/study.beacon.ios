@@ -19,7 +19,7 @@ class Preference: Object {
 		return "id"
 	}
 	
-	static func loadAll() -> Preference
+	static func loadOne() -> Preference
 	{
 		// assume we have only one preference
 		

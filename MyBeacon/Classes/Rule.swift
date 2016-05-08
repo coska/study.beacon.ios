@@ -20,4 +20,10 @@ class Rule: Object, Applicable {
 		return (time!.Apply() && location!.Apply())
 	}
 	
+	//TODO
+	// Controls for Rule (Time, Location Condition)
+	// - Time
+	// - Location
+	
+	
 }
