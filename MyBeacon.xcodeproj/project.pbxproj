@@ -32,7 +32,7 @@
 		E955AA581CD8773D007EB20E /* SmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA4E1CD8773D007EB20E /* SmsViewController.swift */; };
 		E955AA591CD8773D007EB20E /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA4F1CD8773D007EB20E /* Task.swift */; };
 		E955AA5A1CD8773D007EB20E /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA501CD8773D007EB20E /* Time.swift */; };
-		E955AA5E1CE01A4A007EB20E /* TaskRuleView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E955AA5C1CE01A4A007EB20E /* TaskRuleView.storyboard */; };
+		E955AA5E1CE01A4A007EB20E /* TaskRule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E955AA5C1CE01A4A007EB20E /* TaskRule.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,7 +66,7 @@
 		E955AA4E1CD8773D007EB20E /* SmsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SmsViewController.swift; path = Classes/SmsViewController.swift; sourceTree = "<group>"; };
 		E955AA4F1CD8773D007EB20E /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = Classes/Task.swift; sourceTree = "<group>"; };
 		E955AA501CD8773D007EB20E /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Time.swift; path = Classes/Time.swift; sourceTree = "<group>"; };
-		E955AA5D1CE01A4A007EB20E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TaskRuleView.storyboard; sourceTree = "<group>"; };
+		E955AA5D1CE01A4A007EB20E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TaskRule.storyboard; sourceTree = "<group>"; };
 		EB39F225C62B91DAAE8FE076 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,7 +193,7 @@
 				2B161A831CC4278400E6DB9A /* TaskActionViewController.swift */,
 				2B161A851CC427AA00E6DB9A /* TaskActionSetupViewController.swift */,
 				2B161A871CC427B900E6DB9A /* TaskRuleViewController.swift */,
-				E955AA5C1CE01A4A007EB20E /* TaskRuleView.storyboard */,
+				E955AA5C1CE01A4A007EB20E /* TaskRule.storyboard */,
 				2B161A891CC427D400E6DB9A /* TaskBeaconViewController.swift */,
 			);
 			name = Wizard;
@@ -338,7 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E955AA5E1CE01A4A007EB20E /* TaskRuleView.storyboard in Resources */,
+				E955AA5E1CE01A4A007EB20E /* TaskRule.storyboard in Resources */,
 				2B161A661CC41A8B00E6DB9A /* LaunchScreen.storyboard in Resources */,
 				2B161A631CC41A8B00E6DB9A /* Assets.xcassets in Resources */,
 				2B161A611CC41A8B00E6DB9A /* Main.storyboard in Resources */,
@@ -443,12 +443,12 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		E955AA5C1CE01A4A007EB20E /* TaskRuleView.storyboard */ = {
+		E955AA5C1CE01A4A007EB20E /* TaskRule.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E955AA5D1CE01A4A007EB20E /* Base */,
 			);
-			name = TaskRuleView.storyboard;
+			name = TaskRule.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
