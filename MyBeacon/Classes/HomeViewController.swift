@@ -51,7 +51,12 @@ class HomeViewController: UIViewController, HomeListDelegate
     {
         super.viewDidLoad()
         self.displayListType(.Beacon)
-    }
+		
+		//TODO remove the followings (just for quick test)
+		//let pref = Database.loadOne(Preference.self, create: true)
+		//print(pref.description)
+		
+	}
     
     override func viewWillAppear(animated: Bool)
     {

@@ -11,12 +11,10 @@ import RealmSwift
 class Beacon: Object {
 	
 	dynamic var id : String = ""
-	
 	dynamic var major : Int = 0
 	dynamic var minor : Int = 0
-	
-	let battery = RealmOptional<Int>()
 	dynamic var name : String = ""
+	let battery = RealmOptional<Int>()
 	
 	override static func primaryKey() -> String? {
 		return "id"

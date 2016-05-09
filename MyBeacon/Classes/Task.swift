@@ -7,38 +7,36 @@
 //
 
 import RealmSwift
+import CoreLocation
 
-class Task: Object, Applicable {
+class Task: Object {
 	
 	dynamic var name = ""
-	let rules = List<Rule>()		// allow to validate multiple rules
+	let rules = List<Rule>()	  // allow to validate multiple rules
 	let actions = List<Action>()  // allow multiple actions
 	let beacons = List<Beacon>()  // allow to be used in multiple beacons
 	
-	
-	func Apply() -> Bool
+
+	// check all rules are valid
+	func isApplicable(cl:CLLocation) -> Bool
 	{
-		//TODO get method to use Apply for List
-		/*
-		var ret = false
+		var ret = true
 		
 		for rule in rules
 		{
-			if !rule.Apply()
+			if (!rule.isApplicable(cl))
+			{
+				ret = false
 				break
+			}
 		}
 		
-		
 		return ret
-		*/
-		
-		return false
 	}
 	
-	
-	//TODO
-	// 1. Generic loadAll, save method in Database (done)
-	// 2. To verify save and load in REalm browser
+	//TODO (thomas)
+	// (done) 1. Generic loadAll, save method in Database
+	// (done) 2. To verify save and load in Realm browser
 	// 3. Implement Rule related screens (Add Rules, Time & Location condition)
 	
 	

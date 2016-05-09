@@ -6,7 +6,7 @@
 //  Copyright © 2016 coska.com. All rights reserved.
 //
 
-protocol Applicable
-{
-	func Apply() -> Bool
-}
+//protocol Applicable
+//{
+//	func isApplicable<T>(condition:T) -> Bool
+//}

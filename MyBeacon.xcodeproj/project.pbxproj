@@ -24,7 +24,6 @@
 		34A639A01CCDA6CE00EC8E3C /* BeaconAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A6399F1CCDA6CE00EC8E3C /* BeaconAPI.swift */; };
 		BC0C596BA3E57973E3E1317D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1C8DCCE1738E3E05723E34 /* Pods.framework */; };
 		E955AA511CD8773D007EB20E /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA471CD8773D007EB20E /* Action.swift */; };
-		E955AA521CD8773D007EB20E /* Applicable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA481CD8773D007EB20E /* Applicable.swift */; };
 		E955AA531CD8773D007EB20E /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA491CD8773D007EB20E /* Beacon.swift */; };
 		E955AA541CD8773D007EB20E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA4A1CD8773D007EB20E /* Database.swift */; };
 		E955AA551CD8773D007EB20E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA4B1CD8773D007EB20E /* Location.swift */; };
@@ -33,6 +32,7 @@
 		E955AA581CD8773D007EB20E /* SmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA4E1CD8773D007EB20E /* SmsViewController.swift */; };
 		E955AA591CD8773D007EB20E /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA4F1CD8773D007EB20E /* Task.swift */; };
 		E955AA5A1CD8773D007EB20E /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA501CD8773D007EB20E /* Time.swift */; };
+		E955AA5E1CE01A4A007EB20E /* TaskRuleView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E955AA5C1CE01A4A007EB20E /* TaskRuleView.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,7 +58,6 @@
 		4B1C8DCCE1738E3E05723E34 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C00556AA2FB81D3050EBA2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E955AA471CD8773D007EB20E /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = Classes/Action.swift; sourceTree = "<group>"; };
-		E955AA481CD8773D007EB20E /* Applicable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Applicable.swift; path = Classes/Applicable.swift; sourceTree = "<group>"; };
 		E955AA491CD8773D007EB20E /* Beacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Beacon.swift; path = Classes/Beacon.swift; sourceTree = "<group>"; };
 		E955AA4A1CD8773D007EB20E /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Database.swift; path = Classes/Database.swift; sourceTree = "<group>"; };
 		E955AA4B1CD8773D007EB20E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Classes/Location.swift; sourceTree = "<group>"; };
@@ -67,6 +66,7 @@
 		E955AA4E1CD8773D007EB20E /* SmsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SmsViewController.swift; path = Classes/SmsViewController.swift; sourceTree = "<group>"; };
 		E955AA4F1CD8773D007EB20E /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = Classes/Task.swift; sourceTree = "<group>"; };
 		E955AA501CD8773D007EB20E /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Time.swift; path = Classes/Time.swift; sourceTree = "<group>"; };
+		E955AA5D1CE01A4A007EB20E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TaskRuleView.storyboard; sourceTree = "<group>"; };
 		EB39F225C62B91DAAE8FE076 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,6 +193,7 @@
 				2B161A831CC4278400E6DB9A /* TaskActionViewController.swift */,
 				2B161A851CC427AA00E6DB9A /* TaskActionSetupViewController.swift */,
 				2B161A871CC427B900E6DB9A /* TaskRuleViewController.swift */,
+				E955AA5C1CE01A4A007EB20E /* TaskRuleView.storyboard */,
 				2B161A891CC427D400E6DB9A /* TaskBeaconViewController.swift */,
 			);
 			name = Wizard;
@@ -219,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				E955AA471CD8773D007EB20E /* Action.swift */,
-				E955AA481CD8773D007EB20E /* Applicable.swift */,
 				E955AA491CD8773D007EB20E /* Beacon.swift */,
 				E955AA4A1CD8773D007EB20E /* Database.swift */,
 				E955AA4B1CD8773D007EB20E /* Location.swift */,
@@ -338,6 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E955AA5E1CE01A4A007EB20E /* TaskRuleView.storyboard in Resources */,
 				2B161A661CC41A8B00E6DB9A /* LaunchScreen.storyboard in Resources */,
 				2B161A631CC41A8B00E6DB9A /* Assets.xcassets in Resources */,
 				2B161A611CC41A8B00E6DB9A /* Main.storyboard in Resources */,
@@ -403,7 +404,6 @@
 				E955AA571CD8773D007EB20E /* Rule.swift in Sources */,
 				E955AA531CD8773D007EB20E /* Beacon.swift in Sources */,
 				E955AA511CD8773D007EB20E /* Action.swift in Sources */,
-				E955AA521CD8773D007EB20E /* Applicable.swift in Sources */,
 				2B161A841CC4278400E6DB9A /* TaskActionViewController.swift in Sources */,
 				E955AA551CD8773D007EB20E /* Location.swift in Sources */,
 				E955AA561CD8773D007EB20E /* Preference.swift in Sources */,
@@ -441,6 +441,14 @@
 				2B161A651CC41A8B00E6DB9A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E955AA5C1CE01A4A007EB20E /* TaskRuleView.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E955AA5D1CE01A4A007EB20E /* Base */,
+			);
+			name = TaskRuleView.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

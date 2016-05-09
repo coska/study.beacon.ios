@@ -7,23 +7,16 @@
 //
 
 import RealmSwift
+import CoreLocation
 
-class Rule: Object, Applicable {
+class Rule: Object {
 	
 	dynamic var name = ""
 	dynamic var done = false
-	
 	dynamic var time : Time?
 	dynamic var location : Location?
 	
-	func Apply() -> Bool {
-		return (time!.Apply() && location!.Apply())
+	func isApplicable(cl:CLLocation) -> Bool {
+		return (time!.isApplicable() && location!.isApplicable(cl))
 	}
-	
-	//TODO
-	// Controls for Rule (Time, Location Condition)
-	// - Time
-	// - Location
-	
-	
 }

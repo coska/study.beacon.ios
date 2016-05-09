@@ -8,15 +8,15 @@
 
 import RealmSwift
 
-class Database {
 
+class Database
+{
 	static let sharedInstance = try! Realm()
 	
-	
-	static func loadAll() -> [Object]
+	static func loadAll<T:Object>(type:T.Type) -> [T]
 	{
-		let results = Database.sharedInstance.objects(Object)
-		var objects : [Object] = []
+		let results = Database.sharedInstance.objects(T)
+		var objects : [T] = []
 		
 		for data in results
 		{
@@ -26,7 +26,18 @@ class Database {
 		return objects
 	}
 	
-	static func save(object:Object) -> Bool
+	static func loadOne<T:Object>(type:T.Type, create:Bool) -> T
+	{
+		let results = Database.sharedInstance.objects(T)
+		if (create && results.isEmpty)
+		{
+			save(T())
+		}
+		
+		return Database.sharedInstance.objects(T).first!
+	}
+	
+	static func save<T:Object>(object:T) -> Bool
 	{
 		var ret = false
 		
@@ -40,7 +51,7 @@ class Database {
 		return ret
 	}
 	
-	static func delete(object:Object) -> Bool
+	static func delete<T:Object>(object:T) -> Bool
 	{
 		var ret = false
 		
@@ -54,7 +65,7 @@ class Database {
 		return ret
 	}
 	
-	static func deleteAll(object:Object) -> Bool
+	static func deleteAll<T:Object>(object:T) -> Bool
 	{
 		var ret = false
 		
