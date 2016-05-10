@@ -14,8 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 	
 	//TODO : move these later
-	var pref: Preference = Database.loadOne(Preference.self, create: true)
-	var tasks:[Task] = Database.loadAll(Task.self)
+    var pref: Preference = Database.loadOne(Preference.self, create: true)
+    //var prefs:[Preference] = Database.loadAll(Preference.self)
+    var tasks:[Task] = Database.loadAll(Task.self)
 	
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

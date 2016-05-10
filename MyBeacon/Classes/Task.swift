@@ -33,11 +33,4 @@ class Task: Object {
 		
 		return ret
 	}
-	
-	//TODO (thomas)
-	// (done) 1. Generic loadAll, save method in Database
-	// (done) 2. To verify save and load in Realm browser
-	// 3. Implement Rule related screens (Add Rules, Time & Location condition)
-	
-	
 }

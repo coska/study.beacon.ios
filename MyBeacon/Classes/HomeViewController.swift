@@ -42,7 +42,7 @@ class HomeViewController: UIViewController, HomeListDelegate
     
     lazy var myStoryboard: UIStoryboard =
     {
-        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let sb = UIStoryboard(name: "TaskRule", bundle: nil)
         return sb
     }()
     

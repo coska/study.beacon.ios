@@ -33,6 +33,9 @@
 		E955AA591CD8773D007EB20E /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA4F1CD8773D007EB20E /* Task.swift */; };
 		E955AA5A1CD8773D007EB20E /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA501CD8773D007EB20E /* Time.swift */; };
 		E955AA5E1CE01A4A007EB20E /* TaskRule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E955AA5C1CE01A4A007EB20E /* TaskRule.storyboard */; };
+		E955AA691CE035C3007EB20E /* CircleMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA661CE035C3007EB20E /* CircleMenu.swift */; };
+		E955AA6A1CE035C3007EB20E /* CircleMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA671CE035C3007EB20E /* CircleMenuButton.swift */; };
+		E955AA6B1CE035C3007EB20E /* CircleMenuLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA681CE035C3007EB20E /* CircleMenuLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +70,9 @@
 		E955AA4F1CD8773D007EB20E /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = Classes/Task.swift; sourceTree = "<group>"; };
 		E955AA501CD8773D007EB20E /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Time.swift; path = Classes/Time.swift; sourceTree = "<group>"; };
 		E955AA5D1CE01A4A007EB20E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TaskRule.storyboard; sourceTree = "<group>"; };
+		E955AA661CE035C3007EB20E /* CircleMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleMenu.swift; path = Classes/CircleMenu.swift; sourceTree = "<group>"; };
+		E955AA671CE035C3007EB20E /* CircleMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleMenuButton.swift; path = Classes/CircleMenuButton.swift; sourceTree = "<group>"; };
+		E955AA681CE035C3007EB20E /* CircleMenuLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleMenuLoader.swift; path = Classes/CircleMenuLoader.swift; sourceTree = "<group>"; };
 		EB39F225C62B91DAAE8FE076 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +195,7 @@
 		2B161A801CC4273F00E6DB9A /* Wizard */ = {
 			isa = PBXGroup;
 			children = (
+				E955AA5F1CE034D4007EB20E /* CircleMenu */,
 				2B161A811CC4276600E6DB9A /* TaskNameViewController.swift */,
 				2B161A831CC4278400E6DB9A /* TaskActionViewController.swift */,
 				2B161A851CC427AA00E6DB9A /* TaskActionSetupViewController.swift */,
@@ -270,6 +277,16 @@
 			children = (
 			);
 			name = Rule;
+			sourceTree = "<group>";
+		};
+		E955AA5F1CE034D4007EB20E /* CircleMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E955AA661CE035C3007EB20E /* CircleMenu.swift */,
+				E955AA671CE035C3007EB20E /* CircleMenuButton.swift */,
+				E955AA681CE035C3007EB20E /* CircleMenuLoader.swift */,
+			);
+			name = CircleMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,7 +437,10 @@
 				2B161A781CC4231900E6DB9A /* BeaconListViewController.swift in Sources */,
 				E955AA541CD8773D007EB20E /* Database.swift in Sources */,
 				E955AA581CD8773D007EB20E /* SmsViewController.swift in Sources */,
+				E955AA6A1CE035C3007EB20E /* CircleMenuButton.swift in Sources */,
+				E955AA691CE035C3007EB20E /* CircleMenu.swift in Sources */,
 				2B161A861CC427AA00E6DB9A /* TaskActionSetupViewController.swift in Sources */,
+				E955AA6B1CE035C3007EB20E /* CircleMenuLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
