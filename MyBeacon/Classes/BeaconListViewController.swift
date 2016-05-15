@@ -8,23 +8,14 @@
 
 import UIKit
 
-class BeaconListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class BeaconListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
+{
     let kCellIdentifier = "beaconCell"
     weak var delegate: HomeListDelegate?
 
     lazy var fakeDataSource: Array<String> =
     {
-        return ["Alex's Beacon", "Dexter's Beacon", "Thomas's Beacon"]
-    }()
-    
-    lazy var fakeImageSource: Array<String> =
-    {
-       return ["canada.png", "germany.png", "uk.png"]
-    }()
-    
-    lazy var fakeUUIDSource: Array<String> =
-    {
-        return ["F94DBB23-2266-7822-3782-57BEAC0952AC", "F94DBB23-2266-7822-3782-57BEAC0952AC", "F94DBB23-2266-7822-3782-57BEAC0952AC"]
+        return ["Beacon 1", "Beacon 2", "Beacon 3"]
     }()
     
     @IBOutlet weak var tableView: UITableView!
@@ -49,42 +40,24 @@ class BeaconListViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier, forIndexPath: indexPath) as! BeaconCustomTableViewCell
-        
-        // Square Image to Circle Image - beaconImage
-        cell.beaconImage.layer.cornerRadius = cell.beaconImage.frame.width / 2
-        cell.beaconImage.clipsToBounds = true
-        
-        // fakeDatas to the Cell as DEMO
-        cell.beaconNameLabel?.text = self.fakeDataSource[indexPath.row]
-        cell.beaconImage?.image = UIImage(named: fakeImageSource[indexPath.row])
-        cell.beaconUUIDLabel?.text = self.fakeUUIDSource[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier, forIndexPath: indexPath)
+        cell.textLabel?.text = self.fakeDataSource[indexPath.row]
         
         return cell;
     }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            
-            fakeDataSource.removeAtIndex(indexPath.row)
-            fakeImageSource.removeAtIndex(indexPath.row)
-            fakeUUIDSource.removeAtIndex(indexPath.row)
-            
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            
-        }
-    }
-    
-    
     
     // MARK: UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        // tk (test)
+        // let storyboard = UIStoryboard(name: "TaskRule", bundle: nil)
+        
         let beaconDetailViewController = storyboard.instantiateViewControllerWithIdentifier("BeaconDetailViewController") as! BeaconDetailViewController
+        beaconDetailViewController.detailMode = .Edit
         
         // Mock Data
         let orgBeacon = Beacon()
@@ -92,7 +65,7 @@ class BeaconListViewController: UIViewController, UITableViewDataSource, UITable
         orgBeacon.major = 51320
         orgBeacon.minor = 45042
         orgBeacon.name = "0117C55A175E"
-        beaconDetailViewController.selectedBeacon(orgBeacon)
+        beaconDetailViewController.updateBeacon(orgBeacon)
         
         self.delegate?.willPushViewController(beaconDetailViewController, animated: true)
     }

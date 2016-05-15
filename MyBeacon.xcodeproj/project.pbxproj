@@ -365,6 +365,7 @@
 			files = (
 				3495F01B1CE9353500ACB5BC /* TaskList.storyboard in Resources */,
 				34E0C5951CD6A84E0031F2A9 /* BeaconNameCell.xib in Resources */,
+				E955AA5E1CE01A4A007EB20E /* TaskRule.storyboard in Resources */,
 				2B161A661CC41A8B00E6DB9A /* LaunchScreen.storyboard in Resources */,
 				34E0C59A1CD6AB1B0031F2A9 /* BeaconDefaultCell.xib in Resources */,
 				3495F0261CE93BDB00ACB5BC /* BeaconAddListCell.xib in Resources */,
@@ -439,6 +440,8 @@
 				34E0C5991CD6AB1B0031F2A9 /* BeaconDefaultCell.swift in Sources */,
 				E98EA7451CC5B00E0082D1E9 /* Action.swift in Sources */,
 				E98EA7481CC5B00E0082D1E9 /* Database.swift in Sources */,
+				E955AA531CD8773D007EB20E /* Beacon.swift in Sources */,
+				E955AA511CD8773D007EB20E /* Action.swift in Sources */,
 				2B161A841CC4278400E6DB9A /* TaskActionViewController.swift in Sources */,
 				3495F0251CE93BDB00ACB5BC /* BeaconAddListCell.swift in Sources */,
 				E98EA74E1CC5B00E0082D1E9 /* Time.swift in Sources */,
