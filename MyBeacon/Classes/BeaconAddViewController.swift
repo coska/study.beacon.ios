@@ -19,12 +19,11 @@ class BeaconAddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.registerNib(UINib(nibName: kBeaconAddListCell, bundle: nil), forCellReuseIdentifier: kBeaconAddListCell)
+        self.title = "Add Beacon"
+        
+        initializeTableView()
 
-        BeaconAPI.sharedInstance.beaconProtocol = self
-        BeaconAPI.sharedInstance.startSearchingBeacon()
+        startSearchBeacons()
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,6 +42,21 @@ class BeaconAddViewController: UIViewController {
     }
     */
 
+    private func initializeTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.registerNib(UINib(nibName: kBeaconAddListCell, bundle: nil), forCellReuseIdentifier: kBeaconAddListCell)
+    }
+    
+    private func startSearchBeacons() {
+        BeaconAPI.sharedInstance.beaconProtocol = self
+        BeaconAPI.sharedInstance.startSearchingBeacon()
+    }
+    
+    // MARK: - Actions
+    @IBAction func close(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }    
 }
 
 extension BeaconAddViewController: BeaconProtocol {
