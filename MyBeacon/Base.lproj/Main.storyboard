@@ -125,7 +125,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BsU-ha-43r">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BsU-ha-43r">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -135,6 +135,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LGO-XB-cEG" firstAttribute="top" secondItem="BsU-ha-43r" secondAttribute="bottom" id="0Vj-II-pk4"/>
+                            <constraint firstAttribute="trailing" secondItem="BsU-ha-43r" secondAttribute="trailing" id="D6w-CZ-WYi"/>
+                            <constraint firstItem="BsU-ha-43r" firstAttribute="leading" secondItem="O9c-hu-Txg" secondAttribute="leading" id="TfO-Ps-Ur5"/>
+                            <constraint firstItem="BsU-ha-43r" firstAttribute="top" secondItem="O9c-hu-Txg" secondAttribute="top" id="WL8-R5-hwZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9oT-a4-7iV">
                         <barButtonItem key="rightBarButtonItem" title="Close" id="wZ1-N4-IX2">

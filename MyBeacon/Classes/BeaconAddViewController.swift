@@ -51,6 +51,9 @@ class BeaconAddViewController: UIViewController {
     private func initializeTableView() {
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.estimatedRowHeight = 100.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+
         tableView.registerNib(UINib(nibName: kBeaconAddListCell, bundle: nil), forCellReuseIdentifier: kBeaconAddListCell)
     }
     
@@ -90,17 +93,25 @@ extension BeaconAddViewController: BeaconProtocol {
             
             let result = self.beacons.filter { $0.proximityUUID == beacon.proximityUUID }            
             if result.count == 0 {
-                self.beacons.append(beacon)
-                
+                // TODO: read Beacon from DB, and append if it's not in DB
+                let allBeacons: [Beacon] = Beacon.loadAll()
+                let result = allBeacons.filter { $0.id == beacon.proximityUUID.UUIDString }
+                if result.count == 0 {
+                    self.beacons.append(beacon)
+                    tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.beacons.count-1, inSection: 0)], withRowAnimation: .Top)
+                } else {
+                    print("This beacon (\(beacon.proximityUUID.UUIDString)) is already added.")
+                }
             } else {
                 let index  = self.beacons.indexOf { $0.proximityUUID == beacon.proximityUUID }
                 if index != nil {
                     self.beacons[index!] = beacon
+                    
+                    let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index!, inSection: 0)) as! BeaconAddListCell
+                    cell.beacon = beacon
                 }
             }
         }
-        
-        tableView.reloadData()
     }
 }
 
@@ -111,12 +122,7 @@ extension BeaconAddViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(kBeaconAddListCell, forIndexPath: indexPath) as! BeaconAddListCell
-        let beacon = beacons[indexPath.row] as CLBeacon
-        cell.textLabel?.text = beacon.proximityUUID.UUIDString
-        
-        let detailText = "Proximity: \(beacon.proximity.Desc()), RSSI: \(beacon.rssi)db"
-        cell.detailTextLabel?.text = detailText
-        
+        cell.beacon = beacons[indexPath.row] as CLBeacon
         return cell
     }
 }
@@ -124,5 +130,16 @@ extension BeaconAddViewController: UITableViewDataSource {
 extension BeaconAddViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let addedBeacon = beacons[indexPath.row] as CLBeacon
+        let beacon = Beacon()
+        beacon.id = addedBeacon.proximityUUID.UUIDString
+        beacon.major = addedBeacon.major.integerValue
+        beacon.minor = addedBeacon.minor.integerValue
+        beacon.name = addedBeacon.proximityUUID.UUIDString
+        Beacon.save(beacon)
+        
+        beacons.removeAtIndex(indexPath.row)
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
 }
