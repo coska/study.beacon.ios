@@ -21,6 +21,8 @@
 		2B161A881CC427B900E6DB9A /* TaskRuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B161A871CC427B900E6DB9A /* TaskRuleViewController.swift */; };
 		2B161A8A1CC427D400E6DB9A /* TaskBeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B161A891CC427D400E6DB9A /* TaskBeaconViewController.swift */; };
 		2B161A8D1CC4301A00E6DB9A /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B161A8C1CC4301A00E6DB9A /* TaskDetailViewController.swift */; };
+		2B908CBA1CD8259F00733C18 /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B908CB81CD8259F00733C18 /* Task.storyboard */; };
+		2B908CBC1CD82CDF00733C18 /* TaskWizardBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B908CBB1CD82CDF00733C18 /* TaskWizardBaseViewController.swift */; };
 		34A639A01CCDA6CE00EC8E3C /* BeaconAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A6399F1CCDA6CE00EC8E3C /* BeaconAPI.swift */; };
 		BC0C596BA3E57973E3E1317D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1C8DCCE1738E3E05723E34 /* Pods.framework */; };
 		E98EA7451CC5B00E0082D1E9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA73B1CC5B00E0082D1E9 /* Action.swift */; };
@@ -54,6 +56,8 @@
 		2B161A891CC427D400E6DB9A /* TaskBeaconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskBeaconViewController.swift; path = Classes/TaskBeaconViewController.swift; sourceTree = "<group>"; };
 		2B161A8C1CC4301A00E6DB9A /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskDetailViewController.swift; path = Classes/TaskDetailViewController.swift; sourceTree = "<group>"; };
 		2B161A911CC4346A00E6DB9A /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CodeViewController.swift; path = Classes/CodeViewController.swift; sourceTree = "<group>"; };
+		2B908CB91CD8259F00733C18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Task.storyboard; sourceTree = "<group>"; };
+		2B908CBB1CD82CDF00733C18 /* TaskWizardBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskWizardBaseViewController.swift; path = Classes/TaskWizardBaseViewController.swift; sourceTree = "<group>"; };
 		34A6399F1CCDA6CE00EC8E3C /* BeaconAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconAPI.swift; sourceTree = "<group>"; };
 		4B1C8DCCE1738E3E05723E34 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C00556AA2FB81D3050EBA2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 		2B161A751CC41FC700E6DB9A /* Task */ = {
 			isa = PBXGroup;
 			children = (
+				2B908CB81CD8259F00733C18 /* Task.storyboard */,
 				2B161A7F1CC4273200E6DB9A /* List */,
 				2B161A8B1CC42FFA00E6DB9A /* Detail */,
 				2B161A801CC4273F00E6DB9A /* Wizard */,
@@ -193,6 +198,7 @@
 				2B161A851CC427AA00E6DB9A /* TaskActionSetupViewController.swift */,
 				2B161A871CC427B900E6DB9A /* TaskRuleViewController.swift */,
 				2B161A891CC427D400E6DB9A /* TaskBeaconViewController.swift */,
+				2B908CBB1CD82CDF00733C18 /* TaskWizardBaseViewController.swift */,
 			);
 			name = Wizard;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B161A661CC41A8B00E6DB9A /* LaunchScreen.storyboard in Resources */,
+				2B908CBA1CD8259F00733C18 /* Task.storyboard in Resources */,
 				2B161A631CC41A8B00E6DB9A /* Assets.xcassets in Resources */,
 				2B161A611CC41A8B00E6DB9A /* Main.storyboard in Resources */,
 			);
@@ -404,6 +411,7 @@
 				2B161A7A1CC4232800E6DB9A /* TaskListViewController.swift in Sources */,
 				2B161A8A1CC427D400E6DB9A /* TaskBeaconViewController.swift in Sources */,
 				2B161A7D1CC4240D00E6DB9A /* BeaconDetailViewController.swift in Sources */,
+				2B908CBC1CD82CDF00733C18 /* TaskWizardBaseViewController.swift in Sources */,
 				E98EA74D1CC5B00E0082D1E9 /* Task.swift in Sources */,
 				2B161A741CC41FB300E6DB9A /* HomeViewController.swift in Sources */,
 				2B161A8D1CC4301A00E6DB9A /* TaskDetailViewController.swift in Sources */,
@@ -433,6 +441,14 @@
 				2B161A651CC41A8B00E6DB9A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		2B908CB81CD8259F00733C18 /* Task.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B908CB91CD8259F00733C18 /* Base */,
+			);
+			name = Task.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

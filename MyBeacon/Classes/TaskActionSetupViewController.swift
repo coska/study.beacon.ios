@@ -8,18 +8,13 @@
 
 import UIKit
 
-class TaskActionSetupViewController: UIViewController
+class TaskActionSetupViewController: TaskWizardBaseViewController
 {
 
     // MARK: View life cycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.title = "Task Wizard"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "cancelButtonTapped:")
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationItem.backBarButtonItem = backButton
     }
     
     override func didReceiveMemoryWarning()

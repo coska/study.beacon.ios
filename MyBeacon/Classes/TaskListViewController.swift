@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
+
 
 class TaskListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
@@ -18,6 +20,8 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         return ["Task 1", "Task 2", "Task 3"]
     }()
 
+    lazy var tasks: [Task] = Task.loadAll()
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad()
