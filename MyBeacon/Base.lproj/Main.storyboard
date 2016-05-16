@@ -84,7 +84,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="550" height="49"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -113,6 +113,38 @@
             </objects>
             <point key="canvasLocation" x="2436" y="415"/>
         </scene>
+        <!--Beacon Add View Controller-->
+        <scene sceneID="bTi-20-ilj">
+            <objects>
+                <viewController id="dWh-Tx-Bzl" customClass="BeaconAddViewController" customModule="MyBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YNY-Vo-j7D"/>
+                        <viewControllerLayoutGuide type="bottom" id="LGO-XB-cEG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O9c-hu-Txg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BsU-ha-43r">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="dWh-Tx-Bzl" id="JPZ-91-Yuf"/>
+                                    <outlet property="delegate" destination="dWh-Tx-Bzl" id="0as-sM-Num"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9oT-a4-7iV"/>
+                    <connections>
+                        <outlet property="tableView" destination="BsU-ha-43r" id="mKa-Gb-Jsx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wnZ-KE-qXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3880" y="-274"/>
+        </scene>
         <!--Beacon Detail-->
         <scene sceneID="2fB-Co-gtw">
             <objects>
@@ -130,7 +162,7 @@
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="hNm-ut-GEb">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <sections/>
                                         <connections>
                                             <outlet property="dataSource" destination="JoT-MX-Tcb" id="8LU-oE-8Ew"/>
@@ -243,7 +275,7 @@
                                     <constraint firstAttribute="height" constant="60" id="ft9-4P-qlB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kle-YP-rIi">
@@ -319,7 +351,7 @@
                                     <constraint firstAttribute="height" constant="60" id="OVY-zr-XTm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -365,7 +397,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="550" height="49"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -467,7 +499,7 @@
                                     <constraint firstAttribute="height" constant="60" id="Nim-Nj-lmF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -523,7 +555,7 @@
                                     <constraint firstAttribute="height" constant="60" id="wQC-dl-6UT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -579,7 +611,7 @@
                                     <constraint firstAttribute="height" constant="60" id="N58-TH-zS3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -601,7 +633,7 @@
         <!--Navigation Controller-->
         <scene sceneID="HFe-MU-Ngo">
             <objects>
-                <navigationController storyboardIdentifier="BeaconNavigation" automaticallyAdjustsScrollViewInsets="NO" id="IUz-Vz-iny" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="BeaconDetailNavigation" automaticallyAdjustsScrollViewInsets="NO" id="IUz-Vz-iny" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5fC-Ig-wxe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -615,6 +647,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QcP-lZ-WwH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3168" y="415"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Twn-Jm-K6h">
+            <objects>
+                <navigationController storyboardIdentifier="BeaconAddNavigation" automaticallyAdjustsScrollViewInsets="NO" id="bUg-8V-KeY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rdf-Gc-1yS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dWh-Tx-Bzl" kind="relationship" relationship="rootViewController" id="RXL-8i-yG3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UtX-rp-889" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3168" y="-274"/>
         </scene>
     </scenes>
 </document>

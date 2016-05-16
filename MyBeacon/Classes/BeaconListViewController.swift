@@ -54,7 +54,6 @@ class BeaconListViewController: UIViewController, UITableViewDataSource, UITable
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let beaconDetailViewController = storyboard.instantiateViewControllerWithIdentifier("BeaconDetailViewController") as! BeaconDetailViewController
-        beaconDetailViewController.detailMode = .Edit
         
         // Mock Data
         let orgBeacon = Beacon()
@@ -62,7 +61,7 @@ class BeaconListViewController: UIViewController, UITableViewDataSource, UITable
         orgBeacon.major = 51320
         orgBeacon.minor = 45042
         orgBeacon.name = "0117C55A175E"
-        beaconDetailViewController.updateBeacon(orgBeacon)
+        beaconDetailViewController.selectedBeacon(orgBeacon)
         
         self.delegate?.willPushViewController(beaconDetailViewController, animated: true)
     }

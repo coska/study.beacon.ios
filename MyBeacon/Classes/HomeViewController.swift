@@ -75,10 +75,8 @@ class HomeViewController: UIViewController, HomeListDelegate
     {
         if self.segmentControl.selectedSegmentIndex == ListType.Beacon.rawValue
         {
-            let beaconNavigation = self.myStoryboard.instantiateViewControllerWithIdentifier("BeaconNavigation") as! UINavigationController
-            let beaconDetailViewController = beaconNavigation.topViewController as! BeaconDetailViewController
-            beaconDetailViewController.detailMode = .Add
-            self.presentViewController(beaconNavigation, animated: true, completion: nil)
+            let beaconAddNavigation = self.myStoryboard.instantiateViewControllerWithIdentifier("BeaconAddNavigation") as! UINavigationController
+            self.presentViewController(beaconAddNavigation, animated: true, completion: nil)
         }
         else
         {
