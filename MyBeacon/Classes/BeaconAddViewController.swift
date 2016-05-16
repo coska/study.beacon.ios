@@ -25,6 +25,12 @@ class BeaconAddViewController: UIViewController {
 
         startSearchBeacons()
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        stopSearchBeacons()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -50,7 +56,11 @@ class BeaconAddViewController: UIViewController {
     
     private func startSearchBeacons() {
         BeaconAPI.sharedInstance.beaconProtocol = self
-        BeaconAPI.sharedInstance.startSearchingBeacon()
+        BeaconAPI.sharedInstance.startSearchingBeacons()
+    }
+    
+    private func stopSearchBeacons() {
+        BeaconAPI.sharedInstance.stopSearchingBeacons()
     }
     
     // MARK: - Actions

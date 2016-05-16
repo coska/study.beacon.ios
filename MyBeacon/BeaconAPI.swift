@@ -51,8 +51,8 @@ class BeaconAPI: NSObject {
     var beaconProtocol: BeaconProtocol?
     
     // MARK: Public Functions
-    func startSearchingBeacon() {
-        stopSearchingBeacon()
+    func startSearchingBeacons() {
+        stopSearchingBeacons()
         
         beacon = beaconProtocol?.updatedBeacon()
         
@@ -75,15 +75,23 @@ class BeaconAPI: NSObject {
         }
     }
     
-    func stopSearchingBeacon() {
-        guard let beacon = self.beacon else { return }
-        guard let uuid = NSUUID(UUIDString: beacon.id) else { return }
-        let major: CLBeaconMajorValue = UInt16(beacon.major)
-        let minor: CLBeaconMajorValue = UInt16(beacon.minor)
-        let region = CLBeaconRegion(proximityUUID: uuid, major: major, minor: minor, identifier: beacon.name)
-        
-        locationManager.stopMonitoringForRegion(region)
-        locationManager.stopRangingBeaconsInRegion(region)
+    func stopSearchingBeacons() {
+        if let beacon = self.beacon {
+            guard let uuid = NSUUID(UUIDString: beacon.id) else { return }
+            let major: CLBeaconMajorValue = UInt16(beacon.major)
+            let minor: CLBeaconMajorValue = UInt16(beacon.minor)
+            let region = CLBeaconRegion(proximityUUID: uuid, major: major, minor: minor, identifier: beacon.name)
+            
+            locationManager.stopMonitoringForRegion(region)
+            locationManager.stopRangingBeaconsInRegion(region)
+        } else {
+            for strUUID in supportedUUIDs {
+                guard let uuid = NSUUID(UUIDString: strUUID) else { return }
+                let region = CLBeaconRegion(proximityUUID: uuid, identifier: strUUID)
+                locationManager.stopMonitoringForRegion(region)
+                locationManager.stopRangingBeaconsInRegion(region)
+            }
+        }
     }
 }
 
