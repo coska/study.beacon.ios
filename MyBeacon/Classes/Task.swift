@@ -16,6 +16,7 @@ class Task: Object {
 	let actions = List<Action>()  // allow multiple actions
 	let beacons = List<Beacon>()  // allow to be used in multiple beacons
 	
+    dynamic var enabled: Bool = false
 
 	// check all rules are valid
 	func isApplicable(cl:CLLocation) -> Bool
