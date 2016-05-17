@@ -50,7 +50,7 @@ class BeaconListViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "TaskRule", bundle: nil)
         let beaconDetailViewController = storyboard.instantiateViewControllerWithIdentifier("BeaconDetailViewController") as! BeaconDetailViewController
         beaconDetailViewController.detailMode = .Edit
         self.delegate?.willPushViewController(beaconDetailViewController, animated: true)

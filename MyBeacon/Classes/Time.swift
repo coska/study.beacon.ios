@@ -11,10 +11,10 @@ import RealmSwift
 enum TimeType : String
 {
 	case None = "None"
-	case TimeOfDay = "TimeOfDay"
-	case DayOfWeek = "DayOfWeek"
-	case WeekOfMonth = "WeekOfMonth"
-	case MonthOfYear = "MonthOfYear"
+    case TimeOfDay = "TimeOfDay"		// Every day at given time
+    case DayOfWeek = "DayOfWeek"		// Every week at given day
+    case WeekOfMonth = "WeekOfMonth"	// Every month at given week
+    case MonthOfYear = "MonthOfYear"	// Every year at given month
 	
 	var description: String {
 		return self.rawValue
@@ -43,7 +43,7 @@ enum TimeType : String
 	}
 }
 
-class Time : Object, Applicable {
+class Time : Object {
 	
 	private var _type = TimeType.None
 	
@@ -55,7 +55,6 @@ class Time : Object, Applicable {
 	dynamic var hour = 0
 	dynamic var minute = 0
 	dynamic var second = 0
-	
 	dynamic var type : String {
 		get {
 			return _type.rawValue
@@ -65,7 +64,7 @@ class Time : Object, Applicable {
 		}
 	}
 	
-	func Apply() -> Bool {
+	func isApplicable() -> Bool {
 		
 		let fmt = NSDateFormatter()
 		fmt.dateFormat = "yyyy-MM-dd hh:mm:ss"
@@ -86,8 +85,6 @@ class Time : Object, Applicable {
 			return (date.weekOfMonth == now.weekOfMonth)
 		case .MonthOfYear:
 			return (date.weekOfYear == now.weekOfYear)
-			//default:
-			//return false
 		}
 	}
 	

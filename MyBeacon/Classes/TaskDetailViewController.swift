@@ -27,7 +27,7 @@ class TaskDetailViewController: UIViewController
     
     func editButtonTapped()
     {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "TaskRule", bundle: nil)
         let taskWizardNavigation = storyboard.instantiateViewControllerWithIdentifier("TaskWazardNavigation")
         self.presentViewController(taskWizardNavigation, animated: true, completion: nil)
     }
