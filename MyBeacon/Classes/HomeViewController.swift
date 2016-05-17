@@ -42,7 +42,7 @@ class HomeViewController: UIViewController, HomeListDelegate
     
     lazy var myStoryboard: UIStoryboard =
     {
-        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let sb = UIStoryboard(name: "TaskRule", bundle: nil)
         return sb
     }()
     
@@ -51,7 +51,12 @@ class HomeViewController: UIViewController, HomeListDelegate
     {
         super.viewDidLoad()
         self.displayListType(.Beacon)
-    }
+		
+		//TODO remove the followings (just for quick test)
+		//let pref = Database.loadOne(Preference.self, create: true)
+		//print(pref.description)
+		
+	}
     
     override func viewWillAppear(animated: Bool)
     {

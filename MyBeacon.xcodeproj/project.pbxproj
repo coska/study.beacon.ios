@@ -27,16 +27,19 @@
 		34E0C5991CD6AB1B0031F2A9 /* BeaconDefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E0C5971CD6AB1B0031F2A9 /* BeaconDefaultCell.swift */; };
 		34E0C59A1CD6AB1B0031F2A9 /* BeaconDefaultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34E0C5981CD6AB1B0031F2A9 /* BeaconDefaultCell.xib */; };
 		BC0C596BA3E57973E3E1317D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1C8DCCE1738E3E05723E34 /* Pods.framework */; };
-		E98EA7451CC5B00E0082D1E9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA73B1CC5B00E0082D1E9 /* Action.swift */; };
-		E98EA7461CC5B00E0082D1E9 /* Applicable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA73C1CC5B00E0082D1E9 /* Applicable.swift */; };
-		E98EA7471CC5B00E0082D1E9 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA73D1CC5B00E0082D1E9 /* Beacon.swift */; };
-		E98EA7481CC5B00E0082D1E9 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA73E1CC5B00E0082D1E9 /* Database.swift */; };
-		E98EA7491CC5B00E0082D1E9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA73F1CC5B00E0082D1E9 /* Location.swift */; };
-		E98EA74A1CC5B00E0082D1E9 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA7401CC5B00E0082D1E9 /* Preference.swift */; };
-		E98EA74B1CC5B00E0082D1E9 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA7411CC5B00E0082D1E9 /* Rule.swift */; };
-		E98EA74C1CC5B00E0082D1E9 /* SmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA7421CC5B00E0082D1E9 /* SmsViewController.swift */; };
-		E98EA74D1CC5B00E0082D1E9 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA7431CC5B00E0082D1E9 /* Task.swift */; };
-		E98EA74E1CC5B00E0082D1E9 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98EA7441CC5B00E0082D1E9 /* Time.swift */; };
+		E955AA511CD8773D007EB20E /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA471CD8773D007EB20E /* Action.swift */; };
+		E955AA531CD8773D007EB20E /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA491CD8773D007EB20E /* Beacon.swift */; };
+		E955AA541CD8773D007EB20E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA4A1CD8773D007EB20E /* Database.swift */; };
+		E955AA551CD8773D007EB20E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA4B1CD8773D007EB20E /* Location.swift */; };
+		E955AA561CD8773D007EB20E /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA4C1CD8773D007EB20E /* Preference.swift */; };
+		E955AA571CD8773D007EB20E /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA4D1CD8773D007EB20E /* Rule.swift */; };
+		E955AA581CD8773D007EB20E /* SmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA4E1CD8773D007EB20E /* SmsViewController.swift */; };
+		E955AA591CD8773D007EB20E /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA4F1CD8773D007EB20E /* Task.swift */; };
+		E955AA5A1CD8773D007EB20E /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA501CD8773D007EB20E /* Time.swift */; };
+		E955AA5E1CE01A4A007EB20E /* TaskRule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E955AA5C1CE01A4A007EB20E /* TaskRule.storyboard */; };
+		E955AA691CE035C3007EB20E /* CircleMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA661CE035C3007EB20E /* CircleMenu.swift */; };
+		E955AA6A1CE035C3007EB20E /* CircleMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA671CE035C3007EB20E /* CircleMenuButton.swift */; };
+		E955AA6B1CE035C3007EB20E /* CircleMenuLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AA681CE035C3007EB20E /* CircleMenuLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,16 +68,19 @@
 		34E0C5981CD6AB1B0031F2A9 /* BeaconDefaultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BeaconDefaultCell.xib; path = Classes/BeaconDefaultCell.xib; sourceTree = "<group>"; };
 		4B1C8DCCE1738E3E05723E34 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C00556AA2FB81D3050EBA2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		E98EA73B1CC5B00E0082D1E9 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
-		E98EA73C1CC5B00E0082D1E9 /* Applicable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Applicable.swift; sourceTree = "<group>"; };
-		E98EA73D1CC5B00E0082D1E9 /* Beacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
-		E98EA73E1CC5B00E0082D1E9 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
-		E98EA73F1CC5B00E0082D1E9 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		E98EA7401CC5B00E0082D1E9 /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
-		E98EA7411CC5B00E0082D1E9 /* Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
-		E98EA7421CC5B00E0082D1E9 /* SmsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmsViewController.swift; sourceTree = "<group>"; };
-		E98EA7431CC5B00E0082D1E9 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		E98EA7441CC5B00E0082D1E9 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		E955AA471CD8773D007EB20E /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = Classes/Action.swift; sourceTree = "<group>"; };
+		E955AA491CD8773D007EB20E /* Beacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Beacon.swift; path = Classes/Beacon.swift; sourceTree = "<group>"; };
+		E955AA4A1CD8773D007EB20E /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Database.swift; path = Classes/Database.swift; sourceTree = "<group>"; };
+		E955AA4B1CD8773D007EB20E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Classes/Location.swift; sourceTree = "<group>"; };
+		E955AA4C1CD8773D007EB20E /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Preference.swift; path = Classes/Preference.swift; sourceTree = "<group>"; };
+		E955AA4D1CD8773D007EB20E /* Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Rule.swift; path = Classes/Rule.swift; sourceTree = "<group>"; };
+		E955AA4E1CD8773D007EB20E /* SmsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SmsViewController.swift; path = Classes/SmsViewController.swift; sourceTree = "<group>"; };
+		E955AA4F1CD8773D007EB20E /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = Classes/Task.swift; sourceTree = "<group>"; };
+		E955AA501CD8773D007EB20E /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Time.swift; path = Classes/Time.swift; sourceTree = "<group>"; };
+		E955AA5D1CE01A4A007EB20E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TaskRule.storyboard; sourceTree = "<group>"; };
+		E955AA661CE035C3007EB20E /* CircleMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleMenu.swift; path = Classes/CircleMenu.swift; sourceTree = "<group>"; };
+		E955AA671CE035C3007EB20E /* CircleMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleMenuButton.swift; path = Classes/CircleMenuButton.swift; sourceTree = "<group>"; };
+		E955AA681CE035C3007EB20E /* CircleMenuLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleMenuLoader.swift; path = Classes/CircleMenuLoader.swift; sourceTree = "<group>"; };
 		EB39F225C62B91DAAE8FE076 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +140,7 @@
 		2B161A6E1CC41B4800E6DB9A /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				E955AA5B1CD877C4007EB20E /* Rule */,
 				2B161A5F1CC41A8B00E6DB9A /* Main.storyboard */,
 				2B161A721CC41F9900E6DB9A /* Home */,
 				2B161A761CC41FDD00E6DB9A /* Beacon */,
@@ -200,10 +207,12 @@
 		2B161A801CC4273F00E6DB9A /* Wizard */ = {
 			isa = PBXGroup;
 			children = (
+				E955AA5F1CE034D4007EB20E /* CircleMenu */,
 				2B161A811CC4276600E6DB9A /* TaskNameViewController.swift */,
 				2B161A831CC4278400E6DB9A /* TaskActionViewController.swift */,
 				2B161A851CC427AA00E6DB9A /* TaskActionSetupViewController.swift */,
 				2B161A871CC427B900E6DB9A /* TaskRuleViewController.swift */,
+				E955AA5C1CE01A4A007EB20E /* TaskRule.storyboard */,
 				2B161A891CC427D400E6DB9A /* TaskBeaconViewController.swift */,
 			);
 			name = Wizard;
@@ -229,16 +238,15 @@
 		2B161A8F1CC4341E00E6DB9A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E98EA73B1CC5B00E0082D1E9 /* Action.swift */,
-				E98EA73C1CC5B00E0082D1E9 /* Applicable.swift */,
-				E98EA73D1CC5B00E0082D1E9 /* Beacon.swift */,
-				E98EA73E1CC5B00E0082D1E9 /* Database.swift */,
-				E98EA73F1CC5B00E0082D1E9 /* Location.swift */,
-				E98EA7401CC5B00E0082D1E9 /* Preference.swift */,
-				E98EA7411CC5B00E0082D1E9 /* Rule.swift */,
-				E98EA7421CC5B00E0082D1E9 /* SmsViewController.swift */,
-				E98EA7431CC5B00E0082D1E9 /* Task.swift */,
-				E98EA7441CC5B00E0082D1E9 /* Time.swift */,
+				E955AA471CD8773D007EB20E /* Action.swift */,
+				E955AA491CD8773D007EB20E /* Beacon.swift */,
+				E955AA4A1CD8773D007EB20E /* Database.swift */,
+				E955AA4B1CD8773D007EB20E /* Location.swift */,
+				E955AA4C1CD8773D007EB20E /* Preference.swift */,
+				E955AA4D1CD8773D007EB20E /* Rule.swift */,
+				E955AA4E1CD8773D007EB20E /* SmsViewController.swift */,
+				E955AA4F1CD8773D007EB20E /* Task.swift */,
+				E955AA501CD8773D007EB20E /* Time.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -274,6 +282,23 @@
 				4B1C8DCCE1738E3E05723E34 /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E955AA5B1CD877C4007EB20E /* Rule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Rule;
+			sourceTree = "<group>";
+		};
+		E955AA5F1CE034D4007EB20E /* CircleMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E955AA661CE035C3007EB20E /* CircleMenu.swift */,
+				E955AA671CE035C3007EB20E /* CircleMenuButton.swift */,
+				E955AA681CE035C3007EB20E /* CircleMenuLoader.swift */,
+			);
+			name = CircleMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34E0C5951CD6A84E0031F2A9 /* BeaconNameCell.xib in Resources */,
+				E955AA5E1CE01A4A007EB20E /* TaskRule.storyboard in Resources */,
 				2B161A661CC41A8B00E6DB9A /* LaunchScreen.storyboard in Resources */,
 				34E0C59A1CD6AB1B0031F2A9 /* BeaconDefaultCell.xib in Resources */,
 				2B161A631CC41A8B00E6DB9A /* Assets.xcassets in Resources */,
@@ -406,29 +432,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B161A711CC41B6C00E6DB9A /* AppDelegate.swift in Sources */,
-				E98EA74C1CC5B00E0082D1E9 /* SmsViewController.swift in Sources */,
-				E98EA74A1CC5B00E0082D1E9 /* Preference.swift in Sources */,
-				E98EA7461CC5B00E0082D1E9 /* Applicable.swift in Sources */,
-				E98EA74B1CC5B00E0082D1E9 /* Rule.swift in Sources */,
-				E98EA7491CC5B00E0082D1E9 /* Location.swift in Sources */,
 				34E0C5991CD6AB1B0031F2A9 /* BeaconDefaultCell.swift in Sources */,
-				E98EA7451CC5B00E0082D1E9 /* Action.swift in Sources */,
-				E98EA7481CC5B00E0082D1E9 /* Database.swift in Sources */,
+				E955AA571CD8773D007EB20E /* Rule.swift in Sources */,
+				E955AA531CD8773D007EB20E /* Beacon.swift in Sources */,
+				E955AA511CD8773D007EB20E /* Action.swift in Sources */,
 				2B161A841CC4278400E6DB9A /* TaskActionViewController.swift in Sources */,
-				E98EA74E1CC5B00E0082D1E9 /* Time.swift in Sources */,
+				E955AA551CD8773D007EB20E /* Location.swift in Sources */,
+				E955AA561CD8773D007EB20E /* Preference.swift in Sources */,
 				2B161A7A1CC4232800E6DB9A /* TaskListViewController.swift in Sources */,
 				2B161A8A1CC427D400E6DB9A /* TaskBeaconViewController.swift in Sources */,
 				2B161A7D1CC4240D00E6DB9A /* BeaconDetailViewController.swift in Sources */,
-				E98EA74D1CC5B00E0082D1E9 /* Task.swift in Sources */,
+				E955AA5A1CD8773D007EB20E /* Time.swift in Sources */,
 				2B161A741CC41FB300E6DB9A /* HomeViewController.swift in Sources */,
 				2B161A8D1CC4301A00E6DB9A /* TaskDetailViewController.swift in Sources */,
+				E955AA591CD8773D007EB20E /* Task.swift in Sources */,
 				34A639A01CCDA6CE00EC8E3C /* BeaconAPI.swift in Sources */,
 				34E0C5941CD6A84E0031F2A9 /* BeaconNameCell.swift in Sources */,
 				2B161A881CC427B900E6DB9A /* TaskRuleViewController.swift in Sources */,
 				2B161A821CC4276600E6DB9A /* TaskNameViewController.swift in Sources */,
-				E98EA7471CC5B00E0082D1E9 /* Beacon.swift in Sources */,
 				2B161A781CC4231900E6DB9A /* BeaconListViewController.swift in Sources */,
+				E955AA541CD8773D007EB20E /* Database.swift in Sources */,
+				E955AA581CD8773D007EB20E /* SmsViewController.swift in Sources */,
+				E955AA6A1CE035C3007EB20E /* CircleMenuButton.swift in Sources */,
+				E955AA691CE035C3007EB20E /* CircleMenu.swift in Sources */,
 				2B161A861CC427AA00E6DB9A /* TaskActionSetupViewController.swift in Sources */,
+				E955AA6B1CE035C3007EB20E /* CircleMenuLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +477,14 @@
 				2B161A651CC41A8B00E6DB9A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E955AA5C1CE01A4A007EB20E /* TaskRule.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E955AA5D1CE01A4A007EB20E /* Base */,
+			);
+			name = TaskRule.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
