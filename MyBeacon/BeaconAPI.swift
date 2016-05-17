@@ -18,7 +18,7 @@ protocol BeaconDataSource {
 @objc protocol BeaconDelegate {
     func beaconAPI(beaconAPI: BeaconAPI, didEnterRegion region: CLRegion)
     func beaconAPI(beaconAPI: BeaconAPI, didExitRegion region: CLRegion)
-    func beaconAPI(beaconAPI: BeaconAPI, didRangeBeacon beacon: Beacon, inRegion region: CLBeaconRegion)
+    func beaconAPI(beaconAPI: BeaconAPI, didRangeBeacon beacon: CLBeacon, inRegion region: CLBeaconRegion)
 }
 
 class BeaconAPI: NSObject {
@@ -35,16 +35,16 @@ class BeaconAPI: NSObject {
         manager.allowsBackgroundLocationUpdates = true
         return manager
     }()
+    private var beacon: Beacon?
     
     // MARK: - Publics
     var beaconProtocol: BeaconProtocol?
-    var beacon: Beacon?
     
     // MARK: Public Functions
     func startSearchingBeacon() {
         stopSearchingBeacon()
         
-        self.beacon = beaconProtocol?.updatedBeacon()
+        beacon = beaconProtocol?.updatedBeacon()
         
         guard let beacon = self.beacon else { return }
         guard let uuid = NSUUID(UUIDString: beacon.id) else { return }
@@ -97,16 +97,13 @@ extension BeaconAPI: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         
         let knownBeacons = beacons.filter{ $0.proximity != CLProximity.Unknown }
+        
         if (knownBeacons.count > 0) {
             let closestBeacon = knownBeacons[0] as CLBeacon
             
-            print("RSSI: \(closestBeacon.rssi), proximity: \(closestBeacon.proximity.rawValue)")
-            
-            let beacon = Beacon()
-            beacon.id = closestBeacon.proximityUUID.UUIDString
-            beacon.major = closestBeacon.major.integerValue
-            beacon.minor = closestBeacon.minor.integerValue
-            self.beaconProtocol?.beaconAPI(self, didRangeBeacon: beacon, inRegion: region)
+            self.beaconProtocol?.beaconAPI(self, didRangeBeacon: closestBeacon, inRegion: region)
+        } else {
+            print("Couldn't find any Beacons. Please check out the detail information of Beacon.")
         }
     }
 }
