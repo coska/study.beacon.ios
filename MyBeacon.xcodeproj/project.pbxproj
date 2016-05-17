@@ -367,7 +367,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				34E0C5951CD6A84E0031F2A9 /* BeaconNameCell.xib in Resources */,
+=======
+>>>>>>> feature/data-models
 				E955AA5E1CE01A4A007EB20E /* TaskRule.storyboard in Resources */,
 				2B161A661CC41A8B00E6DB9A /* LaunchScreen.storyboard in Resources */,
 				34E0C59A1CD6AB1B0031F2A9 /* BeaconDefaultCell.xib in Resources */,
@@ -432,7 +435,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B161A711CC41B6C00E6DB9A /* AppDelegate.swift in Sources */,
+<<<<<<< HEAD
 				34E0C5991CD6AB1B0031F2A9 /* BeaconDefaultCell.swift in Sources */,
+=======
+>>>>>>> feature/data-models
 				E955AA571CD8773D007EB20E /* Rule.swift in Sources */,
 				E955AA531CD8773D007EB20E /* Beacon.swift in Sources */,
 				E955AA511CD8773D007EB20E /* Action.swift in Sources */,
