@@ -50,6 +50,12 @@ class BeaconListViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier, forIndexPath: indexPath) as! BeaconCustomTableViewCell
+        
+        // Square Image to Circle Image - beaconImage
+        cell.beaconImage.layer.cornerRadius = cell.beaconImage.frame.width / 2
+        cell.beaconImage.clipsToBounds = true
+        
+        // fakeDatas to the Cell as DEMO
         cell.beaconNameLabel?.text = self.fakeDataSource[indexPath.row]
         cell.beaconImage?.image = UIImage(named: fakeImageSource[indexPath.row])
         cell.beaconUUIDLabel?.text = self.fakeUUIDSource[indexPath.row]
