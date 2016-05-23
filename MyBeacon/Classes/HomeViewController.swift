@@ -35,15 +35,21 @@ class HomeViewController: UIViewController, HomeListDelegate
     
     lazy var taskListViewController: TaskListViewController =
     {
-        var vc = self.myStoryboard.instantiateViewControllerWithIdentifier("TaskListViewController") as! TaskListViewController
+        var vc = self.taskListStoryboard.instantiateViewControllerWithIdentifier("TaskListViewController") as! TaskListViewController
         vc.delegate = self
         return vc
     }()
     
     lazy var myStoryboard: UIStoryboard =
     {
-        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let sb = UIStoryboard(name: "BeaconList", bundle: nil)
         return sb
+    }()
+    
+    lazy var taskListStoryboard: UIStoryboard =
+        {
+            let sb = UIStoryboard(name: "TaskList", bundle: nil)
+            return sb
     }()
     
     // MARK: View life cycle
