@@ -8,14 +8,9 @@
 
 import UIKit
 
-<<<<<<< HEAD
-
 // Add implementation for time condition & location condition
 
 class TaskRuleViewController: UIViewController, CircleMenuDelegate, UIPickerViewDataSource, UIPickerViewDelegate
-=======
-class TaskRuleViewController: TaskWizardBaseViewController
->>>>>>> origin/feature/task-create
 {
     
     @IBOutlet weak var labelCondition: UILabel!
@@ -38,7 +33,6 @@ class TaskRuleViewController: TaskWizardBaseViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-<<<<<<< HEAD
         
         self.title = "Task Wizard"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "cancelButtonTapped:")
@@ -77,9 +71,6 @@ class TaskRuleViewController: TaskWizardBaseViewController
         locationSelector.delegate = self
         locationSelector.layer.cornerRadius = locationSelector.frame.size.width / 2.0
         view.addSubview(locationSelector)
-        
-=======
->>>>>>> origin/feature/task-create
     }
     
     override func didReceiveMemoryWarning()

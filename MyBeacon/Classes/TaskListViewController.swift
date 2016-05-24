@@ -20,7 +20,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         return ["Task 1", "Task 2", "Task 3"]
     }()
 
-    lazy var tasks: [Task] = Task.loadAll()
+    lazy var tasks: [Task] = Database.loadAll(Task.self)
     
     @IBOutlet weak var tableView: UITableView!
     
