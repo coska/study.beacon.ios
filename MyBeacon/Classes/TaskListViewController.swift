@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
+
 
 class TaskListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
@@ -28,6 +30,8 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
             return ["rule1.png", "rule2.png", "rule3.png"]
     }()
 
+    lazy var tasks: [Task] = Database.loadAll(Task.self)
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad()
@@ -74,7 +78,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "TaskRule", bundle: nil)
         let taskDetailViewController = storyboard.instantiateViewControllerWithIdentifier("TaskDetailViewController") as! TaskDetailViewController
 
         self.delegate?.willPushViewController(taskDetailViewController, animated: true)

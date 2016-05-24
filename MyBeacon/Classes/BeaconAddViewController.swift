@@ -94,7 +94,7 @@ extension BeaconAddViewController: BeaconProtocol {
             let result = self.beacons.filter { $0.proximityUUID == beacon.proximityUUID }            
             if result.count == 0 {
                 // TODO: read Beacon from DB, and append if it's not in DB
-                let allBeacons: [Beacon] = Beacon.loadAll()
+                let allBeacons: [Beacon] = Database.loadAll(Beacon.self)
                 let result = allBeacons.filter { $0.id == beacon.proximityUUID.UUIDString }
                 if result.count == 0 {
                     self.beacons.append(beacon)
@@ -137,7 +137,7 @@ extension BeaconAddViewController: UITableViewDelegate {
         beacon.major = addedBeacon.major.integerValue
         beacon.minor = addedBeacon.minor.integerValue
         beacon.name = addedBeacon.proximityUUID.UUIDString
-        Beacon.save(beacon)
+        Database.save(beacon)
         
         beacons.removeAtIndex(indexPath.row)
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)

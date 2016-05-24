@@ -4,7 +4,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 pod 'FLKAutoLayout', '<= 1.0'
-pod 'RealmSwift', '<= 0.98'
+pod 'RealmSwift', '<= 0.101'
 
 target 'MyBeacon' do
 

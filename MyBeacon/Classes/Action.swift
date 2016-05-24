@@ -35,11 +35,19 @@ enum ActionType : String
 	}
 }
 
+
+protocol ActionProtocol
+{
+	func perform(type:ActionType)
+}
+
+
 class Action: Object {
 	
 	private var _type = ActionType.None
 	
 	dynamic var name = ""
+	dynamic var value = ""
 	dynamic var type : String {
 		get {
 			return _type.rawValue
@@ -48,10 +56,14 @@ class Action: Object {
 			_type = ActionType.getType(newValue)
 		}
 	}
-	dynamic var value = ""
 	
-	func perform()
+	
+	//TODO move these to ViewControllers and implement ActionProtocol
+	
+	/*
+   func perform()
 	{
+		
 		switch (_type)
 		{
 		case .None:
@@ -93,6 +105,6 @@ class Action: Object {
 		vc.sendText(self)
 		
 	}
-
+   */
 }
 
