@@ -98,7 +98,6 @@ class BeaconDetailViewController: UIViewController
     
     let kBeaconNameCell = "BeaconNameCell"
     let kBeaconDefaultCell = "BeaconDefaultCell"
-    var detailMode: BeaconDetailMode = .Add
     
     private var orgBeacon: Beacon?
     private var newBeacon: Beacon?
@@ -108,26 +107,22 @@ class BeaconDetailViewController: UIViewController
     {
         super.viewDidLoad()
 
-        if self.detailMode == .Add
-        {
-            self.title = "Add Beacon"
-            self.deleteButton.hidden = true
-        }
-        else
-        {
-            self.title = "Edit Beacon"
-            
-            BeaconAPI.sharedInstance.beaconProtocol = self
-            BeaconAPI.sharedInstance.startSearchingBeacon()
-        }
+        self.title = "Edit Beacon"
         
         initializeTableView()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        BeaconAPI.sharedInstance.beaconProtocol = self
+        BeaconAPI.sharedInstance.startSearchingBeacons()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        BeaconAPI.sharedInstance.stopSearchingBeacon()
+        BeaconAPI.sharedInstance.stopSearchingBeacons()
     }
 
     override func didReceiveMemoryWarning()
@@ -137,12 +132,7 @@ class BeaconDetailViewController: UIViewController
     
     // MARK: - Event handler
     @IBAction func cancelButtonTapped(sender: AnyObject) {
-        switch detailMode {
-        case .Add:
-            self.dismissViewControllerAnimated(true, completion: nil)
-        case .Edit:
-            navigationController?.popViewControllerAnimated(true)
-        }
+        navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func doneButtonTapped(sender: AnyObject)
@@ -157,12 +147,7 @@ class BeaconDetailViewController: UIViewController
         //    print("Couldn't save the updated beacon because it's nil")
         //}
         
-        switch detailMode {
-        case .Add:
-            self.dismissViewControllerAnimated(true, completion: nil)
-        case .Edit:
-            navigationController?.popViewControllerAnimated(true)
-        }
+        navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func deleteButtonTapped(sender: AnyObject) {
@@ -180,7 +165,7 @@ class BeaconDetailViewController: UIViewController
         tableView.registerNib(UINib.init(nibName: kBeaconDefaultCell, bundle: nil), forCellReuseIdentifier: kBeaconDefaultCell)
     }
     
-    func updateBeacon(beacon: Beacon) {
+    func selectedBeacon(beacon: Beacon) {
         orgBeacon = beacon
         
         beaconInfo.append([NameRows.Name.rawValue : beacon.name])
@@ -252,7 +237,7 @@ extension BeaconDetailViewController: UITableViewDelegate {
 extension BeaconDetailViewController: BeaconProtocol {
     // MARK: - BeaconDataSource
     func updatedBeacon() -> Beacon? {
-        return detailMode == .Add ? nil : orgBeacon
+        return orgBeacon
     }
     
     // MARK: - BeaconDelegate
@@ -264,7 +249,10 @@ extension BeaconDetailViewController: BeaconProtocol {
         print("didExitRegion: \(region.identifier)")
     }
     
-    func beaconAPI(beaconAPI: BeaconAPI, didRangeBeacon beacon: CLBeacon, inRegion region: CLBeaconRegion) {
+    func beaconAPI(beaconAPI: BeaconAPI, didRangeBeacon beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
+        
+        let beacon = beacons[0]
+        
         print("Proximity: \(beacon.proximity.Desc()), RSSI: \(beacon.rssi)db")
         
         beaconInfo[SectionInfo.DetailExtra.rawValue] = [

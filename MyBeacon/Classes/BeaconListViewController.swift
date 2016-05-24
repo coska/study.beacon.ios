@@ -56,8 +56,8 @@ class BeaconListViewController: UIViewController, UITableViewDataSource, UITable
         // tk (test)
         // let storyboard = UIStoryboard(name: "TaskRule", bundle: nil)
         
-        let beaconDetailViewController = storyboard.instantiateViewControllerWithIdentifier("BeaconDetailViewController") as! BeaconDetailViewController
-        beaconDetailViewController.detailMode = .Edit
+        //let beaconDetailViewController = storyboard.instantiateViewControllerWithIdentifier("BeaconDetailViewController") as! BeaconDetailViewController
+        //beaconDetailViewController.detailMode = .Edit
         
         // Mock Data
         let orgBeacon = Beacon()
@@ -65,8 +65,8 @@ class BeaconListViewController: UIViewController, UITableViewDataSource, UITable
         orgBeacon.major = 51320
         orgBeacon.minor = 45042
         orgBeacon.name = "0117C55A175E"
-        beaconDetailViewController.updateBeacon(orgBeacon)
+        //beaconDetailViewController.updatedBeacon() //.updateBeacon(orgBeacon)
         
-        self.delegate?.willPushViewController(beaconDetailViewController, animated: true)
+        //self.delegate?.willPushViewController(beaconDetailViewController, animated: true)
     }
 }

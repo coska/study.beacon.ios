@@ -35,15 +35,27 @@ class HomeViewController: UIViewController, HomeListDelegate
     
     lazy var taskListViewController: TaskListViewController =
     {
-        var vc = self.myStoryboard.instantiateViewControllerWithIdentifier("TaskListViewController") as! TaskListViewController
+        var vc = self.taskListStoryboard.instantiateViewControllerWithIdentifier("TaskListViewController") as! TaskListViewController
         vc.delegate = self
         return vc
     }()
     
+    lazy var mainStoryboard: UIStoryboard =
+        {
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            return sb
+    }()
+    
     lazy var myStoryboard: UIStoryboard =
     {
-        let sb = UIStoryboard(name: "TaskRule", bundle: nil)
+        let sb = UIStoryboard(name: "BeaconList", bundle: nil)
         return sb
+    }()
+    
+    lazy var taskListStoryboard: UIStoryboard =
+        {
+            let sb = UIStoryboard(name: "TaskList", bundle: nil)
+            return sb
     }()
     
     // MARK: View life cycle
@@ -79,11 +91,9 @@ class HomeViewController: UIViewController, HomeListDelegate
     @IBAction func addButtonTapped(sender: UIBarButtonItem)
     {
         if self.segmentControl.selectedSegmentIndex == ListType.Beacon.rawValue
-        {
-            let beaconNavigation = self.myStoryboard.instantiateViewControllerWithIdentifier("BeaconNavigation") as! UINavigationController
-            let beaconDetailViewController = beaconNavigation.topViewController as! BeaconDetailViewController
-            beaconDetailViewController.detailMode = .Add
-            self.presentViewController(beaconNavigation, animated: true, completion: nil)
+        {            
+            let beaconAddNavigation = self.mainStoryboard.instantiateViewControllerWithIdentifier("BeaconAddNavigation") as! UINavigationController
+            self.presentViewController(beaconAddNavigation, animated: true, completion: nil)
         }
         else
         {
