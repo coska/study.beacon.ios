@@ -536,30 +536,19 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Every Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13X-S4-01d">
-                                <rect key="frame" x="20" y="162" width="272" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Every &lt;time condition&gt;, where your phone is &lt;close to&gt; the beacon. " lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13X-S4-01d" userLabel="Label Condition">
+                                <rect key="frame" x="20" y="162" width="481" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="c1J-sK-w2w">
-                                <rect key="frame" x="0.0" y="192" width="600" height="142"/>
-                                <date key="date" timeIntervalSinceReferenceDate="452832321.92227298">
-                                    <!--2015-05-09 02:45:21 +0000-->
-                                </date>
-                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
-                                    <!--1970-01-01 11:00:00 +0000-->
-                                </date>
-                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
-                                    <!--2037-12-31 11:00:00 +0000-->
-                                </date>
-                            </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVm-9d-Ual">
-                                <rect key="frame" x="20" y="379" width="272" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0oj-Ju-5PZ">
+                                <rect key="frame" x="0.0" y="192" width="600" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="0oA-l1-C7o" id="d4q-Cs-Exs"/>
+                                    <outlet property="delegate" destination="0oA-l1-C7o" id="tGS-gu-PZQ"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -572,9 +561,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="labelLocation" destination="FVm-9d-Ual" id="B3O-y4-2mO"/>
-                        <outlet property="labelTime" destination="13X-S4-01d" id="rOc-BX-taO"/>
-                        <outlet property="picker" destination="c1J-sK-w2w" id="oDh-YB-ZlP"/>
+                        <outlet property="labelCondition" destination="13X-S4-01d" id="KPb-Kf-ebY"/>
+                        <outlet property="picker" destination="0oj-Ju-5PZ" id="mWc-xy-3Zv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Onx-Q3-Pgt" userLabel="First Responder" sceneMemberID="firstResponder"/>

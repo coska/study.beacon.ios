@@ -8,13 +8,19 @@
 
 import UIKit
 
-class TaskRuleViewController: UIViewController, CircleMenuDelegate
+
+// Add implementation for time condition & location condition
+
+class TaskRuleViewController: UIViewController, CircleMenuDelegate, UIPickerViewDataSource, UIPickerViewDelegate
 {
-    @IBOutlet weak var picker: UIDatePicker!
-    @IBOutlet weak var labelTime: UILabel!
-    @IBOutlet weak var labelLocation: UILabel!
+    
+    @IBOutlet weak var labelCondition: UILabel!
+    @IBOutlet weak var picker: UIPickerView!
     
     //    let colors = [UIColor.redColor(), UIColor.grayColor(), UIColor.greenColor(), UIColor.purpleColor()]
+    
+    
+    
     let items: [(icon: String, color: UIColor)] = [
         ("icon_home", UIColor(red:0.19, green:0.57, blue:1, alpha:1)),
         ("icon_search", UIColor(red:0.22, green:0.74, blue:0, alpha:1)),
@@ -36,7 +42,10 @@ class TaskRuleViewController: UIViewController, CircleMenuDelegate
         self.navigationItem.backBarButtonItem = backButton
         
         
-        picker.datePickerMode = UIDatePickerMode.DateAndTime
+        self.picker.dataSource = self;
+        self.picker.delegate = self;
+        
+        
         
         // add time condition selector
         let timeSelector = CircleMenu(
@@ -97,6 +106,45 @@ class TaskRuleViewController: UIViewController, CircleMenuDelegate
     
     func circleMenu(circleMenu: CircleMenu, buttonDidSelected button: CircleMenuButton, atIndex: Int) {
         print("button did selected: \(atIndex)")
+    }
+    
+    // MARK: UIPickerViewDelegate
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1 //TimeType.pickers[TimeType.MonthOfYear]
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        let ret = (TimeType.pickers[TimeType.MonthOfYear]?.count)!
+        print("numberOfRowsInComponent =\(ret)")
+        return ret
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        let ret = TimeType.pickers[TimeType.MonthOfYear]![row] as? String
+        print("row=\(row), \nrawdata=\(TimeType.pickers[TimeType.MonthOfYear]![row]) \ntitleForRow=\(ret)")
+        return ret
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        if(row == 0)
+        {
+            self.view.backgroundColor = UIColor.whiteColor();
+        }
+        else if(row == 1)
+        {
+            self.view.backgroundColor = UIColor.redColor();
+        }
+        else if(row == 2)
+        {
+            self.view.backgroundColor =  UIColor.greenColor();
+        }
+        else
+        {
+            self.view.backgroundColor = UIColor.blueColor();
+        }
     }
     
 }
