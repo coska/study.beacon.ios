@@ -11,6 +11,7 @@ import UIKit
 class TaskWizardBaseViewController: UIViewController {
 
     var task: Task?
+    @IBOutlet weak var nextButton: UIButton!
     
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
     

@@ -86,6 +86,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="nameField" destination="l7H-8B-ih0" id="l4f-pZ-mgi"/>
+                        <outlet property="nextButton" destination="RG2-9j-74d" id="PgZ-AF-Ap2"/>
                         <outlet property="nextButtonBottomConstraint" destination="LfB-vL-A6H" id="Via-ii-Fcu"/>
                     </connections>
                 </viewController>
@@ -133,17 +134,52 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H8t-f6-iGD">
+                                <rect key="frame" x="0.0" y="132" width="600" height="418"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="actionTypeCell" textLabel="ery-cD-kAo" style="IBUITableViewCellStyleDefault" id="af1-ca-B4X">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="af1-ca-B4X" id="6sU-3W-rAT">
+                                            <rect key="frame" x="0.0" y="0.0" width="561" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ery-cD-kAo">
+                                                    <rect key="frame" x="15" y="0.0" width="546" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="RY6-Zi-e80" id="NgQ-jN-kMa"/>
+                                    <outlet property="delegate" destination="RY6-Zi-e80" id="Gak-5R-kpS"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="K7o-7u-k2p" firstAttribute="leading" secondItem="lkl-KL-x5y" secondAttribute="leading" id="AFm-rp-VTT"/>
                             <constraint firstAttribute="trailing" secondItem="K7o-7u-k2p" secondAttribute="trailing" id="Jw8-lU-j1K"/>
                             <constraint firstItem="q5x-lK-6u4" firstAttribute="leading" secondItem="lkl-KL-x5y" secondAttribute="leading" id="LVA-hs-UzH"/>
+                            <constraint firstAttribute="trailing" secondItem="H8t-f6-iGD" secondAttribute="trailing" id="O62-gt-aiH"/>
+                            <constraint firstItem="H8t-f6-iGD" firstAttribute="top" secondItem="K7o-7u-k2p" secondAttribute="bottom" constant="8" id="dyI-xg-MZA"/>
                             <constraint firstItem="K7o-7u-k2p" firstAttribute="top" secondItem="c2p-o1-fhL" secondAttribute="bottom" id="lt8-Mx-vb5"/>
+                            <constraint firstItem="q5x-lK-6u4" firstAttribute="top" secondItem="H8t-f6-iGD" secondAttribute="bottom" id="oAo-Gr-NaW"/>
                             <constraint firstAttribute="trailing" secondItem="q5x-lK-6u4" secondAttribute="trailing" id="r1Z-od-E3h"/>
+                            <constraint firstItem="H8t-f6-iGD" firstAttribute="leading" secondItem="lkl-KL-x5y" secondAttribute="leading" id="rCn-uG-Yx7"/>
                             <constraint firstItem="LHG-2T-Ne6" firstAttribute="top" secondItem="q5x-lK-6u4" secondAttribute="bottom" id="ur7-iN-Vgs"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nextButton" destination="q5x-lK-6u4" id="rCn-zc-COe"/>
+                        <outlet property="tableView" destination="H8t-f6-iGD" id="RbW-Q7-4LF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vgg-be-A0E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
