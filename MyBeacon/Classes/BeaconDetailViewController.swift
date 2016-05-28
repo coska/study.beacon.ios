@@ -215,6 +215,7 @@ extension BeaconDetailViewController: UITableViewDelegate {
                 } else {
                     cell.txtName.text = ""
                 }
+                cell.txtName.userInteractionEnabled = false
                 return cell
             }
         default:
