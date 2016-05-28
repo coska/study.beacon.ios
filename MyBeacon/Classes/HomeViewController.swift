@@ -40,9 +40,9 @@ class HomeViewController: UIViewController, HomeListDelegate
         return vc
     }()
     
-    lazy var mainStoryboard: UIStoryboard =
+    lazy var beaconDetailStoryboard: UIStoryboard =
         {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let sb = UIStoryboard(name: "BeaconDetail", bundle: nil)
             return sb
     }()
     
@@ -92,7 +92,7 @@ class HomeViewController: UIViewController, HomeListDelegate
     {
         if self.segmentControl.selectedSegmentIndex == ListType.Beacon.rawValue
         {            
-            let beaconAddNavigation = self.mainStoryboard.instantiateViewControllerWithIdentifier("BeaconAddNavigation") as! UINavigationController
+            let beaconAddNavigation = self.beaconDetailStoryboard.instantiateViewControllerWithIdentifier("BeaconAddNavigation") as! UINavigationController
             self.presentViewController(beaconAddNavigation, animated: true, completion: nil)
         }
         else

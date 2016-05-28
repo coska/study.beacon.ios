@@ -21,6 +21,7 @@
 		2B161A881CC427B900E6DB9A /* TaskRuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B161A871CC427B900E6DB9A /* TaskRuleViewController.swift */; };
 		2B161A8A1CC427D400E6DB9A /* TaskBeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B161A891CC427D400E6DB9A /* TaskBeaconViewController.swift */; };
 		2B161A8D1CC4301A00E6DB9A /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B161A8C1CC4301A00E6DB9A /* TaskDetailViewController.swift */; };
+		3447C6F61CF94407002F24F0 /* BeaconDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3447C6F51CF94406002F24F0 /* BeaconDetail.storyboard */; };
 		3495F0191CE9353000ACB5BC /* BeaconList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3495F0181CE9353000ACB5BC /* BeaconList.storyboard */; };
 		3495F01B1CE9353500ACB5BC /* TaskList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3495F01A1CE9353500ACB5BC /* TaskList.storyboard */; };
 		3495F01D1CE9357900ACB5BC /* BeaconCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3495F01C1CE9357900ACB5BC /* BeaconCustomTableViewCell.swift */; };
@@ -70,6 +71,7 @@
 		2B161A8C1CC4301A00E6DB9A /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskDetailViewController.swift; path = Classes/TaskDetailViewController.swift; sourceTree = "<group>"; };
 		2B161A911CC4346A00E6DB9A /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CodeViewController.swift; path = Classes/CodeViewController.swift; sourceTree = "<group>"; };
 		2B908CBB1CD82CDF00733C18 /* TaskWizardBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskWizardBaseViewController.swift; path = Classes/TaskWizardBaseViewController.swift; sourceTree = "<group>"; };
+		3447C6F51CF94406002F24F0 /* BeaconDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BeaconDetail.storyboard; path = Classes/BeaconDetail.storyboard; sourceTree = "<group>"; };
 		3495F0181CE9353000ACB5BC /* BeaconList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BeaconList.storyboard; sourceTree = "<group>"; };
 		3495F01A1CE9353500ACB5BC /* TaskList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TaskList.storyboard; sourceTree = "<group>"; };
 		3495F01C1CE9357900ACB5BC /* BeaconCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconCustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				34E0C5981CD6AB1B0031F2A9 /* BeaconDefaultCell.xib */,
 				3495F0231CE93BDB00ACB5BC /* BeaconAddListCell.swift */,
 				3495F0241CE93BDB00ACB5BC /* BeaconAddListCell.xib */,
+				3447C6F51CF94406002F24F0 /* BeaconDetail.storyboard */,
 			);
 			name = Detail;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				2B161A631CC41A8B00E6DB9A /* Assets.xcassets in Resources */,
 				3495F0191CE9353000ACB5BC /* BeaconList.storyboard in Resources */,
 				2B161A611CC41A8B00E6DB9A /* Main.storyboard in Resources */,
+				3447C6F61CF94407002F24F0 /* BeaconDetail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -51,22 +51,22 @@ class BeaconListViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        // tk (test)
-        // let storyboard = UIStoryboard(name: "TaskRule", bundle: nil)
-        
-        //let beaconDetailViewController = storyboard.instantiateViewControllerWithIdentifier("BeaconDetailViewController") as! BeaconDetailViewController
-        //beaconDetailViewController.detailMode = .Edit
+        let storyboard = UIStoryboard(name: "BeaconDetail", bundle: nil)
+        let beaconDetailViewController = storyboard.instantiateViewControllerWithIdentifier("BeaconDetailViewController") as! BeaconDetailViewController
         
         // Mock Data
-        let orgBeacon = Beacon()
-        orgBeacon.id = "F94DBB23-2266-7822-3782-57BEAC0952AC"
-        orgBeacon.major = 51320
-        orgBeacon.minor = 45042
-        orgBeacon.name = "0117C55A175E"
-        //beaconDetailViewController.updatedBeacon() //.updateBeacon(orgBeacon)
+        let results = Database.sharedInstance.objects(Beacon).filter("id = %@", "F94DBB23-2266-7822-3782-57BEAC0952AC")
+
+        let orgBeacon: Beacon = results[0]
+//        let orgBeacon = Beacon()
+//        orgBeacon.id = "F94DBB23-2266-7822-3782-57BEAC0952AC"
+//        orgBeacon.major = 51320
+//        orgBeacon.minor = 45042
+//        orgBeacon.name = "0117C55A175E"
         
-        //self.delegate?.willPushViewController(beaconDetailViewController, animated: true)
+        beaconDetailViewController.selectedBeacon(orgBeacon)
+        
+        self.delegate?.willPushViewController(beaconDetailViewController, animated: true)
     }
 }

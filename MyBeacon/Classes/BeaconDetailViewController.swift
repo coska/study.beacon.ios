@@ -140,20 +140,20 @@ class BeaconDetailViewController: UIViewController
         // TODO: Validation
         
         // Save updated Beacon
-        //if let newBeacon = newBeacon {
-            // tk (please use static Database functions
-            // Beacon.save(newBeacon)
-        //} else {
-        //    print("Couldn't save the updated beacon because it's nil")
-        //}
+        if let newBeacon = newBeacon {
+             Database.save(newBeacon)
+        } else {
+            print("Couldn't save the updated beacon because it's nil")
+        }
         
         navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func deleteButtonTapped(sender: AnyObject) {
-        
         // Remove Beacon
-//        Beacon.delete(orgBeacon)
+//        if let beacon = orgBeacon {
+//            Database.delete(beacon)
+//        }
         
         navigationController?.popViewControllerAnimated(true)
     }
