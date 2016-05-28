@@ -16,16 +16,22 @@ class TaskActionViewController: TaskWizardBaseViewController {
     // MARK: View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView()
+        setupUI()
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        updateNextButtonStatue(selectedRow)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: Privates
+
+    private func setupUI() {
+        tableView.tableFooterView = UIView()
+        updateNextButtonStatue(selectedRow)
     }
     
     // MARK: Event handler
