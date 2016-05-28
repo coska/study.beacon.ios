@@ -63,7 +63,13 @@ class HomeViewController: UIViewController, HomeListDelegate
             let sb = UIStoryboard(name: "TaskRule", bundle: nil)
             return sb
     }()
-    
+
+    lazy var taskStoryboard: UIStoryboard =
+    {
+        let sb = UIStoryboard(name: "Task", bundle: nil)
+        return sb
+    }()
+
     // MARK: View life cycle
     override func viewDidLoad()
     {
@@ -103,7 +109,7 @@ class HomeViewController: UIViewController, HomeListDelegate
         }
         else
         {
-            let taskWizardNavigation = self.taskRuleStoryboard.instantiateViewControllerWithIdentifier("TaskWizardNavigation")
+            let taskWizardNavigation = self.taskStoryboard.instantiateViewControllerWithIdentifier("TaskWizardNavigation")
             self.presentViewController(taskWizardNavigation, animated: true, completion: nil)
         }
     }

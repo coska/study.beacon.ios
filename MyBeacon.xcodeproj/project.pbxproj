@@ -21,6 +21,7 @@
 		2B161A881CC427B900E6DB9A /* TaskRuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B161A871CC427B900E6DB9A /* TaskRuleViewController.swift */; };
 		2B161A8A1CC427D400E6DB9A /* TaskBeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B161A891CC427D400E6DB9A /* TaskBeaconViewController.swift */; };
 		2B161A8D1CC4301A00E6DB9A /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B161A8C1CC4301A00E6DB9A /* TaskDetailViewController.swift */; };
+		2B90E4911CF94CBC00AB97F0 /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B90E48F1CF94CBC00AB97F0 /* Task.storyboard */; };
 		3495F0191CE9353000ACB5BC /* BeaconList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3495F0181CE9353000ACB5BC /* BeaconList.storyboard */; };
 		3495F01B1CE9353500ACB5BC /* TaskList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3495F01A1CE9353500ACB5BC /* TaskList.storyboard */; };
 		3495F01D1CE9357900ACB5BC /* BeaconCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3495F01C1CE9357900ACB5BC /* BeaconCustomTableViewCell.swift */; };
@@ -70,6 +71,7 @@
 		2B161A8C1CC4301A00E6DB9A /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskDetailViewController.swift; path = Classes/TaskDetailViewController.swift; sourceTree = "<group>"; };
 		2B161A911CC4346A00E6DB9A /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CodeViewController.swift; path = Classes/CodeViewController.swift; sourceTree = "<group>"; };
 		2B908CBB1CD82CDF00733C18 /* TaskWizardBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskWizardBaseViewController.swift; path = Classes/TaskWizardBaseViewController.swift; sourceTree = "<group>"; };
+		2B90E4901CF94CBC00AB97F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Task.storyboard; sourceTree = "<group>"; };
 		3495F0181CE9353000ACB5BC /* BeaconList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BeaconList.storyboard; sourceTree = "<group>"; };
 		3495F01A1CE9353500ACB5BC /* TaskList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TaskList.storyboard; sourceTree = "<group>"; };
 		3495F01C1CE9357900ACB5BC /* BeaconCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconCustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		2B161A751CC41FC700E6DB9A /* Task */ = {
 			isa = PBXGroup;
 			children = (
+				2B90E48F1CF94CBC00AB97F0 /* Task.storyboard */,
 				2B161A7F1CC4273200E6DB9A /* List */,
 				2B161A8B1CC42FFA00E6DB9A /* Detail */,
 				2B161A801CC4273F00E6DB9A /* Wizard */,
@@ -396,6 +399,7 @@
 				E955AA5E1CE01A4A007EB20E /* TaskRule.storyboard in Resources */,
 				2B161A661CC41A8B00E6DB9A /* LaunchScreen.storyboard in Resources */,
 				34E0C59A1CD6AB1B0031F2A9 /* BeaconDefaultCell.xib in Resources */,
+				2B90E4911CF94CBC00AB97F0 /* Task.storyboard in Resources */,
 				3495F0261CE93BDB00ACB5BC /* BeaconAddListCell.xib in Resources */,
 				2B161A631CC41A8B00E6DB9A /* Assets.xcassets in Resources */,
 				3495F0191CE9353000ACB5BC /* BeaconList.storyboard in Resources */,
@@ -509,6 +513,14 @@
 				2B161A651CC41A8B00E6DB9A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		2B90E48F1CF94CBC00AB97F0 /* Task.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B90E4901CF94CBC00AB97F0 /* Base */,
+			);
+			name = Task.storyboard;
 			sourceTree = "<group>";
 		};
 		E955AA5C1CE01A4A007EB20E /* TaskRule.storyboard */ = {
