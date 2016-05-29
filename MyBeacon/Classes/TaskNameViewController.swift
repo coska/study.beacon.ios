@@ -24,10 +24,6 @@ class TaskNameViewController: TaskWizardBaseViewController
         super.didReceiveMemoryWarning()
     }
     
-    deinit {
-        nameField.removeObserver(self, forKeyPath: "text")
-    }
-    
     // MARK: Privates
     
     func textFieldDidChange() {

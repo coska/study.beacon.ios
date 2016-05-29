@@ -12,12 +12,16 @@ class TaskBeaconViewController: TaskWizardBaseViewController
 {
     private let cellIdentifier = "beaconCell"
     private var selectedRow = -1
+    
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: View life cycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        // For test add beacons
+        addFakeBeacons()
         setupUI()
     }
     
@@ -26,7 +30,27 @@ class TaskBeaconViewController: TaskWizardBaseViewController
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: Lazy loading
+    
+    private lazy var beacons:[Beacon] = {
+        let arr = Database.loadAll(Beacon)
+        return arr
+    }()
+    
     // MARK: Privates
+    
+    private func addFakeBeacons() {
+        
+        let b1 = Beacon()
+        b1.id = "1"
+        b1.name = "My Car1"
+        Database.save(b1)
+        
+        let b2 = Beacon()
+        b2.id = "2"
+        b2.name = "My Car2"
+        Database.save(b2)
+    }
     
     private func setupUI() {
         tableView.tableFooterView = UIView()
@@ -46,19 +70,22 @@ class TaskBeaconViewController: TaskWizardBaseViewController
     
     @IBAction func doneButtonTapped(sender: UIButton)
     {
+        let beacon = beacons[selectedRow]
+        task?.beacons.insert(beacon, atIndex: 0)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
 }
 
 extension TaskBeaconViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return beacons.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
-        cell.textLabel?.text = "Beacon"
+
+        let beacon = beacons[indexPath.row]
+        cell.textLabel?.text = beacon.name
         
         if selectedRow == indexPath.row {
             cell.accessoryType = .Checkmark
