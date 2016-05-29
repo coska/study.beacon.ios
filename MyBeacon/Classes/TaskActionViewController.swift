@@ -41,6 +41,10 @@ class TaskActionViewController: TaskWizardBaseViewController {
         updateNextButtonStatue(selectedRow)
     }
     
+    func updateNextButtonStatue(row: Int) {
+        nextButton?.enabled = row != -1
+    }
+
     // MARK: Event handler
     
     func cancelButtonTapped(sender: UIBarButtonItem) {
@@ -61,12 +65,6 @@ class TaskActionViewController: TaskWizardBaseViewController {
         
         let actionSetupViewController = segue.destinationViewController as! TaskWizardBaseViewController
         actionSetupViewController.task = task
-    }
-    
-    // MARK: Private
-    
-    func updateNextButtonStatue(row: Int) {
-        nextButton?.enabled = row != -1
     }
 }
 
