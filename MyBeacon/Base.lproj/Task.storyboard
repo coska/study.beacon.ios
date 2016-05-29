@@ -214,7 +214,7 @@
                                 </variation>
                                 <connections>
                                     <action selector="nextButtonTapped:" destination="h7X-KH-NQD" eventType="touchUpInside" id="zUc-IV-vZd"/>
-                                    <segue destination="w55-q2-RtW" kind="show" id="60P-mL-Qgc"/>
+                                    <segue destination="8Qe-ga-Jwz" kind="show" id="MUb-7T-cAq"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 3/5: Setup Action" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jW5-eu-Oiy">
@@ -314,59 +314,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fqO-E1-o5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5443" y="1858"/>
-        </scene>
-        <!--Task Rule-->
-        <scene sceneID="ND8-tE-7iE">
-            <objects>
-                <viewController storyboardIdentifier="TaskRuleViewController" id="J33-ey-TOV" userLabel="Task Rule" customClass="TaskRuleViewController" customModule="MyBeacon" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="zSM-hh-x1X"/>
-                        <viewControllerLayoutGuide type="bottom" id="UqJ-KI-dx2"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yni-ab-lav">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUe-nd-gkv">
-                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
-                                <color key="backgroundColor" red="0.0" green="0.53333333329999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="1UM-oz-ytV"/>
-                                    <constraint firstAttribute="height" constant="50" id="5HT-pw-t9R"/>
-                                </constraints>
-                                <state key="normal" title="Next">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="1UM-oz-ytV"/>
-                                    </mask>
-                                </variation>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 4/5: Add Rule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tal-em-s8P">
-                                <rect key="frame" x="0.0" y="64" width="600" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="yoZ-dz-dTo"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Tal-em-s8P" firstAttribute="top" secondItem="zSM-hh-x1X" secondAttribute="bottom" id="60Z-QV-69j"/>
-                            <constraint firstAttribute="trailing" secondItem="fUe-nd-gkv" secondAttribute="trailing" id="AN2-fw-qIK"/>
-                            <constraint firstItem="UqJ-KI-dx2" firstAttribute="top" secondItem="fUe-nd-gkv" secondAttribute="bottom" id="MKP-CP-Tbw"/>
-                            <constraint firstItem="Tal-em-s8P" firstAttribute="leading" secondItem="yni-ab-lav" secondAttribute="leading" id="b8O-77-qsx"/>
-                            <constraint firstAttribute="trailing" secondItem="Tal-em-s8P" secondAttribute="trailing" id="ewM-SB-wes"/>
-                            <constraint firstItem="fUe-nd-gkv" firstAttribute="leading" secondItem="yni-ab-lav" secondAttribute="leading" id="nmI-GJ-P6f"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4ry-gd-f22" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6111" y="2346"/>
         </scene>
         <!--Task Beacon-->
         <scene sceneID="WdQ-b1-Hca">
@@ -476,6 +423,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pGa-St-Qbi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3248" y="1858"/>
+        </scene>
+        <!--Task Rule-->
+        <scene sceneID="mVF-mQ-BAS">
+            <objects>
+                <viewController storyboardIdentifier="TaskRuleViewController" id="8Qe-ga-Jwz" userLabel="Task Rule" customClass="TaskRuleViewController" customModule="MyBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qa3-FY-c1Y"/>
+                        <viewControllerLayoutGuide type="bottom" id="yhl-OL-ZFC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XAD-5C-lyA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLc-lV-wWS">
+                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.53333333329999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ba5-2Z-h8C"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="hxG-Mb-LBA"/>
+                                </constraints>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="hxG-Mb-LBA"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="w55-q2-RtW" kind="show" id="DFA-kY-Vo5"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Step 4/5: Add Rule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dv8-Ve-pgL">
+                                <rect key="frame" x="0.0" y="64" width="600" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="PX0-Ff-NJb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Every &lt;time condition&gt;, where your phone is &lt;close to&gt; the beacon. " lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBa-r5-WJi" userLabel="Label Condition">
+                                <rect key="frame" x="20" y="162" width="481" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N0w-QC-3WL">
+                                <rect key="frame" x="0.0" y="192" width="600" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="XAD-5C-lyA" id="RDC-T9-A3E"/>
+                                    <outlet property="delegate" destination="XAD-5C-lyA" id="Atp-52-MRQ"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Dv8-Ve-pgL" firstAttribute="top" secondItem="qa3-FY-c1Y" secondAttribute="bottom" id="5T9-Lh-WO1"/>
+                            <constraint firstItem="Dv8-Ve-pgL" firstAttribute="leading" secondItem="XAD-5C-lyA" secondAttribute="leading" id="H1u-7L-jZC"/>
+                            <constraint firstItem="yhl-OL-ZFC" firstAttribute="top" secondItem="BLc-lV-wWS" secondAttribute="bottom" id="Ozp-oR-2zw"/>
+                            <constraint firstAttribute="trailing" secondItem="Dv8-Ve-pgL" secondAttribute="trailing" id="b0O-Ec-xk1"/>
+                            <constraint firstAttribute="trailing" secondItem="BLc-lV-wWS" secondAttribute="trailing" id="eSE-IR-acf"/>
+                            <constraint firstItem="BLc-lV-wWS" firstAttribute="leading" secondItem="XAD-5C-lyA" secondAttribute="leading" id="jjW-J8-Bdh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="labelCondition" destination="pBa-r5-WJi" id="2aF-H1-yfd"/>
+                        <outlet property="nextButton" destination="BLc-lV-wWS" id="BEr-s7-7mj"/>
+                        <outlet property="picker" destination="N0w-QC-3WL" id="1HB-cg-zFR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6uV-S0-G8I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6147" y="1858"/>
         </scene>
     </scenes>
 </document>

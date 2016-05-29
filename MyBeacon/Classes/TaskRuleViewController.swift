@@ -10,7 +10,7 @@ import UIKit
 
 // Add implementation for time condition & location condition
 
-class TaskRuleViewController: UIViewController, CircleMenuDelegate, UIPickerViewDataSource, UIPickerViewDelegate
+class TaskRuleViewController: TaskWizardBaseViewController, CircleMenuDelegate, UIPickerViewDataSource, UIPickerViewDelegate
 {
     
     @IBOutlet weak var labelCondition: UILabel!
@@ -34,12 +34,7 @@ class TaskRuleViewController: UIViewController, CircleMenuDelegate, UIPickerView
     {
         super.viewDidLoad()
         
-        self.title = "Task Wizard"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "cancelButtonTapped:")
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationItem.backBarButtonItem = backButton
-        
+        nextButton.enabled = true
         
         self.picker.dataSource = self;
         self.picker.delegate = self;
