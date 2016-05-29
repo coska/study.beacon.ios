@@ -13,6 +13,13 @@ class TaskActionViewController: TaskWizardBaseViewController {
     private var selectedRow = -1
     
     @IBOutlet weak var tableView: UITableView!
+    
+    private lazy var actionTypes: [String] = {
+        var types = ActionType.names as [String]
+        types.removeFirst()
+        return types
+    }()
+    
     // MARK: View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +50,15 @@ class TaskActionViewController: TaskWizardBaseViewController {
     // MARK: Segeu
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("segue: \(segue.identifier)")
+        let action = Action()
+        action.type = actionTypes[selectedRow]
+
+        if !task!.actions.isEmpty {
+            task!.actions.replace(0, object: action)
+        } else {
+            task!.actions.insert(action, atIndex: 0)
+        }
+        
         let actionSetupViewController = segue.destinationViewController as! TaskWizardBaseViewController
         actionSetupViewController.task = task
     }
@@ -61,7 +76,8 @@ extension TaskActionViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
-        cell.textLabel?.text = "Message"
+        cell.textLabel?.text = actionTypes[indexPath.row]
+        
         if selectedRow == indexPath.row {
             cell.accessoryType = .Checkmark
         } else {
@@ -71,7 +87,7 @@ extension TaskActionViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return actionTypes.count
     }
 }
 
