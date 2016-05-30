@@ -16,11 +16,18 @@ class TaskNameViewController: TaskWizardBaseViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameField.addTarget(self, action: "textFieldDidChange", forControlEvents: UIControlEvents.EditingChanged)
     }
 
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: Privates
+    
+    func textFieldDidChange() {
+        nextButton.enabled = !(nameField.text?.isEmpty)!
     }
     
     // MARK: Event handlers

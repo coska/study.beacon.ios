@@ -10,28 +10,45 @@ import UIKit
 
 class TaskWizardBaseViewController: UIViewController {
 
+    let activeColor = UIColor(colorLiteralRed: 0.0/255, green: 136.0/255, blue: 43.0/255, alpha: 1)
+    let inactiveColor = UIColor.grayColor()
     var task: Task?
+    @IBOutlet weak var nextButton: UIButton!
     
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Task Wizard"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "cancelButtonTapped:")
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationItem.backBarButtonItem = backButton
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        nextButton.addObserver(self, forKeyPath: "enabled", options: .New, context: nil)
+        setupUI()
+        setupNotifications()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    // MARK: Notification
+    deinit {
+        nextButton.removeObserver(self, forKeyPath: "enabled")
+    }
+    
+    // MARK: Privates
+    
+    private func setupUI() {
+        self.title = "Task Wizard"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "cancelButtonTapped:")
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationItem.backBarButtonItem = backButton
+        nextButton.enabled = false
+    }
+
+    private func setupNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
     
     // MARK: Notifications
     func keyboardWillShow(noti: NSNotification) {
@@ -60,6 +77,15 @@ class TaskWizardBaseViewController: UIViewController {
                 }, completion: { finished in
                     
             })
+        }
+    }
+    
+    // MARK: KVO
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if ((object?.isEqual(nextButton)) != nil) {
+            let enabled = change!["new"] as! Int
+            nextButton.backgroundColor = enabled == 1 ? activeColor : inactiveColor
         }
     }
 }
