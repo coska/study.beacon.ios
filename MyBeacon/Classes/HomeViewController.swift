@@ -21,6 +21,9 @@ protocol HomeListDelegate: class
 
 class HomeViewController: UIViewController, HomeListDelegate
 {
+    // There are two storyboards for Task Wizard. If loadTaskRule is set true then TaskRule.storyboard will be loaded.
+    // If you need to work on Task Rule then please set this variable to be true
+    private let loadTaskRule = false
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
 
@@ -63,7 +66,13 @@ class HomeViewController: UIViewController, HomeListDelegate
             let sb = UIStoryboard(name: "TaskRule", bundle: nil)
             return sb
     }()
-    
+
+    lazy var taskStoryboard: UIStoryboard =
+    {
+        let sb = UIStoryboard(name: "Task", bundle: nil)
+        return sb
+    }()
+
     // MARK: View life cycle
     override func viewDidLoad()
     {
@@ -103,8 +112,13 @@ class HomeViewController: UIViewController, HomeListDelegate
         }
         else
         {
-            let taskWizardNavigation = self.taskRuleStoryboard.instantiateViewControllerWithIdentifier("TaskWizardNavigation")
-            self.presentViewController(taskWizardNavigation, animated: true, completion: nil)
+            if loadTaskRule == true {
+                let taskWizardNavigation = self.taskRuleStoryboard.instantiateViewControllerWithIdentifier("TaskWizardNavigation")
+                self.presentViewController(taskWizardNavigation, animated: true, completion: nil)
+            } else {
+                let taskWizardNavigation = self.taskStoryboard.instantiateViewControllerWithIdentifier("TaskWizardNavigation")
+                self.presentViewController(taskWizardNavigation, animated: true, completion: nil)
+            }
         }
     }
 
