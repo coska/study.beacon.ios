@@ -102,9 +102,9 @@ class BeaconDetailViewController: UIViewController
     private var orgBeacon: Beacon?
     private var newBeacon: Beacon?
     private var beaconInfo: [[Int:String]] = [[Int:String]]()
+    var beaconImageName: String?
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "Edit Beacon"
@@ -150,12 +150,12 @@ class BeaconDetailViewController: UIViewController
     }
     
     @IBAction func deleteButtonTapped(sender: AnyObject) {
-        // Remove Beacon
-//        if let beacon = orgBeacon {
-//            Database.delete(beacon)
-//        }
-        
         navigationController?.popViewControllerAnimated(true)
+        
+        // Remove Beacon
+        if let beacon = orgBeacon {
+            Database.delete(beacon)
+        }
     }
     
     // MARK: - Private Functions
@@ -210,6 +210,10 @@ extension BeaconDetailViewController: UITableViewDelegate {
             let rows: NameRows = NameRows(rawValue: indexPath.row)!
             switch rows {
             case .Name:
+                if let imgBeaconName = beaconImageName {
+                    cell.imgBeacon.image = UIImage(named: imgBeaconName)
+                }
+                
                 if indexPath.section < beaconInfo.count {
                     cell.txtName.text = beaconInfo[indexPath.section][indexPath.row]
                 } else {

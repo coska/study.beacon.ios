@@ -58,7 +58,7 @@ class BeaconAPI: NSObject {
     private var beacon: Beacon?
     
     // MARK: - Publics
-    var beaconProtocol: BeaconProtocol?
+    weak var beaconProtocol: BeaconProtocol?
     
     // MARK: Public Functions
     func startSearchingBeacons() {
