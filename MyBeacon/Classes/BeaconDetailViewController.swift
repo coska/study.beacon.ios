@@ -162,7 +162,6 @@ class BeaconDetailViewController: UIViewController
     func initializeTableView() {
         tableView.registerNib(UINib.init(nibName: kBeaconNameCell, bundle: nil), forCellReuseIdentifier: kBeaconNameCell)
         tableView.registerNib(UINib.init(nibName: kBeaconDefaultCell, bundle: nil), forCellReuseIdentifier: kBeaconDefaultCell)
-        tableView.registerNib(UINib.init(nibName: kBeaconDefaultCell, bundle: nil), forCellReuseIdentifier: kBeaconDefaultCell)
     }
     
     func selectedBeacon(beacon: Beacon) {
