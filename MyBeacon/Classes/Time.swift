@@ -8,129 +8,99 @@
 
 import RealmSwift
 
-enum TimeType : String
-{
-	case None = "None"
-    case TimeOfDay = "Time of day"
-    case DayOfWeek = "Day in week"
-    case DayOfMonth = "Day of month"
-    case WeekOfMonth = "Week of month"
-    case MonthOfYear = "Month of year"
-    
-	var description: String {
-		return self.rawValue
-	}
-	
-	static let names = [
-		None.rawValue,
-		TimeOfDay.rawValue,
-		DayOfWeek.rawValue,
-		DayOfMonth.rawValue,
-		WeekOfMonth.rawValue,
-		MonthOfYear.rawValue
-	]
-    
-    //TODO
-    // 2. Change title as When & Where
-    // 3. Google Map 
-    // 4. Icons
-    // 5. Each screen can have guidance graphics
 
-    static let pickerNone = []
+struct DayType : OptionSetType
+{
+    let rawValue: Int
     
-    static let pickerTime = [
-        [ "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" ],
-        [ "00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" ],
-        [ "AM", "PM" ]
-    ]
+    static let None = DayType(rawValue: 0)
+    static let Sunday = DayType(rawValue: 1 << 0)
+    static let Monday = DayType(rawValue: 1 << 1)
+    static let Tuesday = DayType(rawValue: 1 << 2)
+    static let Wednesday = DayType(rawValue: 1 << 3)
+    static let Thursday = DayType(rawValue: 1 << 4)
+    static let Friday = DayType(rawValue: 1 << 5)
+    static let Saturday = DayType(rawValue: 1 << 6)
     
-    static let pickerDayOfWeek = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ]
+    static func isApplicable(compare:DayType, all:DayType) -> Bool
+    {
+        return all.contains(compare)
+    }
     
-    static let pickerDayOfMonth = [
-        "1st",   "2nd",  "3rd",  "4th",  "5th",  "6th",  "7th",  "8th",  "9th", "10th",
-        "11th", "12th", "13th", "14th", "15th", "16th", "17th", "18th", "19th", "20th",
-        "21st", "22nd", "23rd", "24th", "25th", "26th", "27th", "28th", "29th", "30th",
-        "31st"
-    ]
-    
-    static let pickerWeek = [
-        "1st week", "2nd week", "3rd week", "4th week", "5th week"
-    ]
-    
-    static let pickerMonth = [
-    "January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "November", "December"
-    ]
-    
-    static let pickers = [
-        TimeType.None : pickerNone,
-		TimeType.TimeOfDay: pickerTime,
-		TimeType.DayOfWeek: pickerDayOfWeek,
-		TimeType.DayOfMonth: pickerDayOfMonth,
-		TimeType.WeekOfMonth: pickerWeek,
-		TimeType.MonthOfYear: pickerMonth
-    ]
-    
-	static func getType(type:String) -> TimeType {
-		switch (type)
-		{
-		case None.rawValue: return None
-		case TimeOfDay.rawValue: return TimeOfDay
-		case DayOfWeek.rawValue: return DayOfWeek
-        case DayOfMonth.rawValue: return DayOfMonth
-        case WeekOfMonth.rawValue: return WeekOfMonth
-		case MonthOfYear.rawValue: return MonthOfYear
-			
-		default:
-			return None
-		}
-	}
+    static let names = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ]
 }
 
-class Time : Object {
-	
-	private var _type = TimeType.None
-	
-	dynamic var name = ""
-	
-	dynamic var year = 1970
-	dynamic var month = 1
-	dynamic var day = 1
-	dynamic var hour = 0
-	dynamic var minute = 0
-	dynamic var second = 0
-	dynamic var type : String {
-		get {
-			return _type.rawValue
-		}
-		set {
-			_type = TimeType.getType(newValue)
-		}
-	}
-	
-	func isApplicable() -> Bool {
-		
-		let fmt = NSDateFormatter()
-		fmt.dateFormat = "yyyy-MM-dd hh:mm:ss"
-		let dateVal = fmt.dateFromString("\(year)-\(month)-\(day) \(hour):\(minute):\(second)")
-		let cal = NSCalendar.currentCalendar()
-		let date = cal.components([.Hour, .Minute, .Weekday, .WeekOfMonth, .WeekOfYear], fromDate: dateVal!)
-		let now = cal.components([.Hour, .Minute, .Weekday, .WeekOfMonth, .WeekOfYear], fromDate: NSDate())
-		
-		switch (_type)
-		{
-		case .None:
-			return false
-		case .TimeOfDay:
-			return (date.hour == now.hour && date.minute == now.minute)
-		case .DayOfWeek:
-			return (date.weekday == now.weekday)
-        case .DayOfMonth:
-            return (date.day == now.day)
-        case .WeekOfMonth:
-			return (date.weekOfMonth == now.weekOfMonth)
-		case .MonthOfYear:
-			return (date.weekOfYear == now.weekOfYear)
-		}
-	}
-	
+
+struct Hours : OptionSetType
+{
+    let rawValue: Int
+    
+    static let None = Hours(rawValue: 0)
+    
+    static let _0100 = Hours(rawValue: 1 << 0)
+    static let _0200 = Hours(rawValue: 1 << 1)
+    static let _0300 = Hours(rawValue: 1 << 2)
+    static let _0400 = Hours(rawValue: 1 << 3)
+    static let _0500 = Hours(rawValue: 1 << 4)
+    static let _0600 = Hours(rawValue: 1 << 5)
+    static let _0700 = Hours(rawValue: 1 << 6)
+    static let _0800 = Hours(rawValue: 1 << 7)
+    static let _0900 = Hours(rawValue: 1 << 8)
+    static let _1000 = Hours(rawValue: 1 << 9)
+    static let _1100 = Hours(rawValue: 1 << 10)
+    static let _1200 = Hours(rawValue: 1 << 11)
+    
+    static let _1300 = Hours(rawValue: 1 << 12)
+    static let _1400 = Hours(rawValue: 1 << 13)
+    static let _1500 = Hours(rawValue: 1 << 14)
+    static let _1600 = Hours(rawValue: 1 << 15)
+    static let _1700 = Hours(rawValue: 1 << 16)
+    static let _1800 = Hours(rawValue: 1 << 17)
+    static let _1900 = Hours(rawValue: 1 << 18)
+    static let _2000 = Hours(rawValue: 1 << 19)
+    static let _2100 = Hours(rawValue: 1 << 20)
+    static let _2200 = Hours(rawValue: 1 << 21)
+    static let _2300 = Hours(rawValue: 1 << 22)
+    static let _2400 = Hours(rawValue: 1 << 23)
+    
+    
+    static func isApplicable(compare:Hours, all:Hours) -> Bool
+    {
+        return all.contains(compare)
+    }
+    
+    static let names = [
+        "01:00 AM", "02:00 AM", "03:00 AM", "04:00 AM", "05:00 AM", "06:00 AM", "07:00 AM", "08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
+        "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", "07:00 PM", "08:00 PM", "09:00 PM", "10:00 PM", "11:00 PM", "00:00 AM"
+    ]
+    
+    static let values = [
+        _0100, _0200, _0300, _0400, _0500, _0600,
+        _0700, _0800, _0900, _1000, _1100, _1200,
+        _1300, _1400, _1500, _1600, _1700, _1800,
+        _1900, _2000, _2100, _2200, _2300, _2400
+    ]
+    
+}
+
+class DaySchedule : Object {
+    dynamic var indexOfDay : Int = 0
+    let times = Hours()
+}
+
+class WeekSchedule : Object {
+    let days = List<DaySchedule>()
+}
+
+
+class TimeCondition : Object {
+    
+    let schedule = List<DaySchedule>()
+    
+    func isApplicable(dateVal:NSDate) -> Bool {
+        let cal = NSCalendar.currentCalendar()
+        let date = cal.components([.Hour, .Weekday], fromDate: dateVal)
+        return schedule[date.weekday].times.contains(Hours(rawValue: date.hour))
+    }
+    
 }
