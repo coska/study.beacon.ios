@@ -35,8 +35,7 @@ class BeaconListViewController: UIViewController, UITableViewDataSource, UITable
         ]
     }()
     
-    lazy var fakeImageSource: Array<String> =
-    {
+    var beaconThumbnailImage: Array<String> {
        return [
         "F94DBB23-2266-7822-3782-57BEAC0952AC.png", // BeaconStac
         "5A4BCFCE-174E-4BAC-A814-092E77F6B7E5.png", // Air Locate
@@ -56,10 +55,9 @@ class BeaconListViewController: UIViewController, UITableViewDataSource, UITable
         "B0702980-A295-A8AB-F734-031A98A512DE.png"  // RedBear
                                                     // Gimbal
         ]
-    }()
+    }
     
-    lazy var fakeUUIDSource: Array<String> =
-    {
+    var fakeUUIDSource: Array<String> {
         return [
             "F94DBB23-2266-7822-3782-57BEAC0952AC", // BeaconStac
             "5A4BCFCE-174E-4BAC-A814-092E77F6B7E5", // Air Locate
@@ -79,30 +77,35 @@ class BeaconListViewController: UIViewController, UITableViewDataSource, UITable
             "B0702980-A295-A8AB-F734-031A98A512DE"  // RedBear
                                                     // Gimbal
         ]
-    }()
+    }
+    
+    var beacons: [Beacon] = Database.loadAll(Beacon)
     
     @IBOutlet weak var tableView: UITableView!
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        beacons = Database.loadAll(Beacon)
+        tableView.reloadData()
+    }
 
-    override func didReceiveMemoryWarning()
-    {
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
  
     // MARK: UITableViewDataSource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        return self.fakeDataSource.count
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return beacons.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier, forIndexPath: indexPath) as! BeaconCustomTableViewCell
         
         // Square Image to Circle Image - beaconImage
@@ -110,9 +113,10 @@ class BeaconListViewController: UIViewController, UITableViewDataSource, UITable
         cell.beaconImage.clipsToBounds = true
         
         // fakeDatas to the Cell as DEMO
-        cell.beaconNameLabel?.text = self.fakeDataSource[indexPath.row]
-        cell.beaconImage?.image = UIImage(named: fakeImageSource[indexPath.row])
-        cell.beaconUUIDLabel?.text = self.fakeUUIDSource[indexPath.row]
+        let beacon = beacons[indexPath.row]
+        cell.beaconNameLabel?.text =  beacon.name
+        cell.beaconImage?.image = UIImage(named: beaconThumbnailImage[indexPath.row%3])
+        cell.beaconUUIDLabel?.text = beacon.id
         
         return cell;
     }
@@ -120,33 +124,28 @@ class BeaconListViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             
-            fakeDataSource.removeAtIndex(indexPath.row)
-            fakeImageSource.removeAtIndex(indexPath.row)
-            fakeUUIDSource.removeAtIndex(indexPath.row)
+            let beacon = beacons[indexPath.row]
+            Database.delete(beacon)
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            
         }
     }
     
-    
-    
     // MARK: UITableViewDelegate
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-    {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let beaconDetailViewController = storyboard.instantiateViewControllerWithIdentifier("BeaconDetailViewController") as! BeaconDetailViewController
+        let storyboard = UIStoryboard(name: "BeaconDetail", bundle: nil)
+        let nav = storyboard.instantiateViewControllerWithIdentifier("BeaconDetailNavigation") as! UINavigationController
+        guard let beaconDetailViewController = nav.topViewController as? BeaconDetailViewController else { return }
         
-        // Mock Data
-        let orgBeacon = Beacon()
-        orgBeacon.id = "F94DBB23-2266-7822-3782-57BEAC0952AC"
-        orgBeacon.major = 51320
-        orgBeacon.minor = 45042
-        orgBeacon.name = "0117C55A175E"
+        let beacon = beacons[indexPath.row]
+        let results = Database.sharedInstance.objects(Beacon).filter("id = %@", beacon.id)
+
+        let orgBeacon: Beacon = results[0]
         beaconDetailViewController.selectedBeacon(orgBeacon)
+        beaconDetailViewController.beaconImageName = beaconThumbnailImage[indexPath.row]
         
         self.delegate?.willPushViewController(beaconDetailViewController, animated: true)
     }
