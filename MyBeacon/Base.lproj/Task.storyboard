@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Task Name-->
@@ -455,7 +455,7 @@
                                     <segue destination="w55-q2-RtW" kind="show" id="DFA-kY-Vo5"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Step 4/5: Add Rule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dv8-Ve-pgL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 4/5: Add Rule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dv8-Ve-pgL">
                                 <rect key="frame" x="0.0" y="64" width="600" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="PX0-Ff-NJb"/>
@@ -464,19 +464,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Every &lt;time condition&gt;, where your phone is &lt;close to&gt; the beacon. " lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBa-r5-WJi" userLabel="Label Condition">
-                                <rect key="frame" x="20" y="162" width="481" height="61"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N0w-QC-3WL">
-                                <rect key="frame" x="0.0" y="192" width="600" height="216"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="XAD-5C-lyA" id="RDC-T9-A3E"/>
-                                    <outlet property="delegate" destination="XAD-5C-lyA" id="Atp-52-MRQ"/>
-                                </connections>
-                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -489,9 +476,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="labelCondition" destination="pBa-r5-WJi" id="2aF-H1-yfd"/>
                         <outlet property="nextButton" destination="BLc-lV-wWS" id="BEr-s7-7mj"/>
-                        <outlet property="picker" destination="N0w-QC-3WL" id="1HB-cg-zFR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6uV-S0-G8I" userLabel="First Responder" sceneMemberID="firstResponder"/>
