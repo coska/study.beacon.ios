@@ -8,17 +8,36 @@
 
 import UIKit
 
-// Add implementation for time condition & location condition
-
 class TaskRuleViewController: TaskWizardBaseViewController
 {
-    // MARK: View life cycle
+    @IBOutlet weak var weekView: UIWeeklyScheduleView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
+        if (task?.rules.count == 0)
+        {
+            let rule = Rule()
+            rule.name = "no name"
+            rule.time = TimeCondition()
+            rule.location = LocationCondition()
+            task?.rules.append(rule)
+        }
+        loadSchedule((task?.rules[0].time)!)
+        loadLocation((task?.rules[0].location)!)
+        
+        weekView.update()
+        
+        scrollView.frame.size = CGSizeMake(weekView.frame.width, weekView.frame.height)
+        scrollView.contentSize = CGSizeMake(weekView.frame.width, weekView.frame.height)
+        scrollView.showsVerticalScrollIndicator = true
+        scrollView.showsHorizontalScrollIndicator = false
+		scrollView.addSubview(weekView)
+        view.addSubview(scrollView)
+        
         nextButton.enabled = true
-   
     }
     
     override func didReceiveMemoryWarning()
@@ -26,10 +45,37 @@ class TaskRuleViewController: TaskWizardBaseViewController
         super.didReceiveMemoryWarning()
     }
     
-    // MARK: Event handler
-    
     func cancelButtonTapped(sender: UIBarButtonItem)
     {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    func loadSchedule(time:TimeCondition)
+    {
+        for row in 0..<Hours.names.count
+        {
+            for col in 0..<Days.names.count
+            {
+                let view = weekView.getCheckButton(row, col:col)
+                time.initDays()
+                view.isChecked = time.days[col][row]
+            }
+        }
+    }
+    
+    func loadLocation(location:LocationCondition)
+    {
+        switch (LocationType.getType(location.type))
+        {
+        case .None, .NoSignal:
+            break
+        case .Far:
+            break
+        case .Immediate:
+            break
+        case .Near:
+            break
+        }
+    }
 }
+
