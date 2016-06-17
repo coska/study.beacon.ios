@@ -15,15 +15,6 @@ class BeaconAddViewController: UIViewController {
     
     private let kBeaconAddListCell = "BeaconAddListCell"
     private var beacons: [CLBeacon] = []
-    private lazy var halo: PulsingHaloLayer = {
-        let halo = PulsingHaloLayer()
-        var bottom: CGPoint = self.view.center
-        bottom.y = bottom.y + 66
-        halo.position = bottom
-        
-        self.view.layer.insertSublayer(halo, atIndex: 0)
-        return halo
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +27,9 @@ class BeaconAddViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        startPulsingHaloAnimation()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didEnterForeground:", name: UIApplicationWillEnterForegroundNotification, object: UIApplication.sharedApplication())
         
+        startPulsingHaloAnimation()
         startSearchBeacons()
     }
     
@@ -45,6 +37,8 @@ class BeaconAddViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         stopSearchBeacons()
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,22 +46,23 @@ class BeaconAddViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func didEnterForeground(notification: NSNotification) {
+        startPulsingHaloAnimation()
     }
-    */
+    
     private func startPulsingHaloAnimation() {
+        let halo = PulsingHaloLayer()
+        var bottom: CGPoint = self.view.center
+        bottom.y = bottom.y + 66
+        halo.position = bottom
+        self.view.layer.insertSublayer(halo, atIndex: 0)
+        
         halo.haloLayerNumber = 2
         halo.radius = self.view.bounds.width
         halo.animationDuration = 4.0
         halo.pulseInterval = 0.5
         halo.backgroundColor = UIColor(colorLiteralRed: 0.0, green: 0.5, blue: 0.5, alpha: 1.0).CGColor
+        
         halo.start()
     }
 
