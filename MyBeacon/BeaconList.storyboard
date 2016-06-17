@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -18,14 +18,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cxd-Vl-gVw">
-                                <rect key="frame" x="0.0" y="28" width="375" height="572"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="639"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="beaconCell" rowHeight="70" id="kEa-3v-M28" customClass="BeaconCustomTableViewCell" customModule="MyBeacon" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kEa-3v-M28" id="B3i-4P-Q8o">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="69"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6je-Y4-GXx">
@@ -80,7 +80,7 @@
                         <constraints>
                             <constraint firstItem="cxd-Vl-gVw" firstAttribute="top" secondItem="cuD-hP-5KM" secondAttribute="bottom" constant="8" symbolic="YES" id="TlY-RD-GAQ"/>
                             <constraint firstItem="cxd-Vl-gVw" firstAttribute="leading" secondItem="cmg-Us-KRz" secondAttribute="leading" id="V1z-Dd-pOa"/>
-                            <constraint firstItem="ptu-U8-VXK" firstAttribute="top" secondItem="cxd-Vl-gVw" secondAttribute="bottom" constant="67" id="WPR-wv-lhQ"/>
+                            <constraint firstItem="ptu-U8-VXK" firstAttribute="top" secondItem="cxd-Vl-gVw" secondAttribute="bottom" id="WPR-wv-lhQ"/>
                             <constraint firstAttribute="trailing" secondItem="cxd-Vl-gVw" secondAttribute="trailing" id="elz-LX-Hlj"/>
                         </constraints>
                     </view>

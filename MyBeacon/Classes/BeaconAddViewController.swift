@@ -22,7 +22,11 @@ class BeaconAddViewController: UIViewController {
         self.title = "Add Beacon"
         
         initializeTableView()
-
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
         startSearchBeacons()
     }
     

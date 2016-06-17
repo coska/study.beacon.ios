@@ -61,9 +61,7 @@ class BeaconAPI: NSObject {
     weak var beaconProtocol: BeaconProtocol?
     
     // MARK: Public Functions
-    func startSearchingBeacons() {
-        stopSearchingBeacons()
-        
+    func startSearchingBeacons() {        
         beacon = beaconProtocol?.updatedBeacon()
         
         if let beacon = self.beacon {

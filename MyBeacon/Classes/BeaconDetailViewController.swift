@@ -121,8 +121,6 @@ class BeaconDetailViewController: UIViewController
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        BeaconAPI.sharedInstance.stopSearchingBeacons()
     }
 
     override func didReceiveMemoryWarning()
@@ -131,7 +129,9 @@ class BeaconDetailViewController: UIViewController
     }
     
     // MARK: - Event handler
-    @IBAction func cancelButtonTapped(sender: AnyObject) {
+    @IBAction func cancelButtonTapped(sender: AnyObject) {        
+        BeaconAPI.sharedInstance.stopSearchingBeacons()
+        
         navigationController?.popViewControllerAnimated(true)
     }
     
@@ -149,12 +149,12 @@ class BeaconDetailViewController: UIViewController
         navigationController?.popViewControllerAnimated(true)
     }
     
-    @IBAction func deleteButtonTapped(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
-        
+    @IBAction func deleteButtonTapped(sender: AnyObject) {        
         // Remove Beacon
-        if let beacon = orgBeacon {
-            Database.delete(beacon)
+        if case let beacon = self.orgBeacon where self.orgBeacon?.id.isEmpty == false {
+            BeaconAPI.sharedInstance.stopSearchingBeacons()
+            Database.delete(beacon!)
+            navigationController?.popViewControllerAnimated(true)
         }
     }
     
