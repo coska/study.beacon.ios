@@ -15,6 +15,15 @@ class BeaconAddViewController: UIViewController {
     
     private let kBeaconAddListCell = "BeaconAddListCell"
     private var beacons: [CLBeacon] = []
+    private lazy var halo: PulsingHaloLayer = {
+        let halo = PulsingHaloLayer()
+        var bottom: CGPoint = self.view.center
+        bottom.y = bottom.y + 66
+        halo.position = bottom
+        
+        self.view.layer.insertSublayer(halo, atIndex: 0)
+        return halo
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +35,8 @@ class BeaconAddViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        startPulsingHaloAnimation()
         
         startSearchBeacons()
     }
@@ -51,6 +62,14 @@ class BeaconAddViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    private func startPulsingHaloAnimation() {
+        halo.haloLayerNumber = 2
+        halo.radius = self.view.bounds.width
+        halo.animationDuration = 4.0
+        halo.pulseInterval = 0.5
+        halo.backgroundColor = UIColor(colorLiteralRed: 0.0, green: 0.5, blue: 0.5, alpha: 1.0).CGColor
+        halo.start()
+    }
 
     private func initializeTableView() {
         tableView.dataSource = self
@@ -59,6 +78,14 @@ class BeaconAddViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
 
         tableView.registerNib(UINib(nibName: kBeaconAddListCell, bundle: nil), forCellReuseIdentifier: kBeaconAddListCell)
+        
+        if (!UIAccessibilityIsReduceTransparencyEnabled()) {
+            tableView.backgroundColor = UIColor.clearColor()
+            let blurEffect = UIBlurEffect(style: .Light)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            tableView.backgroundView = blurEffectView            
+            tableView.separatorEffect = UIVibrancyEffect(forBlurEffect: blurEffect)
+        }
     }
     
     private func startSearchBeacons() {
@@ -110,9 +137,10 @@ extension BeaconAddViewController: BeaconProtocol {
                 let index  = self.beacons.indexOf { $0.proximityUUID == beacon.proximityUUID }
                 if index != nil {
                     self.beacons[index!] = beacon
-                    
-                    let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index!, inSection: 0)) as! BeaconAddListCell
-                    cell.beacon = beacon
+                
+                    if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index!, inSection: 0)) {
+                        (cell as! BeaconAddListCell).beacon = beacon
+                    }
                 }
             }
         }

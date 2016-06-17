@@ -27,7 +27,7 @@ class BeaconAPI: NSObject {
     static let sharedInstance = BeaconAPI()
     
     // MARK: - Privates
-    private var supportedUUIDs: [String] {
+    var supportedUUIDs: [String] {
         return ["F94DBB23-2266-7822-3782-57BEAC0952AC", // BeaconStac
                 "5A4BCFCE-174E-4BAC-A814-092E77F6B7E5", // Air Locate
                 "F0018B9B-7509-4C31-A905-1A27D39C003C", // Beacon Inside
