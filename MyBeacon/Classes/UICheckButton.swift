@@ -13,6 +13,11 @@ public class UICheckButton: UIButton {
     var row : Int = -1
     var col : Int = -1
     
+    public convenience init()
+    {
+        self.init()
+    }
+    
     init(row:Int, col:Int, origin:CGPoint, size:CGSize)
     {
         self.row = row
@@ -21,6 +26,8 @@ public class UICheckButton: UIButton {
         let y = origin.y + CGFloat(row) * size.height
         
         super.init(frame:CGRectMake(x, y, size.width, size.height))
+        
+        print("(row=\(row),col=\(col)), origin=\(self.frame.origin)")
         
         self.layer.borderWidth = 0.5
         self.layer.borderColor = UIColor.grayColor().CGColor
@@ -33,6 +40,7 @@ public class UICheckButton: UIButton {
     
     @IBInspectable var isChecked:Bool = false {
         didSet{
+            print("didSet row=\(row), col=\(col)")
             self.updateButton()
         }
     }
@@ -42,6 +50,7 @@ public class UICheckButton: UIButton {
     }
     
     func buttonClicked(sender:UIButton) {
+        print("superview frame=\(superview?.frame)")
         if(sender == self){
             isChecked = !isChecked
         }

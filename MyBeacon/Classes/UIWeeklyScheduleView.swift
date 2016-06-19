@@ -8,10 +8,11 @@
 
 import UIKit
 
-public class UIWeeklyScheduleView: UIView {
+public class UIWeeklyScheduleView: UIScrollView {
 
     let dayCount = CGFloat(Days.names.count)
     let hourCount = CGFloat(Hours.names.count)
+    let fontName = "Courier New"
     
     var dayWidth = CGFloat(0.0)
     var dayHeight = CGFloat(0.0)
@@ -22,28 +23,26 @@ public class UIWeeklyScheduleView: UIView {
     
     var labelDays : Array<UILabel>?
     var labelHours : Array<UILabel>?
-    public var checkWeek = Array(count:(Days.names.count),repeatedValue:Array(count:(Hours.names.count), repeatedValue:UICheckButton(row: -1,col: -1, origin:CGPointMake(0,0), size: CGSizeMake(0,0))))
+    var checkWeek : [UICheckButton]?
+    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    
-    func update()
-    {
+        
         initSize()
-        updateDays()
-        updateHours()
-        updateTime()
+        initHeaderDays()
+        initHeaderHours()
+        initTime()
     }
     
     func initSize()
     {
-        var font = UIFont(name: "Courier New", size: 16.0)
+        var font = UIFont(name: fontName, size: 16.0)
         var str = Days.names[0] as NSString
         var rect = str.boundingRectWithSize(CGSizeMake(0,0), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName:font!], context: nil)
         dayWidth = rect.width
         dayHeight = rect.height
         
-        font = UIFont(name: "Courier New", size: 14.0)
+        font = UIFont(name: fontName, size: 14.0)
         str = Hours.names[0] as NSString
         rect = str.boundingRectWithSize(CGSizeMake(0,0), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName:font!], context: nil)
         hourWidth = rect.width
@@ -51,14 +50,11 @@ public class UIWeeklyScheduleView: UIView {
         
         cellWidth = dayWidth
         cellHeight = hourHeight
-        
-        self.frame = CGRectMake(0, 0, hourWidth + cellWidth*dayCount, dayHeight+cellHeight * hourCount )
-        
     }
     
-    func updateDays()
+    func initHeaderDays()
     {
-        let font = UIFont(name: "Courier New", size: 16.0)
+        let font = UIFont(name: fontName, size: 16.0)
         let y = CGFloat(0.0)
         var x = hourWidth
         
@@ -82,9 +78,9 @@ public class UIWeeklyScheduleView: UIView {
         }
     }
     
-    func updateHours()
+    func initHeaderHours()
     {
-        let font = UIFont(name: "Courier New", size: 14.0)
+        let font = UIFont(name: fontName, size: 14.0)
         let x = CGFloat(0.0)
         
         var y = dayHeight
@@ -109,24 +105,34 @@ public class UIWeeklyScheduleView: UIView {
 
     }
     
-    func updateTime()
+    func initTime()
     {
+        checkWeek = []
+        
 		let size = CGSize(width:cellWidth, height:cellHeight)
         let base = CGPoint(x:hourWidth, y:dayHeight)
-        for row in 0..<Hours.names.count
+        
+        for col in 0..<Days.names.count
         {
-            for col in 0..<Days.names.count
+            for row in 0..<Hours.names.count
             {
                 let button = UICheckButton(row:row, col:col, origin:base, size:size)
                 button.updateButton()
-                checkWeek[col][row] = button
+                checkWeek?.append(button)
                 self.addSubview(button)
             }
         }
+        
+        self.scrollEnabled = true
+        self.clipsToBounds = true
+        self.contentSize = CGSizeMake(hourWidth + cellWidth*dayCount, dayHeight + cellHeight*hourCount)
+        
     }
     
-    public func getCheckButton(row:Int, col:Int) -> UICheckButton {
-        return checkWeek[col][row]
+    func setChecked(row:Int, col:Int, val:Bool)
+    {
+        let button = checkWeek![col*Hours.names.count + row];
+        button.isChecked = val
     }
     
 }

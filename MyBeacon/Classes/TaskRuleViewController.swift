@@ -12,6 +12,7 @@ class TaskRuleViewController: TaskWizardBaseViewController
 {
     @IBOutlet weak var weekView: UIWeeklyScheduleView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad()
     {
@@ -28,13 +29,11 @@ class TaskRuleViewController: TaskWizardBaseViewController
         loadSchedule((task?.rules[0].time)!)
         loadLocation((task?.rules[0].location)!)
         
-        weekView.update()
-        
-        scrollView.frame.size = CGSizeMake(weekView.frame.width, weekView.frame.height)
-        scrollView.contentSize = CGSizeMake(weekView.frame.width, weekView.frame.height)
+        scrollView.contentSize = CGSizeMake(weekView.frame.width, weekView.frame.height + tableView.frame.height)
         scrollView.showsVerticalScrollIndicator = true
-        scrollView.showsHorizontalScrollIndicator = false
-		scrollView.addSubview(weekView)
+        scrollView.addSubview(weekView)
+        scrollView.addSubview(tableView)
+        
         view.addSubview(scrollView)
         
         nextButton.enabled = true
@@ -56,9 +55,7 @@ class TaskRuleViewController: TaskWizardBaseViewController
         {
             for col in 0..<Days.names.count
             {
-                let view = weekView.getCheckButton(row, col:col)
-                time.initDays()
-                view.isChecked = time.days[col][row]
+                weekView.setChecked(row, col:col, val: time.days[col][row])
             }
         }
     }

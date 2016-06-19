@@ -83,27 +83,25 @@ struct Hours : OptionSetType
     
 }
 
-public class Day : Object
-{
-    dynamic var weekday : String = ""
+class Day : Object {
+    dynamic var name : String = ""
     dynamic var hours : String = "000000000000000000000000"
     
-    init(weekday:String)
+    required init(name:String)
     {
-        self.weekday = weekday
-        
+        self.name = name
         super.init()
     }
     
-    required public init() {
+    required init() {
         super.init()
     }
     
-    override public static func primaryKey() -> String? {
-        return "weekday"
+    override static func primaryKey() -> String? {
+        return "name"
     }
     
-    public subscript(hour:Int) -> Bool
+    subscript(hour:Int) -> Bool
     {
     	get {
             let str = hours as NSString
@@ -121,18 +119,13 @@ public class Day : Object
 
 class TimeCondition : Object {
     
-    let days = List<Day>()
-    
-    func initDays()
-    {
-    	if days.count == 0
-    	{
-        	for day in Days.names
-        	{
-            	days.append(Day(weekday: day))
-        	}
-    	}
-    }
+    let days = [Day(name: "Sun"),
+                Day(name: "Mon"),
+                Day(name: "Tue"),
+                Day(name: "Wed"),
+                Day(name: "Thu"),
+                Day(name: "Fri"),
+                Day(name: "Sat")]
     
     func isApplicable(dateVal:NSDate) -> Bool {
         let cal = NSCalendar.currentCalendar()
@@ -147,13 +140,10 @@ class TimeCondition : Object {
     
     subscript(row:Int, col:Int) -> Bool {
         get {
-            initDays()
             return days.count > row && days[col][row]
         }
         set {
-            initDays()
             days[col][row] = newValue
         }
     }
-    
 }
