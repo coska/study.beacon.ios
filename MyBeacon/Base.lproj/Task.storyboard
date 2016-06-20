@@ -565,7 +565,7 @@
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="switchControl" destination="EaB-Dz-55D" id="AZw-nC-bBr"/>
-                                                    <outlet property="titleLabel" destination="Afw-z9-WQM" id="gKB-UR-PmT"/>
+                                                    <outlet property="titleLabel" destination="Afw-z9-WQM" id="aHD-2i-agc"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="switchCellImmediate" id="MNI-Ru-vpP" userLabel="switchCellImmediate" customClass="ActionSwitchCell" customModule="MyBeacon" customModuleProvider="target">
@@ -596,7 +596,7 @@
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="switchControl" destination="oac-gV-HVw" id="xQ2-ZA-Phj"/>
-                                                    <outlet property="titleLabel" destination="gt7-Tw-V5c" id="KmR-aA-7Yk"/>
+                                                    <outlet property="titleLabel" destination="gt7-Tw-V5c" id="VeN-ai-URX"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>

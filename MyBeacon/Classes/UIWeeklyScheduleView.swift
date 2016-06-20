@@ -13,6 +13,7 @@ public class UIWeeklyScheduleView: UIScrollView {
     let dayCount = CGFloat(Days.names.count)
     let hourCount = CGFloat(Hours.names.count)
     let fontName = "Courier New"
+    let gapRatio = CGFloat(1.22)
     
     var dayWidth = CGFloat(0.0)
     var dayHeight = CGFloat(0.0)
@@ -39,14 +40,14 @@ public class UIWeeklyScheduleView: UIScrollView {
         var font = UIFont(name: fontName, size: 16.0)
         var str = Days.names[0] as NSString
         var rect = str.boundingRectWithSize(CGSizeMake(0,0), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName:font!], context: nil)
-        dayWidth = rect.width
-        dayHeight = rect.height
+        dayWidth = rect.width * gapRatio
+        dayHeight = rect.height * gapRatio
         
         font = UIFont(name: fontName, size: 14.0)
         str = Hours.names[0] as NSString
         rect = str.boundingRectWithSize(CGSizeMake(0,0), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName:font!], context: nil)
-        hourWidth = rect.width
-        hourHeight = rect.height
+        hourWidth = rect.width * gapRatio
+        hourHeight = rect.height * gapRatio
         
         cellWidth = dayWidth
         cellHeight = hourHeight
@@ -69,7 +70,7 @@ public class UIWeeklyScheduleView: UIScrollView {
             
             label.font = font
             label.frame = CGRectMake(x, y, cellWidth, dayHeight)
-            label.textColor = UIColor.blackColor()
+            label.textColor = UIColor.blueColor()
             label.backgroundColor = UIColor.clearColor()
             label.textAlignment = NSTextAlignment.Center
             labelDays?.append(label)
@@ -94,7 +95,7 @@ public class UIWeeklyScheduleView: UIScrollView {
             label.adjustsFontSizeToFitWidth = true
             
             label.font = font
-            label.frame = CGRectMake(x, y, hourWidth, cellHeight)
+            label.frame = CGRectMake(x, y, hourWidth, cellHeight-1)
             label.textColor = UIColor.blackColor()
             label.backgroundColor = UIColor.lightGrayColor()
             label.textAlignment = NSTextAlignment.Center
