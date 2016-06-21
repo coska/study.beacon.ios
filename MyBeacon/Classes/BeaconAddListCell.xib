@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -11,14 +12,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="119"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jw3-Wz-VJg">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jw3-Wz-VJg" customClass="UIVisualEffectView">
                         <rect key="frame" x="8" y="8" width="304" height="103"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAv-R4-gGi">
-                                <rect key="frame" x="7" y="8" width="290" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tAv-R4-gGi">
+                                <rect key="frame" x="48" y="8" width="249" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="nSE-GY-m4r"/>
                                 </constraints>
@@ -53,14 +54,24 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oj7-0a-4e3">
+                                <rect key="frame" x="8" y="8" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Oj7-0a-4e3" secondAttribute="height" multiplier="1:1" id="2EL-HO-CZu"/>
+                                    <constraint firstAttribute="width" constant="32" id="Fc8-Mu-64A"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6zd-2H-chF" firstAttribute="leading" secondItem="iFR-52-V43" secondAttribute="trailing" constant="8" symbolic="YES" id="1KQ-NT-fae"/>
                             <constraint firstItem="iFR-52-V43" firstAttribute="bottom" secondItem="jw3-Wz-VJg" secondAttribute="bottomMargin" id="4vo-hX-Zka"/>
+                            <constraint firstItem="tAv-R4-gGi" firstAttribute="leading" secondItem="Oj7-0a-4e3" secondAttribute="trailing" constant="8" id="5po-vy-fBc"/>
                             <constraint firstItem="WDz-W3-Vom" firstAttribute="leading" secondItem="jw3-Wz-VJg" secondAttribute="leadingMargin" id="Ahm-7l-bzj"/>
+                            <constraint firstItem="Oj7-0a-4e3" firstAttribute="top" secondItem="jw3-Wz-VJg" secondAttribute="top" constant="8" id="BVg-g8-iXg"/>
                             <constraint firstItem="WDz-W3-Vom" firstAttribute="baseline" secondItem="vkg-lL-bDc" secondAttribute="baseline" id="Hg0-wH-7bd"/>
                             <constraint firstItem="iFR-52-V43" firstAttribute="top" secondItem="WDz-W3-Vom" secondAttribute="bottom" constant="8" symbolic="YES" id="IF1-kE-l65"/>
+                            <constraint firstItem="WDz-W3-Vom" firstAttribute="top" secondItem="Oj7-0a-4e3" secondAttribute="bottom" constant="5" id="Ik6-Tj-YoU"/>
                             <constraint firstAttribute="trailing" secondItem="tAv-R4-gGi" secondAttribute="trailing" constant="7" id="KgT-yn-PaF"/>
                             <constraint firstItem="vkg-lL-bDc" firstAttribute="leading" secondItem="WDz-W3-Vom" secondAttribute="trailing" constant="8" symbolic="YES" id="MFD-bo-Dnp"/>
                             <constraint firstItem="tAv-R4-gGi" firstAttribute="top" secondItem="jw3-Wz-VJg" secondAttribute="top" constant="8" id="RUF-XT-d14"/>
@@ -68,10 +79,10 @@
                             <constraint firstItem="WDz-W3-Vom" firstAttribute="top" secondItem="tAv-R4-gGi" secondAttribute="bottom" constant="7" id="Xyx-Eq-UxO"/>
                             <constraint firstItem="iFR-52-V43" firstAttribute="baseline" secondItem="6zd-2H-chF" secondAttribute="baseline" id="YvH-jy-Y2s"/>
                             <constraint firstItem="vkg-lL-bDc" firstAttribute="trailing" secondItem="6zd-2H-chF" secondAttribute="trailing" id="ZEC-r0-hYB"/>
+                            <constraint firstItem="Oj7-0a-4e3" firstAttribute="leading" secondItem="jw3-Wz-VJg" secondAttribute="leading" constant="8" id="ZUW-hl-4kx"/>
                             <constraint firstItem="vkg-lL-bDc" firstAttribute="top" secondItem="tAv-R4-gGi" secondAttribute="bottom" constant="7" id="bKH-Jh-y9s"/>
                             <constraint firstItem="vkg-lL-bDc" firstAttribute="trailing" secondItem="jw3-Wz-VJg" secondAttribute="trailingMargin" id="bz7-p7-oAG"/>
                             <constraint firstItem="vkg-lL-bDc" firstAttribute="leading" secondItem="6zd-2H-chF" secondAttribute="leading" id="etZ-jX-VED"/>
-                            <constraint firstItem="tAv-R4-gGi" firstAttribute="leading" secondItem="jw3-Wz-VJg" secondAttribute="leading" constant="7" id="jKl-RA-B7H"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -83,6 +94,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="beaconImageView" destination="Oj7-0a-4e3" id="vvP-2N-kGA"/>
                 <outlet property="containerView" destination="jw3-Wz-VJg" id="GbB-gB-vKw"/>
                 <outlet property="lblMajor" destination="WDz-W3-Vom" id="Oa6-W1-NU3"/>
                 <outlet property="lblMinor" destination="vkg-lL-bDc" id="Izo-9E-mnG"/>
@@ -90,7 +102,7 @@
                 <outlet property="lblRSSI" destination="6zd-2H-chF" id="gDb-65-Zgf"/>
                 <outlet property="lblUUID" destination="tAv-R4-gGi" id="Fil-Nw-uKN"/>
             </connections>
-            <point key="canvasLocation" x="551" y="290"/>
+            <point key="canvasLocation" x="146" y="292"/>
         </tableViewCell>
     </objects>
 </document>

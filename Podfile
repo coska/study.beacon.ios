@@ -5,6 +5,7 @@ use_frameworks!
 
 pod 'FLKAutoLayout', '<= 1.0'
 pod 'RealmSwift', '<= 0.101'
+pod 'PulsingHalo'
 
 target 'MyBeacon' do
 

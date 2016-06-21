@@ -5,3 +5,4 @@
 @import FLKAutoLayout;
 @import Realm;
 @import RealmSwift;
+@import PulsingHalo;
