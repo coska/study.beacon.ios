@@ -5,6 +5,7 @@ Buddy Beacon is the app that checks whether a Bluetooth beacon is near your phon
 The app is one of the outcome of the Beacon Study Group in COSKA 2016, which had originally started to learn about Bluetooth Low Energy (BLE) Beacons. It is still useful for daily life with iOS and Android by automating repetitive tasks. 
 
 
+
 # study.beacon.ios
 
 #### Target version
