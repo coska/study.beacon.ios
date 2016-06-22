@@ -21,7 +21,7 @@ class Task: Object {
 	// check all rules are valid
 	func isApplicable(cl:CLLocation) -> Bool
 	{
-		var ret = (rules.count != 0)
+		var ret = true
 		
 		for rule in rules
 		{

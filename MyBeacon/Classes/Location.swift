@@ -10,56 +10,57 @@ import RealmSwift
 import CoreLocation
 
 
-struct Locations : OptionSetType
+enum LocationType : String
 {
-    let rawValue: Int
+    case None = "None"
+    case Close = "Close to Beacon"
+    case Arrived = "Arrived at Beacon"
+    case Stay = "Stay close to Beacon"
+    case Leaving = "Leaving Beacon"
+    case Away = "Far away from Beacon"
     
-    static let None = Locations(rawValue: 0)
-    static let NoSignal = Locations(rawValue: 1 << 0)
-    static let Far = Locations(rawValue: 1 << 1)
-    static let Near = Locations(rawValue: 1 << 2)
-    static let Immediate = Locations(rawValue: 1 << 3)
-    
-    static func isApplicable(compare:Locations, all:Locations) -> Bool
-    {
-        return all.contains(compare)
+    var description: String {
+        return self.rawValue
     }
     
-    static let names = [ "NoSignal", "Far", "Near", "Immediate" ]
-    static let types:[Locations] = [ .NoSignal, .Far, .Near, .Immediate ]
+    static let names = [
+        None.rawValue,
+        Close.rawValue,
+        Arrived.rawValue,
+        Stay.rawValue,
+        Leaving.rawValue,
+        Away.rawValue
+    ]
+    
+    static func getType(type:String) -> LocationType {
+        switch (type)
+        {
+        case None.rawValue: return None
+        case Close.rawValue: return Close
+        case Arrived.rawValue: return Arrived
+        case Stay.rawValue: return Stay
+        case Leaving.rawValue: return Leaving
+        case Away.rawValue: return Away
+            
+        default:
+            return None
+        }
+    }
 }
 
-
-class LocationCondition : Object {
-    
-    private var _type = Locations.None
-    
-    dynamic var type : Int {
-        get {
-            return _type.rawValue
-        }
-        set {
-            _type = Locations(rawValue:newValue)
-        }
-    }
-    
-    func isApplicable(compare:Locations) -> Bool {
-        return _type.contains(compare)
-    }
-    
-    
-    // reserved
-    
-    dynamic var name = ""
-    dynamic var lat : Double = 0.0
-    dynamic var long : Double = 0.0
-    dynamic var alt : Double = 0.0
-    dynamic var radius : Double = 1.0 // meter
-    dynamic var duration = 60 // seconds
-    
-    func isApplicable(compare:CLLocation) -> Bool {
-        let me = CLLocation(latitude: lat, longitude: long)
-        let disctance = compare.distanceFromLocation(me)
-        return (disctance < radius && abs(alt-compare.altitude) < radius)
-    }
+class Location : Object {
+	
+	dynamic var name = ""
+	dynamic var lat : Double = 0.0
+	dynamic var long : Double = 0.0
+	dynamic var alt : Double = 0.0
+	dynamic var radius : Double = 1.0 // meter
+	dynamic var duration = 60 // seconds
+	
+	func isApplicable(compare:CLLocation) -> Bool {
+		let me = CLLocation(latitude: lat, longitude: long)
+		let disctance = compare.distanceFromLocation(me)
+		return (disctance < radius && abs(alt-compare.altitude) < radius)
+	}
+	
 }

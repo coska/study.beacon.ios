@@ -8,106 +8,28 @@
 
 import UIKit
 
-class TaskActionViewController: TaskWizardBaseViewController {
-    private let cellIdentifier = "actionTypeCell"
-    private var selectedRow = -1
-    
-    @IBOutlet weak var tableView: UITableView!
-    
-    private lazy var actionTypes: [String] = {
-        var types = ActionType.names as [String]
-        types.removeFirst()
-        return types
-    }()
-    
+class TaskActionViewController: UIViewController
+{
     // MARK: View life cycle
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        setupUI()
+        self.title = "Task Wizard"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "cancelButtonTapped:")
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationItem.backBarButtonItem = backButton
     }
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
     }
     
-    // MARK: Privates
-
-    private func setupUI() {
-        tableView.tableFooterView = UIView()
-        updateNextButtonStatue(selectedRow)
-    }
-    
-    func updateNextButtonStatue(row: Int) {
-        nextButton?.enabled = row != -1
-    }
-
     // MARK: Event handler
     
-    func cancelButtonTapped(sender: UIBarButtonItem) {
+    func cancelButtonTapped(sender: UIBarButtonItem)
+    {
         self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    // MARK: Segeu
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let action = Action()
-        action.type = actionTypes[selectedRow]
-
-        if !task!.actions.isEmpty {
-            task!.actions.replace(0, object: action)
-        } else {
-            task!.actions.insert(action, atIndex: 0)
-        }
-        
-        let actionSetupViewController = segue.destinationViewController as! TaskWizardBaseViewController
-        actionSetupViewController.task = task
-    }
-}
-
-// MARK: UITableViewDataSource
-
-extension TaskActionViewController: UITableViewDataSource {
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
-        cell.textLabel?.text = actionTypes[indexPath.row]
-        
-        if selectedRow == indexPath.row {
-            cell.accessoryType = .Checkmark
-        } else {
-            cell.accessoryType = .None
-        }
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return actionTypes.count
-    }
-}
-
-// MARK: UITableViewDelegate
-
-extension TaskActionViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        if cell?.accessoryType == .Checkmark {
-            cell?.accessoryType = .None
-            selectedRow = -1
-        } else {
-            if selectedRow != -1 {
-                let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: selectedRow, inSection: indexPath.section))
-                cell?.accessoryType = .None
-            }
-            cell?.accessoryType = .Checkmark
-            selectedRow = indexPath.row
-        }
-        
-        updateNextButtonStatue(selectedRow)
-
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }

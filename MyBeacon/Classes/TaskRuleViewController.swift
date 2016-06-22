@@ -8,44 +8,62 @@
 
 import UIKit
 
-class TaskRuleViewController: TaskWizardBaseViewController
+class TaskRuleViewController: UIViewController, CircleMenuDelegate
 {
-    @IBOutlet weak var weekView: UIWeeklyScheduleView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var picker: UIDatePicker!
+    @IBOutlet weak var labelTime: UILabel!
+    @IBOutlet weak var labelLocation: UILabel!
     
-    let cellId = "LocationCell"
+    //    let colors = [UIColor.redColor(), UIColor.grayColor(), UIColor.greenColor(), UIColor.purpleColor()]
+    let items: [(icon: String, color: UIColor)] = [
+        ("icon_home", UIColor(red:0.19, green:0.57, blue:1, alpha:1)),
+        ("icon_search", UIColor(red:0.22, green:0.74, blue:0, alpha:1)),
+        ("notifications-btn", UIColor(red:0.96, green:0.23, blue:0.21, alpha:1)),
+        ("settings-btn", UIColor(red:0.51, green:0.15, blue:1, alpha:1)),
+        ("nearby-btn", UIColor(red:1, green:0.39, blue:0, alpha:1)),
+        ]
     
+    
+    // MARK: View life cycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        tableView.registerNib(UINib(nibName: "LocationTableViewCell", bundle: nil),  forCellReuseIdentifier: cellId)
-        tableView.delegate = self
-        tableView.dataSource = self
+        self.title = "Task Wizard"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "cancelButtonTapped:")
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationItem.backBarButtonItem = backButton
         
-        scrollView.contentSize = CGSizeMake(weekView.frame.width, weekView.frame.height + tableView.frame.height)
-        scrollView.showsVerticalScrollIndicator = true
-        scrollView.addSubview(weekView)
         
-        tableView.tableFooterView = UIView()
-        scrollView.addSubview(tableView)
+        picker.datePickerMode = UIDatePickerMode.DateAndTime
         
-        view.addSubview(scrollView)
+        // add time condition selector
+        let timeSelector = CircleMenu(
+        	frame: CGRect(x: 80, y: 200, width: 50, height: 50),
+            normalIcon:"icon_menu",
+            selectedIcon:"icon_close",
+            buttonsCount: 5,
+            duration: 1,
+            distance: 80)
+            timeSelector.backgroundColor = UIColor.lightGrayColor()
+            timeSelector.delegate = self
+            timeSelector.layer.cornerRadius = timeSelector.frame.size.width / 2.0
+            view.addSubview(timeSelector)
         
-        if (task?.rules.count == 0)
-        {
-            let rule = Rule()
-            rule.name = "no name"
-            rule.time = TimeCondition()
-            rule.location = LocationCondition()
-            task?.rules.append(rule)
-        }
+        // add location condition selector
+        let locationSelector = CircleMenu(
+            frame: CGRect(x: 80, y: 400, width: 50, height: 50),
+            normalIcon:"icon_menu",
+            selectedIcon:"icon_close",
+            buttonsCount: 5,
+            duration: 1,
+            distance: 80)
+        locationSelector.backgroundColor = UIColor.lightGrayColor()
+        locationSelector.delegate = self
+        locationSelector.layer.cornerRadius = locationSelector.frame.size.width / 2.0
+        view.addSubview(locationSelector)
         
-        loadSchedule((task?.rules[0].time)!)
-        loadLocation((task?.rules[0].location)!)
-        
-        updateNextButton()
     }
     
     override func didReceiveMemoryWarning()
@@ -53,83 +71,32 @@ class TaskRuleViewController: TaskWizardBaseViewController
         super.didReceiveMemoryWarning()
     }
     
-    func updateNextButton() {
-        nextButton?.enabled = true
-    }
+    // MARK: Event handler
     
     func cancelButtonTapped(sender: UIBarButtonItem)
     {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func loadSchedule(time:TimeCondition)
-    {
-        for row in 0..<Hours.names.count
-        {
-            for col in 0..<Days.names.count
-            {
-                weekView.setChecked(row, col:col, val: time.days[col][row])
-            }
-        }
-    }
     
-    func loadLocation(location:LocationCondition)
-    {
-        var i : Int = 0
+    // MARK: <CircleMenuDelegate>
+    
+    func circleMenu(circleMenu: CircleMenu, willDisplay button: CircleMenuButton, atIndex: Int) {
+        button.backgroundColor = items[atIndex].color
+        button.setImage(UIImage(imageLiteral: items[atIndex].icon), forState: .Normal)
         
-        for type in Locations.types
-        {
-            let checked = location.isApplicable(type)
-            let indexPath = NSIndexPath(forRow: i, inSection:0)
-            
-            let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! LocationTableViewCell
-        
-            cell.labelType.text = Locations.names[indexPath.row]
-            cell.switchType.setOn(checked, animated: false)
-            i = i + 1
-        }
-    }
-}
-
-
-extension TaskRuleViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellId) as! LocationTableViewCell
-        let location = task?.rules[0].location
-        
-        cell.labelType.text = Locations.names[indexPath.row]
-        cell.switchType.setOn((location?.isApplicable(Locations.types[indexPath.row]))!, animated: false)
-
-        cell.delegate = self
-        return cell
+        // set highlited image
+        let highlightedImage  = UIImage(imageLiteral: items[atIndex].icon).imageWithRenderingMode(.AlwaysTemplate)
+        button.setImage(highlightedImage, forState: .Highlighted)
+        button.tintColor = UIColor.init(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.3)
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 44
+    func circleMenu(circleMenu: CircleMenu, buttonWillSelected button: CircleMenuButton, atIndex: Int) {
+        print("button will selected: \(atIndex)")
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Locations.names.count
+    func circleMenu(circleMenu: CircleMenu, buttonDidSelected button: CircleMenuButton, atIndex: Int) {
+        print("button did selected: \(atIndex)")
     }
     
-    func updateSwitchAtIndexPath(indexPath:NSIndexPath)
-    {
-        let cell = self.tableView.cellForRowAtIndexPath(indexPath)
-    	let sw = cell?.accessoryView as! UISwitch
-        sw.setOn(!sw.on, animated:true)
-    }
-    
-}
-
-extension TaskRuleViewController: LocationTableViewCellDelegate
-{
-    func didTappedSwitch(cell: LocationTableViewCell) {
-        let indexPath = tableView.indexPathForCell(cell)
-        
-        var location = Locations(rawValue:(task!.rules[0].location?.type)!)
-        location.insert(Locations.types[indexPath!.row])
-        task!.rules[0].location?.type = location.rawValue
-    }
 }

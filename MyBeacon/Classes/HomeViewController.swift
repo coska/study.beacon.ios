@@ -21,9 +21,6 @@ protocol HomeListDelegate: class
 
 class HomeViewController: UIViewController, HomeListDelegate
 {
-    // There are two storyboards for Task Wizard. If loadTaskRule is set true then TaskRule.storyboard will be loaded.
-    // If you need to work on Task Rule then please set this variable to be true
-    private let loadTaskRule = false
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
 
@@ -38,41 +35,17 @@ class HomeViewController: UIViewController, HomeListDelegate
     
     lazy var taskListViewController: TaskListViewController =
     {
-        var vc = self.taskListStoryboard.instantiateViewControllerWithIdentifier("TaskListViewController") as! TaskListViewController
+        var vc = self.myStoryboard.instantiateViewControllerWithIdentifier("TaskListViewController") as! TaskListViewController
         vc.delegate = self
         return vc
     }()
     
-    lazy var mainStoryboard: UIStoryboard =
-        {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            return sb
-    }()
-    
     lazy var myStoryboard: UIStoryboard =
     {
-        let sb = UIStoryboard(name: "BeaconList", bundle: nil)
+        let sb = UIStoryboard(name: "TaskRule", bundle: nil)
         return sb
     }()
     
-    lazy var taskListStoryboard: UIStoryboard =
-        {
-            let sb = UIStoryboard(name: "TaskList", bundle: nil)
-            return sb
-    }()
-    
-    lazy var taskRuleStoryboard: UIStoryboard =
-        {
-            let sb = UIStoryboard(name: "TaskRule", bundle: nil)
-            return sb
-    }()
-
-    lazy var taskStoryboard: UIStoryboard =
-    {
-        let sb = UIStoryboard(name: "Task", bundle: nil)
-        return sb
-    }()
-
     // MARK: View life cycle
     override func viewDidLoad()
     {
@@ -106,19 +79,16 @@ class HomeViewController: UIViewController, HomeListDelegate
     @IBAction func addButtonTapped(sender: UIBarButtonItem)
     {
         if self.segmentControl.selectedSegmentIndex == ListType.Beacon.rawValue
-        {            
-            let beaconAddNavigation = self.mainStoryboard.instantiateViewControllerWithIdentifier("BeaconAddNavigation") as! UINavigationController
-            self.presentViewController(beaconAddNavigation, animated: true, completion: nil)
+        {
+            let beaconNavigation = self.myStoryboard.instantiateViewControllerWithIdentifier("BeaconNavigation") as! UINavigationController
+            let beaconDetailViewController = beaconNavigation.topViewController as! BeaconDetailViewController
+            beaconDetailViewController.detailMode = .Add
+            self.presentViewController(beaconNavigation, animated: true, completion: nil)
         }
         else
         {
-            if loadTaskRule == true {
-                let taskWizardNavigation = self.taskRuleStoryboard.instantiateViewControllerWithIdentifier("TaskWizardNavigation")
-                self.presentViewController(taskWizardNavigation, animated: true, completion: nil)
-            } else {
-                let taskWizardNavigation = self.taskStoryboard.instantiateViewControllerWithIdentifier("TaskWizardNavigation")
-                self.presentViewController(taskWizardNavigation, animated: true, completion: nil)
-            }
+            let taskWizardNavigation = self.myStoryboard.instantiateViewControllerWithIdentifier("TaskWazardNavigation")
+            self.presentViewController(taskWizardNavigation, animated: true, completion: nil)
         }
     }
 
