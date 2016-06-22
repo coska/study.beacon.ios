@@ -14,7 +14,7 @@ class TaskDetailViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: "editButtonTapped")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(TaskDetailViewController.editButtonTapped))
         self.title = "Task View"
     }
 

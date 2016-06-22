@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
+
 
 class TaskListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
@@ -15,9 +17,21 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
 
     lazy var fakeDataSource: Array<String> =
     {
-        return ["Task 1", "Task 2", "Task 3"]
+        return ["At Work", "At Home", "At Car"]
+    }()
+    
+    lazy var actionIcon: Array<String> =
+        {
+            return ["action1.png", "action2.png", "action3.png"]
+    }()
+    
+    lazy var ruleIcon: Array<String> =
+        {
+            return ["rule1.png", "rule2.png", "rule3.png"]
     }()
 
+    lazy var tasks: [Task] = Database.loadAll(Task.self)
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad()
@@ -40,10 +54,24 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier, forIndexPath: indexPath)
-        cell.textLabel?.text = self.fakeDataSource[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier, forIndexPath: indexPath) as! TaskCustomTableViewCell
+        cell.taskNameLabel?.text = self.fakeDataSource[indexPath.row]
+        cell.actionIconImage?.image = UIImage(named: actionIcon[indexPath.row])
+        cell.ruleIconImage?.image = UIImage(named: ruleIcon[indexPath.row])
         
         return cell;
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            
+            fakeDataSource.removeAtIndex(indexPath.row)
+            actionIcon.removeAtIndex(indexPath.row)
+            ruleIcon.removeAtIndex(indexPath.row)
+            
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
+        }
     }
     
     // MARK: UITableViewDelegate

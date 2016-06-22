@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Beacon List-->
+        <scene sceneID="oz4-8f-HqW">
+            <objects>
+                <viewController storyboardIdentifier="BeaconListViewController" id="kFe-mR-U4c" userLabel="Beacon List" customClass="BeaconListViewController" customModule="MyBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cuD-hP-5KM"/>
+                        <viewControllerLayoutGuide type="bottom" id="ptu-U8-VXK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cmg-Us-KRz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cxd-Vl-gVw">
+                                <rect key="frame" x="0.0" y="28" width="375" height="572"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="beaconCell" rowHeight="70" id="kEa-3v-M28" customClass="BeaconCustomTableViewCell" customModule="MyBeacon" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kEa-3v-M28" id="B3i-4P-Q8o">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="69"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6je-Y4-GXx">
+                                                    <rect key="frame" x="8" y="5" width="60" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="uYG-lI-4N4"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Beacon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9n-KS-um6">
+                                                    <rect key="frame" x="76" y="8" width="258" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UUID of Beacon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGI-jR-KGP">
+                                                    <rect key="frame" x="76" y="43" width="258" height="19"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="19" id="vCG-eL-4yF"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6je-Y4-GXx" firstAttribute="leading" secondItem="B3i-4P-Q8o" secondAttribute="leadingMargin" id="4rf-AR-iKi"/>
+                                                <constraint firstItem="R9n-KS-um6" firstAttribute="trailing" secondItem="wGI-jR-KGP" secondAttribute="trailing" id="9VH-YV-4a7"/>
+                                                <constraint firstItem="R9n-KS-um6" firstAttribute="trailing" secondItem="B3i-4P-Q8o" secondAttribute="trailingMargin" id="Qwv-uU-1up"/>
+                                                <constraint firstItem="R9n-KS-um6" firstAttribute="leading" secondItem="6je-Y4-GXx" secondAttribute="trailing" constant="8" symbolic="YES" id="Znn-ba-0qV"/>
+                                                <constraint firstItem="6je-Y4-GXx" firstAttribute="top" secondItem="B3i-4P-Q8o" secondAttribute="topMargin" constant="-3" id="aLt-h1-fPd"/>
+                                                <constraint firstItem="R9n-KS-um6" firstAttribute="top" secondItem="B3i-4P-Q8o" secondAttribute="topMargin" id="eCl-cS-gvg"/>
+                                                <constraint firstItem="6je-Y4-GXx" firstAttribute="centerY" secondItem="B3i-4P-Q8o" secondAttribute="centerY" id="qS3-Zk-ad9"/>
+                                                <constraint firstItem="wGI-jR-KGP" firstAttribute="top" secondItem="R9n-KS-um6" secondAttribute="bottom" constant="5" id="s88-7s-Lwv"/>
+                                                <constraint firstItem="R9n-KS-um6" firstAttribute="leading" secondItem="wGI-jR-KGP" secondAttribute="leading" id="vNu-KH-Hto"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="wGI-jR-KGP" secondAttribute="bottom" constant="-0.5" id="zrS-Ky-OW8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="beaconImage" destination="6je-Y4-GXx" id="AzR-3x-Z2E"/>
+                                            <outlet property="beaconNameLabel" destination="R9n-KS-um6" id="gah-JV-Ij8"/>
+                                            <outlet property="beaconUUIDLabel" destination="wGI-jR-KGP" id="Kqz-Dy-z5p"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="kFe-mR-U4c" id="PDB-E1-vLU"/>
+                                    <outlet property="delegate" destination="kFe-mR-U4c" id="xEJ-EI-bSB"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cxd-Vl-gVw" firstAttribute="top" secondItem="cuD-hP-5KM" secondAttribute="bottom" constant="8" symbolic="YES" id="TlY-RD-GAQ"/>
+                            <constraint firstItem="cxd-Vl-gVw" firstAttribute="leading" secondItem="cmg-Us-KRz" secondAttribute="leading" id="V1z-Dd-pOa"/>
+                            <constraint firstItem="ptu-U8-VXK" firstAttribute="top" secondItem="cxd-Vl-gVw" secondAttribute="bottom" constant="67" id="WPR-wv-lhQ"/>
+                            <constraint firstAttribute="trailing" secondItem="cxd-Vl-gVw" secondAttribute="trailing" id="elz-LX-Hlj"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="tableView" destination="cxd-Vl-gVw" id="1tT-yB-zO0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GXY-pQ-szc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1958.5" y="502.5"/>
+        </scene>
+    </scenes>
+</document>

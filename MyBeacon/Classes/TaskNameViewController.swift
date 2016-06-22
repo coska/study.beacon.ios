@@ -8,27 +8,55 @@
 
 import UIKit
 
-class TaskNameViewController: UIViewController
+class TaskNameViewController: TaskWizardBaseViewController
 {
 
-    override func viewDidLoad()
-    {
+    @IBOutlet weak var nameField: UITextField!
+    // MARK: View lifecycle
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationItem.backBarButtonItem = backButton
+        nameField.addTarget(self, action: #selector(TaskNameViewController.textFieldDidChange), forControlEvents: UIControlEvents.EditingChanged)
     }
 
-    override func didReceiveMemoryWarning()
-    {
+    
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    // MARK: Event handler
+    // MARK: Privates
     
-    @IBAction func cancelButtonTapped(sender: UIBarButtonItem)
-    {
+    func textFieldDidChange() {
+        nextButton.enabled = !(nameField.text?.isEmpty)!
+    }
+    
+    // MARK: Event handlers
+    
+    @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
+        self.view.endEditing(true)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
+    @IBAction func nextButtonTapped(sender: UIButton) {
+        if nameField.text?.isEmpty == false {
+            task = Task()
+            task!.name = nameField.text!
+        }
+    }
+    
+    // MARK: Segeu
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("segue: \(segue.identifier)")
+        let actionTypeViewController = segue.destinationViewController as! TaskWizardBaseViewController
+        actionTypeViewController.task = task
+    }
 }
+
+extension TaskNameViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
