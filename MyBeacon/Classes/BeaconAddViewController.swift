@@ -65,11 +65,11 @@ class BeaconAddViewController: UIViewController {
         halo.position = bottom
         self.view.layer.insertSublayer(halo, atIndex: 0)
         
-        halo.haloLayerNumber = 5
-        halo.radius = self.view.bounds.width
+        halo.haloLayerNumber = 6
+        halo.radius = self.view.bounds.width * 2 / 3
         halo.animationDuration = 6.0
         halo.pulseInterval = 0.8
-        halo.backgroundColor = UIColor(colorLiteralRed: 0.0, green: 0.5, blue: 0.9, alpha: 0.7).CGColor
+        halo.backgroundColor = UIColor(colorLiteralRed: 0.0, green: 0.5, blue: 0.7, alpha: 0.9).CGColor
         
         halo.start()
     }
