@@ -35,7 +35,7 @@ class ActionSwitchCell: UITableViewCell {
     // MARK: Privates
     
     func commonInit() {
-        switchControl.addTarget(self, action: "switchDidChange", forControlEvents: UIControlEvents.ValueChanged)
+        switchControl.addTarget(self, action: #selector(ActionSwitchCell.switchDidChange), forControlEvents: UIControlEvents.ValueChanged)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -16,7 +16,7 @@ class TaskNameViewController: TaskWizardBaseViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameField.addTarget(self, action: "textFieldDidChange", forControlEvents: UIControlEvents.EditingChanged)
+        nameField.addTarget(self, action: #selector(TaskNameViewController.textFieldDidChange), forControlEvents: UIControlEvents.EditingChanged)
     }
 
     

@@ -9,31 +9,31 @@
 import RealmSwift
 
 
-struct DayType : OptionSetType
+struct Days : OptionSetType
 {
     let rawValue: Int
     
-    static let None = DayType(rawValue: 0)
-    static let Sunday = DayType(rawValue: 1 << 0)
-    static let Monday = DayType(rawValue: 1 << 1)
-    static let Tuesday = DayType(rawValue: 1 << 2)
-    static let Wednesday = DayType(rawValue: 1 << 3)
-    static let Thursday = DayType(rawValue: 1 << 4)
-    static let Friday = DayType(rawValue: 1 << 5)
-    static let Saturday = DayType(rawValue: 1 << 6)
+    static let None = Days(rawValue: 0)
+    static let Sunday = Days(rawValue: 1 << 0)
+    static let Monday = Days(rawValue: 1 << 1)
+    static let Tuesday = Days(rawValue: 1 << 2)
+    static let Wednesday = Days(rawValue: 1 << 3)
+    static let Thursday = Days(rawValue: 1 << 4)
+    static let Friday = Days(rawValue: 1 << 5)
+    static let Saturday = Days(rawValue: 1 << 6)
     
-    static func isApplicable(compare:DayType, all:DayType) -> Bool
+    static func isApplicable(compare:Days, all:Days) -> Bool
     {
         return all.contains(compare)
     }
     
-    static let names = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ]
+    static let names = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ]
 }
 
 
 struct Hours : OptionSetType
 {
-    let rawValue: Int
+    var rawValue: Int
     
     static let None = Hours(rawValue: 0)
     
@@ -83,24 +83,67 @@ struct Hours : OptionSetType
     
 }
 
-class DaySchedule : Object {
-    dynamic var indexOfDay : Int = 0
-    let times = Hours()
+class Day : Object {
+    dynamic var name : String = ""
+    dynamic var hours : String = "000000000000000000000000"
+    
+    required init(name:String)
+    {
+        self.name = name
+        super.init()
+    }
+    
+    required init() {
+        super.init()
+    }
+    
+    override static func primaryKey() -> String? {
+        return "name"
+    }
+    
+    subscript(hour:Int) -> Bool
+    {
+    	get {
+            let str = hours as NSString
+            let comp = str.substringWithRange(NSRange(location: hour, length:1))
+            return (comp == "1")
+        }
+    	set {
+            let str = hours as NSString
+            let head = str.substringToIndex(hour-1)
+            let tail = str.substringFromIndex(hour+1)
+            hours = head + (newValue ? "1" : "0") + tail
+        }
+    }
 }
-
-class WeekSchedule : Object {
-    let days = List<DaySchedule>()
-}
-
 
 class TimeCondition : Object {
     
-    let schedule = List<DaySchedule>()
+    let days = [Day(name: "Sun"),
+                Day(name: "Mon"),
+                Day(name: "Tue"),
+                Day(name: "Wed"),
+                Day(name: "Thu"),
+                Day(name: "Fri"),
+                Day(name: "Sat")]
     
     func isApplicable(dateVal:NSDate) -> Bool {
         let cal = NSCalendar.currentCalendar()
         let date = cal.components([.Hour, .Weekday], fromDate: dateVal)
-        return schedule[date.weekday].times.contains(Hours(rawValue: date.hour))
+        return days[date.weekday][date.hour]
     }
     
+    func isValid(row: Int, col:Int) -> Bool {
+        return (row >= 0 && row < Hours.names.count) &&
+               (col >= 0 && col < Days.names.count)
+    }
+    
+    subscript(row:Int, col:Int) -> Bool {
+        get {
+            return days.count > row && days[col][row]
+        }
+        set {
+            days[col][row] = newValue
+        }
+    }
 }

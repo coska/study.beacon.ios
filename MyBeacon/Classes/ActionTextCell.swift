@@ -42,7 +42,7 @@ class ActionTextCell: UITableViewCell {
     // MARK: Privates
     
     func commonInit() {
-        textField.addTarget(self, action: "textFieldDidChange", forControlEvents: UIControlEvents.EditingChanged)
+        textField.addTarget(self, action: #selector(ActionTextCell.textFieldDidChange), forControlEvents: UIControlEvents.EditingChanged)
     }
     
     // MARK: Event handlers

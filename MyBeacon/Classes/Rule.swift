@@ -20,7 +20,7 @@ class Rule: Object {
         return (time!.isApplicable(NSDate()) && location!.isApplicable(cl))
     }
     
-    func isApplicable(type:LocationType) -> Bool {
+    func isApplicable(type:Locations) -> Bool {
         return (time!.isApplicable(NSDate()) && location!.isApplicable(type))
     }
 }
