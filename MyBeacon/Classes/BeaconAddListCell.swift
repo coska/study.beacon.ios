@@ -11,7 +11,8 @@ import CoreLocation
 
 class BeaconAddListCell: UITableViewCell {
 
-    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var containerView: UIVisualEffectView!
+    @IBOutlet weak var beaconImageView: UIImageView!
     @IBOutlet weak var lblUUID: UILabel!
     @IBOutlet weak var lblMajor: UILabel!
     @IBOutlet weak var lblMinor: UILabel!
@@ -22,6 +23,10 @@ class BeaconAddListCell: UITableViewCell {
         didSet {
             guard let beacon = beacon else { return }
             
+            let results = BeaconAPI.sharedInstance.supportedUUIDs.filter{$0==beacon.proximityUUID.UUIDString}
+            if let beaconImage = results.first {
+                beaconImageView.image = UIImage(named: beaconImage)
+            }
             self.lblUUID.text = beacon.proximityUUID.UUIDString
             self.lblMajor.text = "Major: " + String(beacon.major)
             self.lblMinor.text = "Minor: " + String(beacon.minor)
@@ -32,7 +37,8 @@ class BeaconAddListCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.backgroundColor = UIColor.clearColor()
+        containerView.backgroundColor = UIColor.whiteColor()
         containerView.layer.borderColor = UIColor.grayColor().CGColor
         containerView.layer.borderWidth = 1.5
         containerView.layer.cornerRadius = 4.0
@@ -42,5 +48,13 @@ class BeaconAddListCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+}
+
+extension UILabel {
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.textColor = UIColor.darkGrayColor()
     }
 }

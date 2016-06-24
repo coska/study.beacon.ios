@@ -14,61 +14,54 @@ enum ListType: Int
     case Task
 }
 
-protocol HomeListDelegate: class
-{
+protocol HomeListDelegate: class {
     func willPushViewController(viewController: UIViewController, animated: Bool)
 }
 
-class HomeViewController: UIViewController, HomeListDelegate
-{
+class HomeViewController: UIViewController, HomeListDelegate {
     // There are two storyboards for Task Wizard. If loadTaskRule is set true then TaskRule.storyboard will be loaded.
     // If you need to work on Task Rule then please set this variable to be true
     private let loadTaskRule = false
+    private var currentDisplayListType: ListType?
+    
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
 
     // MARK: Lazy loading
     
-    lazy var beaconListViewController: BeaconListViewController =
-    {
+    lazy var beaconListViewController: BeaconListViewController = {
         var vc = self.myStoryboard.instantiateViewControllerWithIdentifier("BeaconListViewController") as! BeaconListViewController
         vc.delegate = self
         return vc
     }()
     
-    lazy var taskListViewController: TaskListViewController =
-    {
+    lazy var taskListViewController: TaskListViewController = {
         var vc = self.taskListStoryboard.instantiateViewControllerWithIdentifier("TaskListViewController") as! TaskListViewController
         vc.delegate = self
         return vc
     }()
     
-    lazy var mainStoryboard: UIStoryboard =
-        {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
+    lazy var beaconDetailStoryboard: UIStoryboard = {
+            let sb = UIStoryboard(name: "BeaconDetail", bundle: nil)
             return sb
     }()
     
-    lazy var myStoryboard: UIStoryboard =
-    {
+    lazy var myStoryboard: UIStoryboard = {
         let sb = UIStoryboard(name: "BeaconList", bundle: nil)
         return sb
     }()
     
-    lazy var taskListStoryboard: UIStoryboard =
-        {
+    lazy var taskListStoryboard: UIStoryboard = {
             let sb = UIStoryboard(name: "TaskList", bundle: nil)
             return sb
     }()
     
-    lazy var taskRuleStoryboard: UIStoryboard =
-        {
+    lazy var taskRuleStoryboard: UIStoryboard = {
             let sb = UIStoryboard(name: "TaskRule", bundle: nil)
             return sb
     }()
 
-    lazy var taskStoryboard: UIStoryboard =
-    {
+    lazy var taskStoryboard: UIStoryboard = {
         let sb = UIStoryboard(name: "Task", bundle: nil)
         return sb
     }()
@@ -85,29 +78,27 @@ class HomeViewController: UIViewController, HomeListDelegate
 		
 	}
     
-    override func viewWillAppear(animated: Bool)
-    {
+    override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        updateDisplayList()
     }
 
-    override func didReceiveMemoryWarning()
-    {
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     // MARK: Event handler
     
-    @IBAction func segmentChanged(sender: UISegmentedControl)
-    {
+    @IBAction func segmentChanged(sender: UISegmentedControl) {
         let listType = sender.selectedSegmentIndex == 0 ? ListType.Beacon : ListType.Task
         self.displayListType(listType)
     }
     
-    @IBAction func addButtonTapped(sender: UIBarButtonItem)
-    {
+    @IBAction func addButtonTapped(sender: UIBarButtonItem) {
         if self.segmentControl.selectedSegmentIndex == ListType.Beacon.rawValue
         {            
-            let beaconAddNavigation = self.mainStoryboard.instantiateViewControllerWithIdentifier("BeaconAddNavigation") as! UINavigationController
+            let beaconAddNavigation = self.beaconDetailStoryboard.instantiateViewControllerWithIdentifier("BeaconAddNavigation") as! UINavigationController
             self.presentViewController(beaconAddNavigation, animated: true, completion: nil)
         }
         else
@@ -123,9 +114,19 @@ class HomeViewController: UIViewController, HomeListDelegate
     }
 
     // MARK: Private
+    func updateDisplayList() {
+        if let listType = currentDisplayListType {
+            switch listType {
+            case .Beacon:
+                self.beaconListViewController.updateBeaconList()
+            case .Task:
+                break;
+            }
+        }
+    }
     
-    func displayListType(listType: ListType)
-    {
+    func displayListType(listType: ListType) {
+        currentDisplayListType = listType
         if listType == .Beacon
         {
             // TODO We can implement a better way to show/hide beacon/task view later.
@@ -155,8 +156,7 @@ class HomeViewController: UIViewController, HomeListDelegate
     
     // MARK: HomeListDelegate
     
-    func willPushViewController(viewController: UIViewController, animated: Bool)
-    {
+    func willPushViewController(viewController: UIViewController, animated: Bool) {
         self.navigationController?.pushViewController(viewController, animated: animated)
     }
 }

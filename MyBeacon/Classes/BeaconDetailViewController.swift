@@ -102,9 +102,9 @@ class BeaconDetailViewController: UIViewController
     private var orgBeacon: Beacon?
     private var newBeacon: Beacon?
     private var beaconInfo: [[Int:String]] = [[Int:String]]()
+    var beaconImageName: String?
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "Edit Beacon"
@@ -121,8 +121,6 @@ class BeaconDetailViewController: UIViewController
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        BeaconAPI.sharedInstance.stopSearchingBeacons()
     }
 
     override func didReceiveMemoryWarning()
@@ -131,7 +129,9 @@ class BeaconDetailViewController: UIViewController
     }
     
     // MARK: - Event handler
-    @IBAction func cancelButtonTapped(sender: AnyObject) {
+    @IBAction func cancelButtonTapped(sender: AnyObject) {        
+        BeaconAPI.sharedInstance.stopSearchingBeacons()
+        
         navigationController?.popViewControllerAnimated(true)
     }
     
@@ -140,28 +140,27 @@ class BeaconDetailViewController: UIViewController
         // TODO: Validation
         
         // Save updated Beacon
-        //if let newBeacon = newBeacon {
-            // tk (please use static Database functions
-            // Beacon.save(newBeacon)
-        //} else {
-        //    print("Couldn't save the updated beacon because it's nil")
-        //}
+        if let newBeacon = newBeacon {
+             Database.save(newBeacon)
+        } else {
+            print("Couldn't save the updated beacon because it's nil")
+        }
         
         navigationController?.popViewControllerAnimated(true)
     }
     
-    @IBAction func deleteButtonTapped(sender: AnyObject) {
-        
+    @IBAction func deleteButtonTapped(sender: AnyObject) {        
         // Remove Beacon
-//        Beacon.delete(orgBeacon)
-        
-        navigationController?.popViewControllerAnimated(true)
+        if case let beacon = self.orgBeacon where self.orgBeacon?.id.isEmpty == false {
+            BeaconAPI.sharedInstance.stopSearchingBeacons()
+            Database.delete(beacon!)
+            navigationController?.popViewControllerAnimated(true)
+        }
     }
     
     // MARK: - Private Functions
     func initializeTableView() {
         tableView.registerNib(UINib.init(nibName: kBeaconNameCell, bundle: nil), forCellReuseIdentifier: kBeaconNameCell)
-        tableView.registerNib(UINib.init(nibName: kBeaconDefaultCell, bundle: nil), forCellReuseIdentifier: kBeaconDefaultCell)
         tableView.registerNib(UINib.init(nibName: kBeaconDefaultCell, bundle: nil), forCellReuseIdentifier: kBeaconDefaultCell)
     }
     
@@ -210,11 +209,16 @@ extension BeaconDetailViewController: UITableViewDelegate {
             let rows: NameRows = NameRows(rawValue: indexPath.row)!
             switch rows {
             case .Name:
+                if let imgBeaconName = beaconImageName {
+                    cell.imgBeacon.image = UIImage(named: imgBeaconName)
+                }
+                
                 if indexPath.section < beaconInfo.count {
                     cell.txtName.text = beaconInfo[indexPath.section][indexPath.row]
                 } else {
                     cell.txtName.text = ""
                 }
+                cell.txtName.userInteractionEnabled = false
                 return cell
             }
         default:

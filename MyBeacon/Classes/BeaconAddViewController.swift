@@ -22,7 +22,14 @@ class BeaconAddViewController: UIViewController {
         self.title = "Add Beacon"
         
         initializeTableView()
-
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didEnterForeground:", name: UIApplicationWillEnterForegroundNotification, object: UIApplication.sharedApplication())
+        
+        startPulsingHaloAnimation()
         startSearchBeacons()
     }
     
@@ -30,6 +37,8 @@ class BeaconAddViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         stopSearchBeacons()
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,16 +46,25 @@ class BeaconAddViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func didEnterForeground(notification: NSNotification) {
+        startPulsingHaloAnimation()
     }
-    */
+    
+    private func startPulsingHaloAnimation() {
+        let halo = PulsingHaloLayer()
+        var bottom: CGPoint = self.view.center
+        bottom.y = bottom.y + 66
+        halo.position = bottom
+        self.view.layer.insertSublayer(halo, atIndex: 0)
+        
+        halo.haloLayerNumber = 2
+        halo.radius = self.view.bounds.width
+        halo.animationDuration = 4.0
+        halo.pulseInterval = 0.5
+        halo.backgroundColor = UIColor(colorLiteralRed: 0.0, green: 0.5, blue: 0.5, alpha: 1.0).CGColor
+        
+        halo.start()
+    }
 
     private func initializeTableView() {
         tableView.dataSource = self
@@ -55,6 +73,14 @@ class BeaconAddViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
 
         tableView.registerNib(UINib(nibName: kBeaconAddListCell, bundle: nil), forCellReuseIdentifier: kBeaconAddListCell)
+        
+        if (!UIAccessibilityIsReduceTransparencyEnabled()) {
+            tableView.backgroundColor = UIColor.clearColor()
+            let blurEffect = UIBlurEffect(style: .Light)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            tableView.backgroundView = blurEffectView            
+            tableView.separatorEffect = UIVibrancyEffect(forBlurEffect: blurEffect)
+        }
     }
     
     private func startSearchBeacons() {
@@ -106,9 +132,10 @@ extension BeaconAddViewController: BeaconProtocol {
                 let index  = self.beacons.indexOf { $0.proximityUUID == beacon.proximityUUID }
                 if index != nil {
                     self.beacons[index!] = beacon
-                    
-                    let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index!, inSection: 0)) as! BeaconAddListCell
-                    cell.beacon = beacon
+                
+                    if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index!, inSection: 0)) {
+                        (cell as! BeaconAddListCell).beacon = beacon
+                    }
                 }
             }
         }

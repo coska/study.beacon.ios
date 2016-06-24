@@ -1,3 +1,11 @@
+#Buddy Beacon
+
+Buddy Beacon is the app that checks whether a Bluetooth beacon is near your phone location or not, performs predefined actions like as turning on or off WiFi, sending predefined text message to someone, or initiating phone calls to someone. The app currently supports fifteen major brands of Bluetooth beacons in the market.
+
+The app is one of the outcome of the Beacon Study Group in COSKA 2016, which had originally started to learn about Bluetooth Low Energy (BLE) Beacons. It is still useful for daily life with iOS and Android by automating repetitive tasks. 
+
+
+
 # study.beacon.ios
 
 #### Target version
