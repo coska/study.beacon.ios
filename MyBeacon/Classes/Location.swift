@@ -10,59 +10,46 @@ import RealmSwift
 import CoreLocation
 
 
-enum LocationType : String
+struct Locations : OptionSetType
 {
-    case None = "None"
-    case Far = "Far"
-    case Near = "Near"
-    case Immediate = "Immediate"
-    case NoSignal = "No Signal"
+    let rawValue: Int
     
-    var description: String {
-        return self.rawValue
+    static let None = Locations(rawValue: 0)
+    static let NoSignal = Locations(rawValue: 1 << 0)
+    static let Far = Locations(rawValue: 1 << 1)
+    static let Near = Locations(rawValue: 1 << 2)
+    static let Immediate = Locations(rawValue: 1 << 3)
+    
+    static func isApplicable(compare:Locations, all:Locations) -> Bool
+    {
+        return all.contains(compare)
     }
     
-    static let names = [
-        None.rawValue,
-        Far.rawValue,
-        Near.rawValue,
-        Immediate.rawValue,
-        NoSignal.rawValue
-    ]
-    
-    static func getType(type:String) -> LocationType {
-        switch (type)
-        {
-        case None.rawValue: return None
-        case Far.rawValue: return Far
-        case Near.rawValue: return Near
-        case Immediate.rawValue: return Immediate
-        case NoSignal.rawValue: return NoSignal
-            
-        default:
-            return None
-        }
-    }
+    static let names = [ "NoSignal", "Far", "Near", "Immediate" ]
+    static let types:[Locations] = [ .NoSignal, .Far, .Near, .Immediate ]
 }
+
 
 class LocationCondition : Object {
     
-    private var _type = LocationType.None
+    private var _type = Locations.None
     
-    dynamic var type : String {
+    dynamic var type : Int {
         get {
             return _type.rawValue
         }
         set {
-            _type = LocationType.getType(newValue)
+            _type = Locations(rawValue:newValue)
         }
     }
     
-    func isApplicable(compare:LocationType) -> Bool {
-        return compare == self._type
+    func isApplicable(compare:Locations) -> Bool {
+        return _type.contains(compare)
     }
     
+    
     // reserved
+    
     dynamic var name = ""
     dynamic var lat : Double = 0.0
     dynamic var long : Double = 0.0
