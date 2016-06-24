@@ -34,6 +34,15 @@ class TaskWizardBaseViewController: UIViewController {
         nextButton.removeObserver(self, forKeyPath: "enabled")
     }
     
+    @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
+        self.view.endEditing(true)
+        if self.presentingViewController != nil {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        }
+    }
+    
     // MARK: Privates
     
     private func setupUI() {

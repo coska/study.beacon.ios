@@ -53,13 +53,14 @@ class TaskRuleViewController: TaskWizardBaseViewController
         super.didReceiveMemoryWarning()
     }
     
-    func updateNextButton() {
-        nextButton?.enabled = true
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("segue: \(segue.identifier)")
+        let beaconViewController = segue.destinationViewController as! TaskWizardBaseViewController
+        beaconViewController.task = task
     }
     
-    func cancelButtonTapped(sender: UIBarButtonItem)
-    {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func updateNextButton() {
+        nextButton?.enabled = true
     }
     
     func loadSchedule(time:TimeCondition)
