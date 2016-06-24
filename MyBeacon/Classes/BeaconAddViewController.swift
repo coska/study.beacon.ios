@@ -46,24 +46,36 @@ class BeaconAddViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        stopPulsingHaloAnimation()
+        startPulsingHaloAnimation(CGPointMake(size.width/2, size.height/2))
+    }
+    
     func didEnterForeground(notification: NSNotification) {
         startPulsingHaloAnimation()
     }
     
     private func startPulsingHaloAnimation() {
+        startPulsingHaloAnimation(view.center)
+    }
+    private func startPulsingHaloAnimation(center: CGPoint) {
         let halo = PulsingHaloLayer()
-        var bottom: CGPoint = self.view.center
+        var bottom: CGPoint = center
         bottom.y = bottom.y + 66
         halo.position = bottom
         self.view.layer.insertSublayer(halo, atIndex: 0)
         
-        halo.haloLayerNumber = 2
-        halo.radius = self.view.bounds.width
-        halo.animationDuration = 4.0
-        halo.pulseInterval = 0.5
-        halo.backgroundColor = UIColor(colorLiteralRed: 0.0, green: 0.5, blue: 0.5, alpha: 1.0).CGColor
+        halo.haloLayerNumber = 6
+        halo.radius = self.view.bounds.width * 2 / 3
+        halo.animationDuration = 6.0
+        halo.pulseInterval = 0.8
+        halo.backgroundColor = UIColor(colorLiteralRed: 0.0, green: 0.5, blue: 0.7, alpha: 0.9).CGColor
         
         halo.start()
+    }
+    
+    private func stopPulsingHaloAnimation() {
+        self.view.layer.sublayers?.first?.removeFromSuperlayer()
     }
 
     private func initializeTableView() {
@@ -71,11 +83,11 @@ class BeaconAddViewController: UIViewController {
         tableView.delegate = self
         tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.backgroundColor = UIColor.clearColor()
 
         tableView.registerNib(UINib(nibName: kBeaconAddListCell, bundle: nil), forCellReuseIdentifier: kBeaconAddListCell)
         
         if (!UIAccessibilityIsReduceTransparencyEnabled()) {
-            tableView.backgroundColor = UIColor.clearColor()
             let blurEffect = UIBlurEffect(style: .Light)
             let blurEffectView = UIVisualEffectView(effect: blurEffect)
             tableView.backgroundView = blurEffectView            
