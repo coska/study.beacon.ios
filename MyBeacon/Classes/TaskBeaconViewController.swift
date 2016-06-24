@@ -21,7 +21,7 @@ class TaskBeaconViewController: TaskWizardBaseViewController
         super.viewDidLoad()
         
         // For test add beacons
-        addFakeBeacons()
+//        addFakeBeacons()
         setupUI()
     }
     
@@ -62,17 +62,20 @@ class TaskBeaconViewController: TaskWizardBaseViewController
     }
 
     // MARK: Event handler
-    
-    func cancelButtonTapped(sender: UIBarButtonItem)
-    {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     @IBAction func doneButtonTapped(sender: UIButton)
     {
         let beacon = beacons[selectedRow]
-        task?.beacons.insert(beacon, atIndex: 0)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        if let task = task {
+            task.beacons.insert(beacon, atIndex: 0)
+            Database.save(task)
+        }
+        
+        if self.presentingViewController != nil {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        }
     }
 }
 

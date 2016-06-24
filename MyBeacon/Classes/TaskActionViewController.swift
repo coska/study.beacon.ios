@@ -9,6 +9,13 @@
 import UIKit
 
 class TaskActionViewController: TaskWizardBaseViewController {
+    
+    enum ActionCellIndex: Int {
+        case Text = 0
+        case Call
+        case Wifi
+    }
+    
     private let cellIdentifier = "actionTypeCell"
     private var selectedRow = -1
     
@@ -25,10 +32,6 @@ class TaskActionViewController: TaskWizardBaseViewController {
         super.viewDidLoad()
         setupUI()
     }
-
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -43,12 +46,6 @@ class TaskActionViewController: TaskWizardBaseViewController {
     
     func updateNextButtonStatue(row: Int) {
         nextButton?.enabled = row != -1
-    }
-
-    // MARK: Event handler
-    
-    func cancelButtonTapped(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: Segeu
@@ -94,6 +91,8 @@ extension TaskActionViewController: UITableViewDataSource {
 extension TaskActionViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
+        let actionCellIndex = ActionCellIndex(rawValue: indexPath.row)
+        
         if cell?.accessoryType == .Checkmark {
             cell?.accessoryType = .None
             selectedRow = -1

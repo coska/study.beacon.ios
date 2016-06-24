@@ -83,13 +83,7 @@ class TaskActionSetupViewController: TaskWizardBaseViewController
         }
     }
     
-    // MARK: Event handler
-    
-    func cancelButtonTapped(sender: UIBarButtonItem)
-    {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
+    // MARK: Event handler    
     @IBAction func nextButtonTapped(sender: UIButton) {
         let action = task!.actions.first
         if actionType() == ActionType.Call.rawValue {

@@ -39,6 +39,13 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tasks = Database.loadAll(Task.self)
+        tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning()
     {
@@ -49,13 +56,14 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.fakeDataSource.count
+        return tasks.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier, forIndexPath: indexPath) as! TaskCustomTableViewCell
-        cell.taskNameLabel?.text = self.fakeDataSource[indexPath.row]
+        let task = tasks[indexPath.row]
+        cell.taskNameLabel?.text = task.name
         cell.actionIconImage?.image = UIImage(named: actionIcon[indexPath.row])
         cell.ruleIconImage?.image = UIImage(named: ruleIcon[indexPath.row])
         
@@ -65,12 +73,11 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             
-            fakeDataSource.removeAtIndex(indexPath.row)
+            tasks.removeAtIndex(indexPath.row)
             actionIcon.removeAtIndex(indexPath.row)
             ruleIcon.removeAtIndex(indexPath.row)
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            
         }
     }
     
@@ -78,10 +85,12 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        let storyboard = UIStoryboard(name: "TaskRule", bundle: nil)
-        let taskDetailViewController = storyboard.instantiateViewControllerWithIdentifier("TaskDetailViewController") as! TaskDetailViewController
-
-        self.delegate?.willPushViewController(taskDetailViewController, animated: true)
+        let storyboard = UIStoryboard(name: "Task", bundle: nil)
+        let taskWizardNavigation = storyboard.instantiateViewControllerWithIdentifier("TaskWizardNavigation") as! UINavigationController
+        let taskWizardVC = taskWizardNavigation.topViewController as! TaskWizardBaseViewController
+        taskWizardVC.task = tasks[indexPath.row]
+        
+        self.delegate?.willPushViewController(taskWizardVC, animated: true)
     }
 
 }

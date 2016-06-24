@@ -18,7 +18,15 @@ class TaskNameViewController: TaskWizardBaseViewController
         super.viewDidLoad()
         nameField.addTarget(self, action: #selector(TaskNameViewController.textFieldDidChange), forControlEvents: UIControlEvents.EditingChanged)
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let task = self.task {
+            nameField.text = task.name
+            nextButton.enabled = task.name.isEmpty == false
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -31,11 +39,6 @@ class TaskNameViewController: TaskWizardBaseViewController
     }
     
     // MARK: Event handlers
-    
-    @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
-        self.view.endEditing(true)
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
 
     @IBAction func nextButtonTapped(sender: UIButton) {
         if nameField.text?.isEmpty == false {

@@ -18,6 +18,10 @@ class Task: Object {
 	
     dynamic var enabled: Bool = false
 
+    override static func primaryKey() -> String? {
+        return "name"
+    }
+    
 	// check all rules are valid
 	func isApplicable(cl:CLLocation) -> Bool
 	{
