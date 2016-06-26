@@ -38,6 +38,8 @@
 		34E0C5991CD6AB1B0031F2A9 /* BeaconDefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E0C5971CD6AB1B0031F2A9 /* BeaconDefaultCell.swift */; };
 		34E0C59A1CD6AB1B0031F2A9 /* BeaconDefaultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34E0C5981CD6AB1B0031F2A9 /* BeaconDefaultCell.xib */; };
 		BC0C596BA3E57973E3E1317D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1C8DCCE1738E3E05723E34 /* Pods.framework */; };
+		E912DDE01D1F372400B9373C /* UIImage+AnimatedGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = E912DDDF1D1F372400B9373C /* UIImage+AnimatedGif.swift */; };
+		E912DDE21D1F3B1C00B9373C /* coska.ble.study.gif in Resources */ = {isa = PBXBuildFile; fileRef = E912DDE11D1F3B1C00B9373C /* coska.ble.study.gif */; };
 		E923EAF21D0E0C9C00827228 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E923EAF11D0E0C9C00827228 /* Assets.xcassets */; };
 		E923EAF51D17599000827228 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EAF31D17598F00827228 /* LocationTableViewCell.swift */; };
 		E923EAF61D17599000827228 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E923EAF41D17598F00827228 /* LocationTableViewCell.xib */; };
@@ -91,6 +93,8 @@
 		34E0C5981CD6AB1B0031F2A9 /* BeaconDefaultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BeaconDefaultCell.xib; path = Classes/BeaconDefaultCell.xib; sourceTree = "<group>"; };
 		4B1C8DCCE1738E3E05723E34 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C00556AA2FB81D3050EBA2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E912DDDF1D1F372400B9373C /* UIImage+AnimatedGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+AnimatedGif.swift"; sourceTree = "<group>"; };
+		E912DDE11D1F3B1C00B9373C /* coska.ble.study.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = coska.ble.study.gif; sourceTree = "<group>"; };
 		E923EAF11D0E0C9C00827228 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E923EAF31D17598F00827228 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		E923EAF41D17598F00827228 /* LocationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationTableViewCell.xib; sourceTree = "<group>"; };
@@ -245,6 +249,8 @@
 				2B161A851CC427AA00E6DB9A /* TaskActionSetupViewController.swift */,
 				2B161A891CC427D400E6DB9A /* TaskBeaconViewController.swift */,
 				2B908CBB1CD82CDF00733C18 /* TaskWizardBaseViewController.swift */,
+				E912DDDF1D1F372400B9373C /* UIImage+AnimatedGif.swift */,
+				E912DDE11D1F3B1C00B9373C /* coska.ble.study.gif */,
 			);
 			name = Wizard;
 			sourceTree = "<group>";
@@ -412,6 +418,7 @@
 				3495F0191CE9353000ACB5BC /* BeaconList.storyboard in Resources */,
 				E923EAF21D0E0C9C00827228 /* Assets.xcassets in Resources */,
 				2B161A611CC41A8B00E6DB9A /* (null) in Resources */,
+				E912DDE21D1F3B1C00B9373C /* coska.ble.study.gif in Resources */,
 				3447C6F61CF94407002F24F0 /* BeaconDetail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,6 +490,7 @@
 				2B90E4981CFA5BF200AB97F0 /* ActionTextCell.swift in Sources */,
 				3495F0251CE93BDB00ACB5BC /* BeaconAddListCell.swift in Sources */,
 				E95939681D0683FF006EC239 /* UICheckButton.swift in Sources */,
+				E912DDE01D1F372400B9373C /* UIImage+AnimatedGif.swift in Sources */,
 				2B161A7A1CC4232800E6DB9A /* TaskListViewController.swift in Sources */,
 				2B161A8A1CC427D400E6DB9A /* TaskBeaconViewController.swift in Sources */,
 				2B161A7D1CC4240D00E6DB9A /* BeaconDetailViewController.swift in Sources */,

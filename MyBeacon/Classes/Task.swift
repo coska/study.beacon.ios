@@ -11,7 +11,7 @@ import CoreLocation
 
 class Task: Object {
 	
-	dynamic var name = ""
+    dynamic var name = ""
 	let rules = List<Rule>()	  // allow to validate multiple rules
 	let actions = List<Action>()  // allow multiple actions
 	let beacons = List<Beacon>()  // allow to be used in multiple beacons
