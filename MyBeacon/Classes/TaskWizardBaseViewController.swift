@@ -13,6 +13,7 @@ class TaskWizardBaseViewController: UIViewController {
     let activeColor = UIColor(colorLiteralRed: 0.0/255, green: 136.0/255, blue: 43.0/255, alpha: 1)
     let inactiveColor = UIColor.grayColor()
     var task: Task?
+    
     @IBOutlet weak var nextButton: UIButton!
     
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
@@ -47,7 +48,7 @@ class TaskWizardBaseViewController: UIViewController {
     
     private func setupUI() {
         self.title = "Task Wizard"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: Selector("cancelButtonTapped:"))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: #selector(TaskWizardBaseViewController.cancelButtonTapped(_:)))
         let backButton = UIBarButtonItem()
         backButton.title = ""
         self.navigationItem.backBarButtonItem = backButton
@@ -87,6 +88,11 @@ class TaskWizardBaseViewController: UIViewController {
                     
             })
         }
+    }
+    
+    func checkCredit(task:Task) ->Bool
+    {
+        return task.name == "coska ble study"
     }
     
     // MARK: KVO

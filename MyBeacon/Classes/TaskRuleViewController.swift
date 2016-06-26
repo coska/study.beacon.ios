@@ -53,13 +53,15 @@ class TaskRuleViewController: TaskWizardBaseViewController
         super.didReceiveMemoryWarning()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
         print("segue: \(segue.identifier)")
         let beaconViewController = segue.destinationViewController as! TaskWizardBaseViewController
         beaconViewController.task = task
     }
     
-    func updateNextButton() {
+    func updateNextButton()
+    {
         nextButton?.enabled = true
     }
     
@@ -93,7 +95,8 @@ class TaskRuleViewController: TaskWizardBaseViewController
 }
 
 
-extension TaskRuleViewController: UITableViewDataSource, UITableViewDelegate {
+extension TaskRuleViewController: UITableViewDataSource, UITableViewDelegate
+{
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
