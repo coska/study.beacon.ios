@@ -54,7 +54,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2B161A581CC41A8B00E6DB9A /* Coska Beacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coska Beacon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B161A581CC41A8B00E6DB9A /* Buddy Beacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Buddy Beacon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B161A651CC41A8B00E6DB9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B161A671CC41A8B00E6DB9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B161A6F1CC41B6C00E6DB9A /* MyBeacon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyBeacon-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 		2B161A591CC41A8B00E6DB9A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2B161A581CC41A8B00E6DB9A /* Coska Beacon.app */,
+				2B161A581CC41A8B00E6DB9A /* Buddy Beacon.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -354,7 +354,7 @@
 			);
 			name = MyBeacon;
 			productName = MyBeacon;
-			productReference = 2B161A581CC41A8B00E6DB9A /* Coska Beacon.app */;
+			productReference = 2B161A581CC41A8B00E6DB9A /* Buddy Beacon.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -628,7 +628,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coska.study.beacon;
-				PRODUCT_NAME = "Coska Beacon";
+				PRODUCT_NAME = "Buddy Beacon";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyBeacon/MyBeacon-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -647,7 +647,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coska.study.beacon;
-				PRODUCT_NAME = "Coska Beacon";
+				PRODUCT_NAME = "Buddy Beacon";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyBeacon/MyBeacon-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -703,7 +703,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coska.study.beacon;
-				PRODUCT_NAME = "Coska Beacon";
+				PRODUCT_NAME = "Buddy Beacon";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyBeacon/MyBeacon-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
