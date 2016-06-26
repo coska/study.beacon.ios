@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B161A611CC41A8B00E6DB9A /* (null) in Resources */ = {isa = PBXBuildFile; };
 		2B161A661CC41A8B00E6DB9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B161A641CC41A8B00E6DB9A /* LaunchScreen.storyboard */; };
 		2B161A711CC41B6C00E6DB9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B161A701CC41B6C00E6DB9A /* AppDelegate.swift */; };
 		2B161A741CC41FB300E6DB9A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B161A731CC41FB300E6DB9A /* HomeViewController.swift */; };
@@ -57,7 +56,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2B161A581CC41A8B00E6DB9A /* MyBeacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBeacon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B161A581CC41A8B00E6DB9A /* Buddy Beacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Buddy Beacon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B161A651CC41A8B00E6DB9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B161A671CC41A8B00E6DB9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B161A6F1CC41B6C00E6DB9A /* MyBeacon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyBeacon-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -136,7 +135,7 @@
 		2B161A591CC41A8B00E6DB9A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2B161A581CC41A8B00E6DB9A /* MyBeacon.app */,
+				2B161A581CC41A8B00E6DB9A /* Buddy Beacon.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -361,7 +360,7 @@
 			);
 			name = MyBeacon;
 			productName = MyBeacon;
-			productReference = 2B161A581CC41A8B00E6DB9A /* MyBeacon.app */;
+			productReference = 2B161A581CC41A8B00E6DB9A /* Buddy Beacon.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -376,6 +375,7 @@
 				TargetAttributes = {
 					2B161A571CC41A8B00E6DB9A = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = ST475H9ZX3;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -417,7 +417,6 @@
 				3495F0261CE93BDB00ACB5BC /* BeaconAddListCell.xib in Resources */,
 				3495F0191CE9353000ACB5BC /* BeaconList.storyboard in Resources */,
 				E923EAF21D0E0C9C00827228 /* Assets.xcassets in Resources */,
-				2B161A611CC41A8B00E6DB9A /* (null) in Resources */,
 				E912DDE21D1F3B1C00B9373C /* coska.ble.study.gif in Resources */,
 				3447C6F61CF94407002F24F0 /* BeaconDetail.storyboard in Resources */,
 			);
@@ -631,11 +630,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MyBeacon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coska.study.MyBeacon;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.coska.study.beacon;
+				PRODUCT_NAME = "Buddy Beacon";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyBeacon/MyBeacon-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -647,15 +649,74 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MyBeacon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coska.study.MyBeacon;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.coska.study.beacon;
+				PRODUCT_NAME = "Buddy Beacon";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyBeacon/MyBeacon-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
+		};
+		34D27F841D1D7B7000BE840D /* Archive */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Archive;
+		};
+		34D27F851D1D7B7000BE840D /* Archive */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB39F225C62B91DAAE8FE076 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				INFOPLIST_FILE = MyBeacon/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.coska.study.beacon;
+				PRODUCT_NAME = "Buddy Beacon";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyBeacon/MyBeacon-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Archive;
 		};
 /* End XCBuildConfiguration section */
 
@@ -665,6 +726,7 @@
 			buildConfigurations = (
 				2B161A681CC41A8B00E6DB9A /* Debug */,
 				2B161A691CC41A8B00E6DB9A /* Release */,
+				34D27F841D1D7B7000BE840D /* Archive */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -674,6 +736,7 @@
 			buildConfigurations = (
 				2B161A6B1CC41A8B00E6DB9A /* Debug */,
 				2B161A6C1CC41A8B00E6DB9A /* Release */,
+				34D27F851D1D7B7000BE840D /* Archive */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
