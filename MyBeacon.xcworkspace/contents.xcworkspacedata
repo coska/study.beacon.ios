@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/thomas/Documents/github/coska/study.beacon.ios/Buddy Beacon.xcodeproj">
+      location = "group:Buddy Beacon.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
