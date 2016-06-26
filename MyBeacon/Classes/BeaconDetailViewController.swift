@@ -121,6 +121,9 @@ class BeaconDetailViewController: UIViewController
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        BeaconAPI.sharedInstance.stopSearchingBeacons()
+        BeaconAPI.sharedInstance.beaconProtocol = nil
     }
 
     override func didReceiveMemoryWarning()

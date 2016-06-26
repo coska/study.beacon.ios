@@ -130,7 +130,7 @@ class TimeCondition : Object {
     func isApplicable(dateVal:NSDate) -> Bool {
         let cal = NSCalendar.currentCalendar()
         let date = cal.components([.Hour, .Weekday], fromDate: dateVal)
-        return days[date.weekday][date.hour]
+        return days[date.weekday-1][date.hour]
     }
     
     func isValid(row: Int, col:Int) -> Bool {

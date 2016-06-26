@@ -102,6 +102,7 @@ class BeaconAddViewController: UIViewController {
     
     private func stopSearchBeacons() {
         BeaconAPI.sharedInstance.stopSearchingBeacons()
+        BeaconAPI.sharedInstance.beaconProtocol = nil
     }
     
     // MARK: - Actions

@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var locationManager: CLLocationManager?
 	
 	//TODO : move these later
     //var pref: Preference = Database.loadOne(Preference.self, create: true)
@@ -20,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        setupLocationManager()
+        startMonitoringRegionForTaskBeacons()
+        
         return true
     }
 
@@ -31,6 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        startMonitoringRegionForTaskBeacons()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -44,7 +52,104 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+}
 
+extension AppDelegate: CLLocationManagerDelegate {
+    
+    func setupLocationManager() {
+        let notificationSetting = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSetting)
+        
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.requestAlwaysAuthorization()
+    }
+    
+    func startMonitoringRegionForTaskBeacons() {
+        var beacons: [Beacon] = []
+        for task in tasks {
+            for beacon in task.beacons {
+                if beacons.contains(beacon) == false {
+                    beacons.append(beacon)
+                }
+            }
+        }
+        
+        for beacon in beacons {
+            if let uuid = NSUUID(UUIDString: beacon.id) {
+                let major: CLBeaconMajorValue = UInt16(Int(beacon.major))
+                let minor: CLBeaconMajorValue = UInt16(Int(beacon.minor))
+                let region = CLBeaconRegion(proximityUUID: uuid, major: major, minor: minor, identifier: beacon.id)
+                region.notifyEntryStateOnDisplay = true
+                locationManager?.stopMonitoringForRegion(region)
+                locationManager?.startMonitoringForRegion(region)
+            }
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print("\(#function)")
+        
+        let filteredBeacons = Database.loadAll(Beacon.self).filter { $0.id == region.identifier }
+        if filteredBeacons.count > 0 {
+            let results = tasks.filter { $0.isApplicable(manager.location!) == true }
+//            let results = tasks.filter { $0.beacons.contains(filteredBeacons.first!) && $0.actions.count>0 }
+            for task in results {
+                if let action = task.actions.first {
+                    switch action.type {
+                    case ActionType.Text.rawValue:
+                        let arr = action.value.componentsSeparatedByString("|")
+                        sendText(arr[0], msg: arr[1])
+                    case ActionType.Call.rawValue:
+                        callNumber(action.value)
+                    case ActionType.Wifi.rawValue:
+                        break
+                    default:
+                        break
+                    }
+                }
+            }
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
+        print("\(#function)")
+    }
+    
+    func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion) {
+        
+        let notification: UILocalNotification = UILocalNotification()
 
+        if (state == .Inside) {
+            notification.alertBody = "You are inside region \(region.identifier)";
+        } else if (state == .Outside) {
+            notification.alertBody = "You are outside region \(region.identifier)";
+        } else {
+            return;
+        }
+        
+        print(notification.alertBody)
+        
+//        UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+    }
+    
+    private func callNumber(phoneNo:String) {
+        if let url:NSURL = NSURL(string:"telprompt://\(phoneNo.stringByReplacingOccurrencesOfString(" ", withString: ""))") {
+            let app:UIApplication = UIApplication.sharedApplication()
+            if (app.canOpenURL(url)) {
+                app.openURL(url);
+            }
+        }
+    }
+    
+    private func sendText(phoneNo:String, msg:String) {
+        if let url:NSURL = NSURL(string:"sms://\(phoneNo)") {
+            let app:UIApplication = UIApplication.sharedApplication()
+            if (app.canOpenURL(url)) {
+                app.openURL(url);
+            }
+        }
+        
+    }
 }
 

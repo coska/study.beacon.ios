@@ -61,6 +61,18 @@ class BeaconAPI: NSObject {
     weak var beaconProtocol: BeaconProtocol?
     
     // MARK: Public Functions
+    func startMonitoringForRegion(forBeacon: Beacon) {
+        guard let uuid = NSUUID(UUIDString: forBeacon.id) else { return }
+        let region = CLBeaconRegion(proximityUUID: uuid, identifier: forBeacon.id)
+        locationManager.startMonitoringForRegion(region)
+    }
+    
+    func stopMonitoringForRegion(forBeacon: Beacon) {
+        guard let uuid = NSUUID(UUIDString: forBeacon.id) else { return }
+        let region = CLBeaconRegion(proximityUUID: uuid, identifier: forBeacon.id)
+        locationManager.stopMonitoringForRegion(region)
+    }
+    
     func startSearchingBeacons() {        
         beacon = beaconProtocol?.updatedBeacon()
         
@@ -70,14 +82,14 @@ class BeaconAPI: NSObject {
             let minor: CLBeaconMajorValue = UInt16(Int(beacon.minor))
             let region = CLBeaconRegion(proximityUUID: uuid, major: major, minor: minor, identifier: beacon.id)
             
-            locationManager.startMonitoringForRegion(region)
+//            locationManager.startMonitoringForRegion(region)
             locationManager.startRangingBeaconsInRegion(region)
         } else {
             // search up all the beacon devices compatible with iBeacon
             for strUUID in supportedUUIDs {
                 guard let uuid = NSUUID(UUIDString: strUUID) else { return }
                 let region = CLBeaconRegion(proximityUUID: uuid, identifier: strUUID)
-                locationManager.startMonitoringForRegion(region)
+//                locationManager.startMonitoringForRegion(region)
                 locationManager.startRangingBeaconsInRegion(region)
             }
         }
@@ -115,10 +127,12 @@ extension BeaconAPI: CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print("didEnterRegion: \(region.notifyOnEntry), \(region.notifyOnExit)")
         self.beaconProtocol?.beaconAPI(self, didEnterRegion: region)
     }
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
-        self.beaconProtocol?.beaconAPI(self, didEnterRegion: region)
+        print("didExitRegion: \(region.notifyOnEntry), \(region.notifyOnExit)")
+        self.beaconProtocol?.beaconAPI(self, didExitRegion: region)
     }
     
     func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
