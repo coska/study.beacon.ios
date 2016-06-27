@@ -95,3 +95,9 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Realm.framework"
   install_framework "Pods/RealmSwift.framework"
 fi
+if [[ "$CONFIGURATION" == "Archive" ]]; then
+  install_framework "Pods/FLKAutoLayout.framework"
+  install_framework "Pods/PulsingHalo.framework"
+  install_framework "Pods/Realm.framework"
+  install_framework "Pods/RealmSwift.framework"
+fi

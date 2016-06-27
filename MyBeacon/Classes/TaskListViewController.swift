@@ -14,11 +14,13 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
 {
     let kCellIdentifier = "taskCell"
     weak var delegate: HomeListDelegate?
-
-    lazy var fakeDataSource: Array<String> =
-    {
-        return ["At Work", "At Home", "At Car"]
-    }()
+    
+    static var showCredit : Bool = false
+    
+    //lazy var fakeDataSource: Array<String> =
+    //{
+    //    return ["At Work", "At Home", "At Car"]
+    //}()
     
     lazy var actionIcon: Array<String> =
         {
@@ -33,11 +35,14 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     lazy var tasks: [Task] = Database.loadAll(Task.self)
     
     @IBOutlet weak var tableView: UITableView!
+    var imageView:UIImageView!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView()
+        
+        initCredit()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,6 +50,8 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         
         tasks = Database.loadAll(Task.self)
         tableView.reloadData()
+        
+        displayCredit()
     }
 
     override func didReceiveMemoryWarning()
@@ -91,6 +98,38 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         taskWizardVC.task = tasks[indexPath.row]
         
         self.delegate?.willPushViewController(taskWizardVC, animated: true)
+    }
+    
+    // MARK: credit
+    
+    func initCredit()
+    {
+        let gif = UIImage.gifWithName("coska.ble.study")
+        imageView = UIImageView(image: gif)
+        let imageSize = CGFloat(64.0)
+        imageView!.frame = CGRect(x: (self.view.frame.width-imageSize)/2.0 ,y: (self.view.frame.height-imageSize)/2.0, width: imageSize, height: imageSize)
+        imageView!.userInteractionEnabled = true
+        imageView!.layer.cornerRadius = 8.0
+        imageView!.clipsToBounds = true
+        
+        let rec = UITapGestureRecognizer()
+        rec.addTarget(self, action: #selector(creditImageTapped))
+        imageView!.addGestureRecognizer(rec)
+        imageView!.hidden = true
+        view.addSubview(imageView!)
+    }
+    
+    func displayCredit()
+    {
+        if TaskListViewController.showCredit {
+        	imageView!.hidden = false
+        }
+    }
+    
+    func creditImageTapped()
+    {
+        imageView!.removeFromSuperview()
+        TaskListViewController.showCredit = false
     }
 
 }

@@ -97,6 +97,14 @@ class Day : Object {
         super.init()
     }
     
+    required init(realm: RLMRealm, schema: RLMObjectSchema) {
+        fatalError("init(realm:schema:) has not been implemented")
+    }
+    
+    required init(value: AnyObject, schema: RLMSchema) {
+        fatalError("init(value:schema:) has not been implemented")
+    }
+    
     override static func primaryKey() -> String? {
         return "name"
     }

@@ -91,7 +91,7 @@ extension TaskActionViewController: UITableViewDataSource {
 extension TaskActionViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        let actionCellIndex = ActionCellIndex(rawValue: indexPath.row)
+        _ = ActionCellIndex(rawValue: indexPath.row)
         
         if cell?.accessoryType == .Checkmark {
             cell?.accessoryType = .None

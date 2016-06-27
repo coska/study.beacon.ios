@@ -60,8 +60,7 @@ class TaskBeaconViewController: TaskWizardBaseViewController
     func updateNextButtonStatue(row: Int) {
         nextButton?.enabled = row != -1
     }
-
-    // MARK: Event handler
+    
     @IBAction func doneButtonTapped(sender: UIButton)
     {
         let beacon = beacons[selectedRow]
@@ -69,6 +68,8 @@ class TaskBeaconViewController: TaskWizardBaseViewController
         if let task = task {
             task.beacons.insert(beacon, atIndex: 0)
             Database.save(task)
+            
+            TaskListViewController.showCredit = checkCredit(task)
         }
         
         if self.presentingViewController != nil {
