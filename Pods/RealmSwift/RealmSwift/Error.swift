@@ -62,6 +62,8 @@ public enum Error: ErrorType {
             return RLMError.IncompatibleLockFile
         case .FileFormatUpgradeRequired:
             return RLMError.FileFormatUpgradeRequired
+        case .AddressSpaceExhausted:
+            return RLMError.AddressSpaceExhausted
         }
     }
 
@@ -87,9 +89,12 @@ public enum Error: ErrorType {
     /// cannot share with the current process due to an architecture mismatch.
     case IncompatibleLockFile
 
-    /// Returned by RLMRealm if a file format upgrade is required to open the file,
+    /// Error thrown by Realm if a file format upgrade is required to open the file,
     /// but upgrades were explicilty disabled.
     case FileFormatUpgradeRequired
+
+    /// Error thrown by Realm if there is insufficient available address space.
+    case AddressSpaceExhausted
 }
 
 // MARK: Equatable
@@ -97,7 +102,7 @@ public enum Error: ErrorType {
 extension Error: Equatable {}
 
 /// Returns whether the two errors are identical
-public func == (lhs: ErrorType, rhs: ErrorType) -> Bool {
+public func == (lhs: ErrorType, rhs: ErrorType) -> Bool { // swiftlint:disable:this valid_docs
     return lhs._code == rhs._code
         && lhs._domain == rhs._domain
 }
@@ -108,6 +113,6 @@ public func == (lhs: ErrorType, rhs: ErrorType) -> Bool {
 Explicitly implement pattern matching for `Realm.Error`, so that the instances can be used in the
 `do … syntax`.
 */
-public func ~= (lhs: Error, rhs: ErrorType) -> Bool {
+public func ~= (lhs: Error, rhs: ErrorType) -> Bool { // swiftlint:disable:this valid_docs
     return lhs == rhs
 }
