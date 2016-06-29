@@ -69,9 +69,9 @@ extension AppDelegate: CLLocationManagerDelegate {
         var beacons: [Beacon] = []
         for task in tasks {
             for beacon in task.beacons {
-                if beacons.contains(beacon) == false {
+                //if beacons.contains(beacon) == false {
                     beacons.append(beacon)
-                }
+                //}
             }
         }
         
