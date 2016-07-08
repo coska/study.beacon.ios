@@ -118,8 +118,8 @@ class Day : Object {
         }
     	set {
             let str = hours as NSString
-            let head = str.substringToIndex(hour-1)
-            let tail = str.substringFromIndex(hour+1)
+            let head = (hour == 0) ? "" : str.substringToIndex(hour);
+            let tail = (hour < 23) ? str.substringFromIndex(hour+1) : "";
             hours = head + (newValue ? "1" : "0") + tail
         }
     }

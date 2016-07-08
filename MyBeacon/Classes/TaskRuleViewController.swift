@@ -56,9 +56,15 @@ class TaskRuleViewController: TaskWizardBaseViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         print("segue: \(segue.identifier)")
+        
+        saveSchedule()
+        saveLocation()
+        
         let beaconViewController = segue.destinationViewController as! TaskWizardBaseViewController
         beaconViewController.task = task
     }
+    
+    
     
     func updateNextButton()
     {
@@ -89,6 +95,40 @@ class TaskRuleViewController: TaskWizardBaseViewController
         
             cell.labelType.text = Locations.names[indexPath.row]
             cell.switchType.setOn(checked, animated: false)
+            i = i + 1
+        }
+    }
+    
+    func saveSchedule()
+    {
+        for row in 0..<Hours.names.count
+        {
+            for col in 0..<Days.names.count
+            {
+                task?.rules[0].time!.days[col][row] = weekView.isChecked(row, col:col);
+            }
+        }
+    }
+    
+    func saveLocation()
+    {
+        let location = task?.rules[0].location
+        
+        var i : Int = 0
+        
+        for type in Locations.types
+        {
+            let indexPath = NSIndexPath(forRow: i, inSection:0)
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! LocationTableViewCell
+            
+            if cell.switchType.on {
+            	location!.add(type)
+            }
+            else {
+                location!.remove(type)
+            }
+            
             i = i + 1
         }
     }

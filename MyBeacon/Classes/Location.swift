@@ -47,6 +47,14 @@ class LocationCondition : Object {
         return _type.contains(compare)
     }
     
+    func add(type:Locations) {
+        _type.insert(type)
+    }
+    
+    func remove(type:Locations) {
+        _type.remove(type)
+    }
+    
     
     // reserved
     

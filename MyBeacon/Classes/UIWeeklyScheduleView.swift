@@ -136,5 +136,11 @@ public class UIWeeklyScheduleView: UIScrollView {
         button.isChecked = val
     }
     
+    func isChecked(row:Int, col:Int) -> Bool
+    {
+        let button = checkWeek![col*Hours.names.count + row];
+        return button.isChecked
+    }
+    
 }
 
