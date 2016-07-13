@@ -18,8 +18,6 @@
 
 #include "impl/results_notifier.hpp"
 
-#include "results.hpp"
-
 using namespace realm;
 using namespace realm::_impl;
 
@@ -32,6 +30,14 @@ ResultsNotifier::ResultsNotifier(Results& target)
     Query q = target.get_query();
     set_table(*q.get_table());
     m_query_handover = Realm::Internal::get_shared_group(*get_realm()).export_for_handover(q, MutableSourcePayload::Move);
+}
+
+void ResultsNotifier::target_results_moved(Results& old_target, Results& new_target)
+{
+    auto lock = lock_target();
+
+    REALM_ASSERT(m_target_results == &old_target);
+    m_target_results = &new_target;
 }
 
 void ResultsNotifier::release_data() noexcept
@@ -120,7 +126,7 @@ void ResultsNotifier::calculate_changes()
         }
 
         m_changes = CollectionChangeBuilder::calculate(m_previous_rows, next_rows,
-                                                       [&](size_t row) { return m_info->row_did_change(*m_query->get_table(), row); },
+                                                       get_modification_checker(*m_info, *m_query->get_table()),
                                                        m_target_is_in_table_order && !m_sort);
 
         m_previous_rows = std::move(next_rows);
