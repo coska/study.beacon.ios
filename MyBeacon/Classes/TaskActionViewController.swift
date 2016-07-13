@@ -41,6 +41,7 @@ class TaskActionViewController: TaskWizardBaseViewController {
 
     private func setupUI() {
         tableView.tableFooterView = UIView()
+        selectedRow = ActionType.getTypeIndex(TaskData.editTask.action.type)
         updateNextButtonStatue(selectedRow)
     }
     
@@ -50,18 +51,9 @@ class TaskActionViewController: TaskWizardBaseViewController {
     
     // MARK: Segeu
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let action = Action()
-        action.type = actionTypes[selectedRow]
-
-        if !task!.actions.isEmpty {
-            task!.actions.replace(0, object: action)
-        } else {
-            task!.actions.insert(action, atIndex: 0)
-        }
-        
-        let actionSetupViewController = segue.destinationViewController as! TaskWizardBaseViewController
-        actionSetupViewController.task = task
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+	    TaskData.editTask.action.type = actionTypes[selectedRow]
     }
 }
 

@@ -12,10 +12,8 @@ class TaskWizardBaseViewController: UIViewController {
 
     let activeColor = UIColor(colorLiteralRed: 0.0/255, green: 136.0/255, blue: 43.0/255, alpha: 1)
     let inactiveColor = UIColor.grayColor()
-    var task: Task?
     
     @IBOutlet weak var nextButton: UIButton!
-    
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
     
 

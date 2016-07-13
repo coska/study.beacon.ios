@@ -87,22 +87,10 @@ class Day : Object {
     dynamic var name : String = ""
     dynamic var hours : String = "000000000000000000000000"
     
-    required init(name:String)
+    convenience init(name:String)
     {
+        self.init()
         self.name = name
-        super.init()
-    }
-    
-    required init() {
-        super.init()
-    }
-    
-    required init(realm: RLMRealm, schema: RLMObjectSchema) {
-        fatalError("init(realm:schema:) has not been implemented")
-    }
-    
-    required init(value: AnyObject, schema: RLMSchema) {
-        fatalError("init(value:schema:) has not been implemented")
     }
     
     override static func primaryKey() -> String? {
@@ -123,17 +111,78 @@ class Day : Object {
             hours = head + (newValue ? "1" : "0") + tail
         }
     }
+    
+    func fromData(data:DayData)
+    {
+        name = data.name
+        hours = data.hours
+    }
 }
 
-class TimeCondition : Object {
+class DayData {
+    var name : String = ""
+    var hours : String = "000000000000000000000000"
     
-    let days = [Day(name: "Sun"),
-                Day(name: "Mon"),
-                Day(name: "Tue"),
-                Day(name: "Wed"),
-                Day(name: "Thu"),
-                Day(name: "Fri"),
-                Day(name: "Sat")]
+    required init(name:String)
+    {
+        self.name = name
+    }
+    
+    subscript(hour:Int) -> Bool
+        {
+        get {
+            let str = hours as NSString
+            let comp = str.substringWithRange(NSRange(location: hour, length:1))
+            return (comp == "1")
+        }
+        set {
+            let str = hours as NSString
+            let head = (hour == 0) ? "" : str.substringToIndex(hour);
+            let tail = (hour < 23) ? str.substringFromIndex(hour+1) : "";
+            hours = head + (newValue ? "1" : "0") + tail
+        }
+    }
+    
+    func fromObject(o:Day)
+    {
+        name = o.name
+        hours = o.hours
+    }
+}
+
+
+class Time : Object {
+    
+    let days = List<Day>()
+    
+    convenience init(names:[String])
+    {
+        self.init()
+        initDays(names)
+    }
+    
+    func fromData(data:TimeData)
+    {
+        var i:Int = 0
+        
+        initDays(Days.names)
+        for day in data.days
+        {
+        	days[i].fromData(day)
+            i=i+1
+        }
+    }
+    
+    private func initDays(names:[String])
+    {
+        days.removeAll()
+        
+        for name in names
+        {
+            let day = Day(name: name)
+            days.append(day)
+        }
+    }
     
     func isApplicable(dateVal:NSDate) -> Bool {
         let cal = NSCalendar.currentCalendar()
@@ -152,6 +201,36 @@ class TimeCondition : Object {
         }
         set {
             days[col][row] = newValue
+        }
+    }
+}
+
+class TimeData {
+    
+    let days = [DayData(name: "Sun"),
+                DayData(name: "Mon"),
+                DayData(name: "Tue"),
+                DayData(name: "Wed"),
+                DayData(name: "Thu"),
+                DayData(name: "Fri"),
+                DayData(name: "Sat")]
+    
+    subscript(row:Int, col:Int) -> Bool {
+        get {
+            return days.count > row && days[col][row]
+        }
+        set {
+            days[col][row] = newValue
+        }
+    }
+    
+    func fromObject(o:Time)
+    {
+        var i:Int = 0
+        for day in o.days
+        {
+            days[i].fromObject(day)
+            i=i+1
         }
     }
 }

@@ -12,14 +12,13 @@ import CoreLocation
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    static private let TASK_NOT_SELECTED:Int = -1
+    
     var window: UIWindow?
     var locationManager: CLLocationManager?
-	
-	//TODO : move these later
-    //var pref: Preference = Database.loadOne(Preference.self, create: true)
-    //var prefs:[Preference] = Database.loadAll(Preference.self)
-    var tasks:[Task] = Database.loadAll(Task.self)
-
+    
+    static var tasks:[Task] = Database.loadAll(Task.self)
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -69,7 +68,7 @@ extension AppDelegate: CLLocationManagerDelegate {
     {
         var beacons: [Beacon] = []
         
-        for task in tasks {
+        for task in AppDelegate.tasks {
             for beacon in task.beacons {
                 if beacons.contains(beacon) == false {
                     beacons.append(beacon)
@@ -94,8 +93,8 @@ extension AppDelegate: CLLocationManagerDelegate {
         
         let filteredBeacons = Database.loadAll(Beacon.self).filter { $0.id == region.identifier }
         if filteredBeacons.count > 0 {
-            let results = tasks.filter { $0.isApplicable(manager.location!) == true }
-//            let results = tasks.filter { $0.beacons.contains(filteredBeacons.first!) && $0.actions.count>0 }
+            let results = AppDelegate.tasks.filter { $0.isApplicable(manager.location!) == true }
+//            let results = AppDelegate.tasks.filter { $0.beacons.contains(filteredBeacons.first!) && $0.actions.count>0 }
             for task in results {
                 if let action = task.actions.first {
                     switch action.type {

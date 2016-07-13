@@ -64,10 +64,6 @@ class HomeViewController: UIViewController, HomeListDelegate {
         super.viewDidLoad()
         self.displayListType(.Beacon)
 		
-		//TODO remove the followings (just for quick test)
-		//let pref = Database.loadOne(Preference.self, create: true)
-		//print(pref.description)
-		
 	}
     
     override func viewWillAppear(animated: Bool) {
@@ -95,6 +91,8 @@ class HomeViewController: UIViewController, HomeListDelegate {
         }
         else
         {
+            TaskData.editTask = TaskData()
+            
             let taskWizardNavigation = self.taskStoryboard.instantiateViewControllerWithIdentifier("TaskWizardNavigation")
             self.presentViewController(taskWizardNavigation, animated: true, completion: nil)
         }

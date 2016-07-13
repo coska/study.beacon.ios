@@ -21,7 +21,8 @@ class TaskBeaconViewController: TaskWizardBaseViewController
         super.viewDidLoad()
         
         // For test add beacons
-//        addFakeBeacons()
+		//addFakeBeacons()
+        
         setupUI()
     }
     
@@ -38,7 +39,7 @@ class TaskBeaconViewController: TaskWizardBaseViewController
     }()
     
     // MARK: Privates
-    
+    /*
     private func addFakeBeacons() {
         
         let b1 = Beacon()
@@ -51,6 +52,7 @@ class TaskBeaconViewController: TaskWizardBaseViewController
         b2.name = "My Car2"
         Database.save(b2)
     }
+    ß*/
     
     private func setupUI() {
         tableView.tableFooterView = UIView()
@@ -63,14 +65,14 @@ class TaskBeaconViewController: TaskWizardBaseViewController
     
     @IBAction func doneButtonTapped(sender: UIButton)
     {
-        let beacon = beacons[selectedRow]
+        TaskData.editTask.beacon.fromObject(beacons[selectedRow])
+
+        let task = Task()
+        task.fromData(TaskData.editTask)
+        Database.save(task)
+        AppDelegate.tasks = Database.loadAll(Task.self)
         
-        if let task = task {
-            task.beacons.insert(beacon, atIndex: 0)
-            Database.save(task)
-            
-            TaskListViewController.showCredit = checkCredit(task)
-        }
+        TaskListViewController.showCredit = checkCredit(task)
         
         if self.presentingViewController != nil {
             self.dismissViewControllerAnimated(true, completion: nil)

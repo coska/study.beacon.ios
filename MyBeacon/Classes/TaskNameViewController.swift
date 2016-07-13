@@ -22,10 +22,8 @@ class TaskNameViewController: TaskWizardBaseViewController
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let task = self.task {
-            nameField.text = task.name
-            nextButton.enabled = task.name.isEmpty == false
-        }
+        nameField.text = TaskData.editTask.name
+        nextButton.enabled = (TaskData.editTask.name.isEmpty == false)
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,19 +38,9 @@ class TaskNameViewController: TaskWizardBaseViewController
     
     // MARK: Event handlers
 
-    @IBAction func nextButtonTapped(sender: UIButton) {
-        if nameField.text?.isEmpty == false {
-            task = Task()
-            task!.name = nameField.text!
-        }
-    }
-    
-    // MARK: Segeu
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("segue: \(segue.identifier)")
-        let actionTypeViewController = segue.destinationViewController as! TaskWizardBaseViewController
-        actionTypeViewController.task = task
+    @IBAction func nextButtonTapped(sender: UIButton)
+    {
+        TaskData.editTask.name = nameField.text!
     }
 }
 

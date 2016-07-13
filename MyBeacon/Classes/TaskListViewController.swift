@@ -32,8 +32,6 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
             return ["rule1.png", "rule2.png", "rule3.png"]
     }()
 
-    lazy var tasks: [Task] = Database.loadAll(Task.self)
-    
     @IBOutlet weak var tableView: UITableView!
     var imageView:UIImageView!
     
@@ -48,9 +46,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        tasks = Database.loadAll(Task.self)
         tableView.reloadData()
-        
         displayCredit()
     }
 
@@ -63,13 +59,13 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return tasks.count
+        return AppDelegate.tasks.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier, forIndexPath: indexPath) as! TaskCustomTableViewCell
-        let task = tasks[indexPath.row]
+        let task = AppDelegate.tasks[indexPath.row]
         cell.taskNameLabel?.text = task.name
         cell.actionIconImage?.image = UIImage(named: actionIcon[indexPath.row])
         cell.ruleIconImage?.image = UIImage(named: ruleIcon[indexPath.row])
@@ -80,7 +76,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             
-            tasks.removeAtIndex(indexPath.row)
+            AppDelegate.tasks.removeAtIndex(indexPath.row)
             actionIcon.removeAtIndex(indexPath.row)
             ruleIcon.removeAtIndex(indexPath.row)
             
@@ -94,10 +90,12 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     {
         let storyboard = UIStoryboard(name: "Task", bundle: nil)
         let taskWizardNavigation = storyboard.instantiateViewControllerWithIdentifier("TaskWizardNavigation") as! UINavigationController
-        let taskWizardVC = taskWizardNavigation.topViewController as! TaskWizardBaseViewController
-        taskWizardVC.task = tasks[indexPath.row]
         
-        self.delegate?.willPushViewController(taskWizardVC, animated: true)
+        let task = AppDelegate.tasks[indexPath.row]
+        TaskData.editTask.fromObject(task)
+        
+        let baseVC = taskWizardNavigation.topViewController as! TaskWizardBaseViewController
+        self.delegate?.willPushViewController(baseVC, animated: true)
     }
     
     // MARK: credit

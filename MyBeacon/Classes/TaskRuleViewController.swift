@@ -33,19 +33,7 @@ class TaskRuleViewController: TaskWizardBaseViewController
         
         view.addSubview(scrollView)
         
-        if (task?.rules.count == 0)
-        {
-            let rule = Rule()
-            rule.name = "no name"
-            rule.time = TimeCondition()
-            rule.location = LocationCondition()
-            task?.rules.append(rule)
-        }
-        
-        loadSchedule((task?.rules[0].time)!)
-        loadLocation((task?.rules[0].location)!)
-        
-        updateNextButton()
+        updateUI()
     }
     
     override func didReceiveMemoryWarning()
@@ -57,22 +45,21 @@ class TaskRuleViewController: TaskWizardBaseViewController
     {
         print("segue: \(segue.identifier)")
         
-        saveSchedule()
-        saveLocation()
+        applyRule()
         
-        let beaconViewController = segue.destinationViewController as! TaskWizardBaseViewController
-        beaconViewController.task = task
+        //let nextViewController = segue.destinationViewController as! TaskBeaconViewController
+        //nextViewController.task = task
     }
     
-    
-    
-    func updateNextButton()
+    func updateUI()
     {
+        loadRule(TaskData.editTask.rule)
         nextButton?.enabled = true
     }
     
-    func loadSchedule(time:TimeCondition)
+    func loadRule(rule:RuleData)
     {
+        let time = rule.time
         for row in 0..<Hours.names.count
         {
             for col in 0..<Days.names.count
@@ -80,58 +67,54 @@ class TaskRuleViewController: TaskWizardBaseViewController
                 weekView.setChecked(row, col:col, val: time.days[col][row])
             }
         }
-    }
-    
-    func loadLocation(location:LocationCondition)
-    {
-        var i : Int = 0
         
+        let location = rule.location
+        var i : Int = 0
         for type in Locations.types
         {
             let checked = location.isApplicable(type)
             let indexPath = NSIndexPath(forRow: i, inSection:0)
             
             let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! LocationTableViewCell
-        
+            
             cell.labelType.text = Locations.names[indexPath.row]
             cell.switchType.setOn(checked, animated: false)
             i = i + 1
         }
+        
     }
     
-    func saveSchedule()
+    func applyRule()
     {
+        let rule = TaskData.editTask.rule
+        
         for row in 0..<Hours.names.count
         {
             for col in 0..<Days.names.count
             {
-                task?.rules[0].time!.days[col][row] = weekView.isChecked(row, col:col);
+                rule.time.days[col][row] = weekView.isChecked(row, col:col);
             }
         }
-    }
-    
-    func saveLocation()
-    {
-        let location = task?.rules[0].location
         
+        let location = rule.location
         var i : Int = 0
         
         for type in Locations.types
         {
             let indexPath = NSIndexPath(forRow: i, inSection:0)
-            
-            let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! LocationTableViewCell
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as! LocationTableViewCell
             
             if cell.switchType.on {
-            	location!.add(type)
+                location.add(type)
             }
             else {
-                location!.remove(type)
+                location.remove(type)
             }
             
             i = i + 1
         }
     }
+    
 }
 
 
@@ -141,10 +124,10 @@ extension TaskRuleViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellId) as! LocationTableViewCell
-        let location = task?.rules[0].location
+        let location = TaskData.editTask.rule.location
         
         cell.labelType.text = Locations.names[indexPath.row]
-        cell.switchType.setOn((location?.isApplicable(Locations.types[indexPath.row]))!, animated: false)
+        cell.switchType.setOn((location.isApplicable(Locations.types[indexPath.row])), animated: false)
 
         cell.delegate = self
         return cell
@@ -172,8 +155,10 @@ extension TaskRuleViewController: LocationTableViewCellDelegate
     func didTappedSwitch(cell: LocationTableViewCell) {
         let indexPath = tableView.indexPathForCell(cell)
         
-        var location = Locations(rawValue:(task!.rules[0].location?.type)!)
+        var location = Locations(rawValue:(TaskData.editTask.rule.location.type))
         location.insert(Locations.types[indexPath!.row])
-        task!.rules[0].location?.type = location.rawValue
+        
+        TaskData.editTask.rule.location.type = location.rawValue
+        
     }
 }

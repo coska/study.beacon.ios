@@ -30,7 +30,7 @@ struct Locations : OptionSetType
 }
 
 
-class LocationCondition : Object {
+class Location : Object {
     
     private var _type = Locations.None
     
@@ -55,6 +55,11 @@ class LocationCondition : Object {
         _type.remove(type)
     }
     
+    func fromData(data:LocationData)
+    {
+        type = data.type
+    }
+    
     
     // reserved
     
@@ -69,5 +74,36 @@ class LocationCondition : Object {
         let me = CLLocation(latitude: lat, longitude: long)
         let disctance = compare.distanceFromLocation(me)
         return (disctance < radius && abs(alt-compare.altitude) < radius)
+    }
+}
+
+class LocationData {
+    
+    private var _type = Locations.None
+    
+    var type : Int {
+        get {
+            return _type.rawValue
+        }
+        set {
+            _type = Locations(rawValue:newValue)
+        }
+    }
+    
+    func isApplicable(compare:Locations) -> Bool {
+        return _type.contains(compare)
+    }
+    
+    func add(type:Locations) {
+        _type.insert(type)
+    }
+    
+    func remove(type:Locations) {
+        _type.remove(type)
+    }
+    
+    func fromObject(o:Location)
+    {
+        type = o.type
     }
 }

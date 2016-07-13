@@ -33,6 +33,18 @@ enum ActionType : String
 				return None
 		}
 	}
+    
+    // additional utility function as view controller may need it
+    static func getTypeIndex(type:String) -> Int {
+        let index = names.indexOf(type)
+        if (index == nil || index == 0)
+        {
+            return -1
+        }
+        else {
+            return (index! - 1)
+        }
+    }
 }
 
 
@@ -56,55 +68,35 @@ class Action: Object {
 			_type = ActionType.getType(newValue)
 		}
 	}
-	
-	
-	//TODO move these to ViewControllers and implement ActionProtocol
-	
-	/*
-   func perform()
-	{
-		
-		switch (_type)
-		{
-		case .None:
-			break
-		case .Call:
-			callNumber(value)
-			break
-		case .Text:
-			let arr = value.componentsSeparatedByString("|")
-			sendText(arr[0], msg: arr[1])
-			break
-		case .Wifi:
-			break
-		}
-	}
-	
-	private func callNumber(phoneNo:String)
-	{
-  		if let url:NSURL = NSURL(string:"telprompt://\(phoneNo.stringByReplacingOccurrencesOfString(" ", withString: ""))") {
-			let app:UIApplication = UIApplication.sharedApplication()
-			if (app.canOpenURL(url)) {
-				app.openURL(url);
-			}
-		}
-	}
-	
-	private func sendText(phoneNo:String, msg:String)
-	{
-		
-		//		if let url:NSURL = NSURL(string:"sms://\(phoneNo)") {
-		//			let app:UIApplication = UIApplication.sharedApplication()
-		//			if (app.canOpenURL(url)) {
-		//				app.openURL(url);
-		//			}
-		//		}
-		
-		let vc = SmsViewController()
-		vc.setText(phoneNo, message: msg)
-		vc.sendText(self)
-		
-	}
-   */
+    
+    func fromData(data:ActionData)
+    {
+        name = data.name
+        value = data.value
+        type = data.type
+    }
 }
 
+
+class ActionData {
+    
+    private var _type = ActionType.None
+    
+    var name = ""
+    var value = ""
+    var type : String {
+        get {
+            return _type.rawValue
+        }
+        set {
+            _type = ActionType.getType(newValue)
+        }
+    }
+    
+    func fromObject(o:Action)
+    {
+        name = o.name
+        value = o.value
+        type = o.type
+    }
+}

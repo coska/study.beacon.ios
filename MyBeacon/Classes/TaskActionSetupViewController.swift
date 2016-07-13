@@ -38,21 +38,20 @@ class TaskActionSetupViewController: TaskWizardBaseViewController
     
     private func setupUI() {
         
-        if let action = task!.actions.first {
-            switch (action.type) {
+    	let action = TaskData.editTask.action
+        switch (action.type) {
             case ActionType.Text.rawValue: setupText()
             case ActionType.Call.rawValue: setupCall()
             case ActionType.Wifi.rawValue: setupWifi()
             default: return
-            }
         }
-
+        
         tableView.tableFooterView = UIView()
     }
     
     private func actionType() -> String {
-        let action = task!.actions.first
-        return (action?.type)!
+        let action = TaskData.editTask.action
+        return action.type
     }
     
     private func setupText() {
@@ -85,24 +84,18 @@ class TaskActionSetupViewController: TaskWizardBaseViewController
     
     // MARK: Event handler    
     @IBAction func nextButtonTapped(sender: UIButton) {
-        let action = task!.actions.first
+        let action = TaskData.editTask.action
+        
         if actionType() == ActionType.Call.rawValue {
-            action!.name = (values?.first)!
-            action!.value = (values?[1])!
+            action.name = (values?.first)!
+            action.value = (values?[1])!
         } else if actionType() == ActionType.Text.rawValue {
-            action!.name = (values?.first)!
-            action!.value = "\((values?[1])!)|\((values?[2])!)"
+            action.name = (values?.first)!
+            action.value = "\((values?[1])!)|\((values?[2])!)"
         } else if actionType() == ActionType.Wifi.rawValue {
-            action!.name = "WiFi"
-            action!.value = (values?.first)! == "" ? "on" : (values?.first)!
+            action.name = "WiFi"
+            action.value = (values?.first)! == "" ? "on" : (values?.first)!
         }
-    }
-
-    // MARK: Segue
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let actionSetupViewController = segue.destinationViewController as! TaskWizardBaseViewController
-        actionSetupViewController.task = task
     }
 }
 

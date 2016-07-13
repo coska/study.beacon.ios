@@ -8,7 +8,7 @@
         <!--Task Name-->
         <scene sceneID="7Z6-F3-npa">
             <objects>
-                <viewController storyboardIdentifier="TaskNameViewController" id="5pj-l5-Mfv" userLabel="Task Name" customClass="TaskNameViewController" customModule="MyBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaskNameViewController" id="5pj-l5-Mfv" userLabel="Task Name" customClass="TaskNameViewController" customModule="Buddy_Beacon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fpY-qI-2bU"/>
                         <viewControllerLayoutGuide type="bottom" id="mEi-OA-rGn"/>
@@ -23,7 +23,7 @@
                                     <constraint firstAttribute="height" constant="60" id="N4k-US-nnD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RG2-9j-74d">
@@ -98,7 +98,7 @@
         <!--Task Action-->
         <scene sceneID="gjt-kC-dJ1">
             <objects>
-                <viewController storyboardIdentifier="TaskActionViewController" id="RY6-Zi-e80" userLabel="Task Action" customClass="TaskActionViewController" customModule="MyBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaskActionViewController" id="RY6-Zi-e80" userLabel="Task Action" customClass="TaskActionViewController" customModule="Buddy_Beacon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c2p-o1-fhL"/>
                         <viewControllerLayoutGuide type="bottom" id="LHG-2T-Ne6"/>
@@ -132,7 +132,7 @@
                                     <constraint firstAttribute="height" constant="60" id="AjN-Ry-daV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H8t-f6-iGD">
@@ -143,14 +143,14 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="af1-ca-B4X" id="6sU-3W-rAT">
-                                            <rect key="frame" x="0.0" y="0.0" width="561" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="561" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ery-cD-kAo">
-                                                    <rect key="frame" x="15" y="0.0" width="546" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="546" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -189,7 +189,7 @@
         <!--Task Action Setup-->
         <scene sceneID="fKG-dD-tuc">
             <objects>
-                <viewController storyboardIdentifier="TaskActionSetupViewController" id="h7X-KH-NQD" userLabel="Task Action Setup" customClass="TaskActionSetupViewController" customModule="MyBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaskActionSetupViewController" id="h7X-KH-NQD" userLabel="Task Action Setup" customClass="TaskActionSetupViewController" customModule="Buddy_Beacon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iFP-5q-zw3"/>
                         <viewControllerLayoutGuide type="bottom" id="pE4-e4-JMq"/>
@@ -204,18 +204,18 @@
                                     <constraint firstAttribute="height" constant="60" id="bfq-oK-Oly"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nfM-b9-cBn">
                                 <rect key="frame" x="0.0" y="132" width="600" height="418"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="textCell" id="YPU-6T-7ZK" customClass="ActionTextCell" customModule="MyBeacon" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="textCell" id="YPU-6T-7ZK" customClass="ActionTextCell" customModule="Buddy_Beacon" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YPU-6T-7ZK" id="92B-NK-D4r">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CIc-LF-A9n">
@@ -234,17 +234,17 @@
                                             <outlet property="textField" destination="CIc-LF-A9n" id="0yM-K5-gNj"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="switchCell" id="eez-3Z-VLP" customClass="ActionSwitchCell" customModule="MyBeacon" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="switchCell" id="eez-3Z-VLP" customClass="ActionSwitchCell" customModule="Buddy_Beacon" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eez-3Z-VLP" id="JBj-sS-CST">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wifi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xg-qZ-EW5">
                                                     <rect key="frame" x="8" y="0.0" width="510" height="43.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P14-KW-AhZ">
@@ -319,7 +319,7 @@
         <!--Task Beacon-->
         <scene sceneID="WdQ-b1-Hca">
             <objects>
-                <viewController storyboardIdentifier="TaskBeaconViewController" id="w55-q2-RtW" userLabel="Task Beacon" customClass="TaskBeaconViewController" customModule="MyBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaskBeaconViewController" id="w55-q2-RtW" userLabel="Task Beacon" customClass="TaskBeaconViewController" customModule="Buddy_Beacon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TEO-U7-7RF"/>
                         <viewControllerLayoutGuide type="bottom" id="gv5-LZ-ojV"/>
@@ -353,7 +353,7 @@
                                     <constraint firstAttribute="height" constant="60" id="u3p-ZH-yd5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RC4-mw-wiW">
@@ -364,14 +364,14 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Po8-AH-9j5" id="xvA-ye-b0j">
-                                            <rect key="frame" x="0.0" y="0.0" width="561" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="561" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QIu-Yq-cQQ">
-                                                    <rect key="frame" x="15" y="0.0" width="546" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="546" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -428,7 +428,7 @@
         <!--Task Rule-->
         <scene sceneID="mVF-mQ-BAS">
             <objects>
-                <viewController storyboardIdentifier="TaskRuleViewController" id="8Qe-ga-Jwz" userLabel="Task Rule" customClass="TaskRuleViewController" customModule="MyBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaskRuleViewController" id="8Qe-ga-Jwz" userLabel="Task Rule" customClass="TaskRuleViewController" customModule="Buddy_Beacon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qa3-FY-c1Y"/>
                         <viewControllerLayoutGuide type="bottom" id="yhl-OL-ZFC"/>
@@ -465,7 +465,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7W-SG-cuh" userLabel="weekScrollView">
                                 <rect key="frame" x="0.0" y="124" width="600" height="428"/>
                                 <subviews>
-                                    <view tag="100" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I6D-Gu-wpM" userLabel="Weekly Schedule View" customClass="UIWeeklyScheduleView" customModule="MyBeacon" customModuleProvider="target">
+                                    <view tag="100" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I6D-Gu-wpM" userLabel="Weekly Schedule View" customClass="UIWeeklyScheduleView" customModule="Buddy_Beacon" customModuleProvider="target">
                                         <rect key="frame" x="16" y="16" width="568" height="198"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -479,11 +479,11 @@
                                             <constraint firstAttribute="height" constant="198" id="J4v-tK-Zat"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="switchCellNoSignal" id="d2R-Ic-QXC" userLabel="switchCellNoSignal" customClass="ActionSwitchCell" customModule="MyBeacon" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="switchCellNoSignal" id="d2R-Ic-QXC" userLabel="switchCellNoSignal" customClass="ActionSwitchCell" customModule="Buddy_Beacon" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="568" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d2R-Ic-QXC" id="tqm-ze-oec">
-                                                    <rect key="frame" x="0.0" y="0.0" width="568" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="568" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qWR-s2-epG">
@@ -492,7 +492,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Signal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tru-VA-eeb">
                                                             <rect key="frame" x="8" y="0.0" width="478" height="43"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -510,11 +510,11 @@
                                                     <outlet property="titleLabel" destination="Tru-VA-eeb" id="7fV-Yw-aZO"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="switchCellFar" id="mnm-Ys-nYN" userLabel="switchCellFar" customClass="ActionSwitchCell" customModule="MyBeacon" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="switchCellFar" id="mnm-Ys-nYN" userLabel="switchCellFar" customClass="ActionSwitchCell" customModule="Buddy_Beacon" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="72" width="568" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mnm-Ys-nYN" id="B1D-cS-Jh5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="568" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="568" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ewf-eg-7no">
@@ -523,7 +523,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Far" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHE-UJ-fQu">
                                                             <rect key="frame" x="8" y="0.0" width="478" height="44"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -537,17 +537,17 @@
                                                     <outlet property="titleLabel" destination="HHE-UJ-fQu" id="TAp-yz-TCE"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="switchCellNear" id="6wo-0V-PNk" userLabel="switchCellNear" customClass="ActionSwitchCell" customModule="MyBeacon" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="switchCellNear" id="6wo-0V-PNk" userLabel="switchCellNear" customClass="ActionSwitchCell" customModule="Buddy_Beacon" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="116" width="568" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6wo-0V-PNk" id="d42-5e-bra">
-                                                    <rect key="frame" x="0.0" y="0.0" width="568" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="568" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Near" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Afw-z9-WQM">
                                                             <rect key="frame" x="8" y="0.0" width="478" height="43"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EaB-Dz-55D">
@@ -568,17 +568,17 @@
                                                     <outlet property="titleLabel" destination="Afw-z9-WQM" id="aHD-2i-agc"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="switchCellImmediate" id="MNI-Ru-vpP" userLabel="switchCellImmediate" customClass="ActionSwitchCell" customModule="MyBeacon" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="switchCellImmediate" id="MNI-Ru-vpP" userLabel="switchCellImmediate" customClass="ActionSwitchCell" customModule="Buddy_Beacon" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="160" width="568" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MNI-Ru-vpP" id="En8-Fv-yow">
-                                                    <rect key="frame" x="0.0" y="0.0" width="568" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="568" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Immediate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gt7-Tw-V5c">
                                                             <rect key="frame" x="8" y="0.0" width="478" height="43"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oac-gV-HVw">
