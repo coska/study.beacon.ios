@@ -38,22 +38,6 @@ class TaskBeaconViewController: TaskWizardBaseViewController
         return arr
     }()
     
-    // MARK: Privates
-    /*
-    private func addFakeBeacons() {
-        
-        let b1 = Beacon()
-        b1.id = "1"
-        b1.name = "My Car1"
-        Database.save(b1)
-        
-        let b2 = Beacon()
-        b2.id = "2"
-        b2.name = "My Car2"
-        Database.save(b2)
-    }
-    ß*/
-    
     private func setupUI() {
         tableView.tableFooterView = UIView()
         updateNextButtonStatue(selectedRow)
@@ -92,6 +76,12 @@ extension TaskBeaconViewController: UITableViewDataSource {
 
         let beacon = beacons[indexPath.row]
         cell.textLabel?.text = beacon.name
+        
+        if selectedRow == -1 && beacon.name == TaskData.editTask.beacon.name
+        {
+            selectedRow = indexPath.row
+            updateNextButtonStatue(selectedRow)
+        }
         
         if selectedRow == indexPath.row {
             cell.accessoryType = .Checkmark

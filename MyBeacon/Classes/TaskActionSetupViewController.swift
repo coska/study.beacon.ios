@@ -25,8 +25,9 @@ class TaskActionSetupViewController: TaskWizardBaseViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+
+        values = [String]()
         setupUI()
-        values = [String](count: (actionData?.count)!, repeatedValue: "")
     }
     
     override func didReceiveMemoryWarning()
@@ -40,12 +41,13 @@ class TaskActionSetupViewController: TaskWizardBaseViewController
         
     	let action = TaskData.editTask.action
         switch (action.type) {
-            case ActionType.Text.rawValue: setupText()
-            case ActionType.Call.rawValue: setupCall()
-            case ActionType.Wifi.rawValue: setupWifi()
+            case ActionType.Text.rawValue: setupText(action)
+            case ActionType.Call.rawValue: setupCall(action)
+            case ActionType.Wifi.rawValue: setupWifi(action)
             default: return
         }
         
+        updateNextButtonStatus()
         tableView.tableFooterView = UIView()
     }
     
@@ -54,25 +56,36 @@ class TaskActionSetupViewController: TaskWizardBaseViewController
         return action.type
     }
     
-    private func setupText() {
+    private func setupText(action: ActionData) {
+        values!.append(action.name ?? "")
+        let actionValues = action.value.componentsSeparatedByString("|")
+        values!.append(actionValues.first! ?? "")
+        values!.append(actionValues.last! ?? "")
+
         actionData = [
-            ["cellType": ActionCellType.Text.rawValue, "placeHolderString": "Name"],
-            ["cellType": ActionCellType.Text.rawValue, "placeHolderString": "Phone Number"],
-            ["cellType": ActionCellType.Text.rawValue, "placeHolderString": "Text"],
+            ["cellType": ActionCellType.Text.rawValue, "placeHolderString": "Name", "value": values![0]],
+            ["cellType": ActionCellType.Text.rawValue, "placeHolderString": "Phone Number", "value": values![1]],
+            ["cellType": ActionCellType.Text.rawValue, "placeHolderString": "Text", "value": values![2]],
         ]
     }
     
-    private func setupCall() {
+    private func setupCall(action: ActionData) {
+        values!.append(action.name ?? "")
+        values!.append(action.value ?? "")
+
         actionData = [
-            ["cellType": ActionCellType.Text.rawValue, "placeHolderString": "Name"],
-            ["cellType": ActionCellType.Text.rawValue, "placeHolderString": "Phone Number"]
+            ["cellType": ActionCellType.Text.rawValue, "placeHolderString": "Name", "value": values![0]],
+            ["cellType": ActionCellType.Text.rawValue, "placeHolderString": "Phone Number", "value": values![1]]
         ]
     }
     
-    private func setupWifi() {
+    private func setupWifi(action: ActionData) {
+        values!.append(action.value ?? "")
+        
         actionData = [
-            ["cellType": ActionCellType.Switch.rawValue, "placeHolderString": "WiFi"]
+            ["cellType": ActionCellType.Switch.rawValue, "placeHolderString": "WiFi", "value": values![0]]
         ]
+        
         nextButton.enabled = true
     }
     
@@ -110,6 +123,7 @@ extension TaskActionSetupViewController: UITableViewDataSource {
         if item!["cellType"] == ActionCellType.Text.rawValue {
             let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! ActionTextCell
             cell.textField.placeholder = item!["placeHolderString"]
+            cell.textField.text = item!["value"]
             cell.index = indexPath.row
             cell.delegate = self
             
@@ -117,6 +131,7 @@ extension TaskActionSetupViewController: UITableViewDataSource {
         } else if item!["cellType"] == ActionCellType.Switch.rawValue {
             let cell = tableView.dequeueReusableCellWithIdentifier(switchCellIdentifier, forIndexPath: indexPath) as! ActionSwitchCell
             cell.titleLabel.text = item!["placeHolderString"]
+            cell.switchControl.on = item!["value"] == "on" ? true : false
             cell.delegate = self
             
             return cell
