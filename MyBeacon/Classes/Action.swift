@@ -20,7 +20,7 @@ enum ActionType : String
 		return self.rawValue
 	}
 	
-	static let names = [None.rawValue, Text.rawValue, Call.rawValue, Wifi.rawValue]
+	static let names = [None.rawValue, Text.rawValue, Call.rawValue]//, Wifi.rawValue]
 	
 	static func getType(type:String) -> ActionType {
 		switch (type)
