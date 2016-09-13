@@ -99,7 +99,6 @@ class BeaconDetailViewController: UIViewController
     let kBeaconNameCell = "BeaconNameCell"
     let kBeaconDefaultCell = "BeaconDefaultCell"
     
-    private var orgBeacon: Beacon?
     private var newBeacon: Beacon?
     private var beaconInfo: [[Int:String]] = [[Int:String]]()
     var beaconImageName: String?
@@ -154,7 +153,7 @@ class BeaconDetailViewController: UIViewController
     
     @IBAction func deleteButtonTapped(sender: AnyObject) {        
         // Remove Beacon
-        if case let beacon = self.orgBeacon where self.orgBeacon?.id.isEmpty == false {
+        if case let beacon = self.newBeacon where self.newBeacon?.id.isEmpty == false {
             BeaconAPI.sharedInstance.stopSearchingBeacons()
             Database.delete(beacon!)
             navigationController?.popViewControllerAnimated(true)
@@ -168,13 +167,21 @@ class BeaconDetailViewController: UIViewController
     }
     
     func selectedBeacon(beacon: Beacon) {
-        orgBeacon = beacon
+        newBeacon = beacon
         
         beaconInfo.append([NameRows.Name.rawValue : beacon.name])
         beaconInfo.append([DetailMainRows.UUID.rawValue : beacon.id,
                           DetailMainRows.Major.rawValue : String(beacon.major),
                           DetailMainRows.Minor.rawValue : String(beacon.minor)])
         beaconInfo.append([DetailExtraRows.Proximity.rawValue : "", DetailExtraRows.RSSI.rawValue : ""])
+    }
+}
+
+extension BeaconDetailViewController: BeaconNameCellDelegate {
+    func didNameChanged(changedName: String) {
+        if let beacon = newBeacon {
+            Database.update(beacon, key: "name", value: changedName)
+        }
     }
 }
 
@@ -209,6 +216,8 @@ extension BeaconDetailViewController: UITableViewDelegate {
         switch sectionInfo {
         case .Name:
             let cell = tableView.dequeueReusableCellWithIdentifier(kBeaconNameCell, forIndexPath: indexPath) as! BeaconNameCell
+            cell.delegate = self
+            
             let rows: NameRows = NameRows(rawValue: indexPath.row)!
             switch rows {
             case .Name:
@@ -221,7 +230,7 @@ extension BeaconDetailViewController: UITableViewDelegate {
                 } else {
                     cell.txtName.text = ""
                 }
-                cell.txtName.userInteractionEnabled = false
+                
                 return cell
             }
         default:
@@ -244,7 +253,7 @@ extension BeaconDetailViewController: UITableViewDelegate {
 extension BeaconDetailViewController: BeaconProtocol {
     // MARK: - BeaconDataSource
     func updatedBeacon() -> Beacon? {
-        return orgBeacon
+        return newBeacon
     }
     
     // MARK: - BeaconDelegate

@@ -78,5 +78,18 @@ class Database
 		
 		return ret
 	}
+    
+    static func update<T:Object>(object:T, key: String, value:AnyObject) -> Bool {
+        var ret = false
+        
+        do {
+            try! Database.sharedInstance.write{
+                object.setValue(value, forKey: key)
+                ret = true
+            }
+        }
+        
+        return ret
+    }
 
 }

@@ -10,12 +10,8 @@ import UIKit
 
 class BeaconListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     let kCellIdentifier = "beaconCell"
-    weak var delegate: HomeListDelegate?
-    
+    weak var delegate: HomeListDelegate?    
     var beacons: [Beacon] = Database.loadAll(Beacon)
-    var supportedUUIDs: [String] {
-        return BeaconAPI.sharedInstance.supportedUUIDs
-    }
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -56,7 +52,7 @@ class BeaconListViewController: UIViewController, UITableViewDataSource, UITable
         
         let beacon = beacons[indexPath.row]
         cell.beaconNameLabel?.text =  beacon.name
-        cell.beaconImage?.image = UIImage(named: supportedUUIDs[indexPath.row%3])
+        cell.beaconImage?.image = UIImage(named: beacon.id) // the beacon image is named based on its uuid.
         cell.beaconUUIDLabel?.text = beacon.id
         
         return cell;
@@ -87,7 +83,7 @@ class BeaconListViewController: UIViewController, UITableViewDataSource, UITable
 
         let orgBeacon: Beacon = results[0]
         beaconDetailViewController.selectedBeacon(orgBeacon)
-        beaconDetailViewController.beaconImageName = supportedUUIDs[indexPath.row]
+        beaconDetailViewController.beaconImageName = orgBeacon.id
         
         self.delegate?.willPushViewController(beaconDetailViewController, animated: true)
     }

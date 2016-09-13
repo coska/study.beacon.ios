@@ -37,6 +37,19 @@ class BeaconData {
     var name : String = ""
     var battery : Int = 0
     
+    private static var _editBeacon:BeaconData?
+    static var editBeacon:BeaconData {
+        get {
+            if (_editBeacon == nil) {
+                _editBeacon = BeaconData()
+            }
+            return _editBeacon!
+        }
+        set {
+            _editBeacon = newValue
+        }
+    }
+    
     func fromObject(o:Beacon)
     {
         id = o.id

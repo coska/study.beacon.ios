@@ -23,9 +23,9 @@ class BeaconAddListCell: UITableViewCell {
         didSet {
             guard let beacon = beacon else { return }
             
-            let results = BeaconAPI.sharedInstance.supportedUUIDs.filter{$0==beacon.proximityUUID.UUIDString}
-            if let beaconImage = results.first {
-                beaconImageView.image = UIImage(named: beaconImage)
+            let results = BeaconAPI.sharedInstance.supportedBeaconInfo.filter{$0.0==beacon.proximityUUID.UUIDString}
+            if let beaconInfo = results.first {
+                beaconImageView.image = UIImage(named: beaconInfo.0)
             }
             self.lblUUID.text = beacon.proximityUUID.UUIDString
             self.lblMajor.text = "Major: " + String(beacon.major)
