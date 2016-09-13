@@ -8,15 +8,22 @@
 
 import UIKit
 
+protocol BeaconNameCellDelegate {
+    func didNameChanged(changedName: String)
+}
+
 class BeaconNameCell: UITableViewCell {
 
     @IBOutlet weak var imgBeacon: UIImageView!
     @IBOutlet weak var txtName: UITextField!
     
+    var delegate: BeaconNameCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
+        txtName.delegate = self
         imgBeacon.backgroundColor = UIColor.blueColor()
     }
 
@@ -26,4 +33,18 @@ class BeaconNameCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+extension BeaconNameCell: UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        guard let delegate = self.delegate else { return }
+        guard let text = textField.text else { return }
+        
+        delegate.didNameChanged(text)
+    }
 }
