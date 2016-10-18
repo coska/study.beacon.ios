@@ -64,7 +64,9 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier, forIndexPath: indexPath) as! TaskCustomTableViewCell
+        
         let task = AppDelegate.tasks[indexPath.row]
         cell.taskNameLabel?.text = task.name
         cell.actionIconImage?.image = UIImage(named: actionIcon[indexPath.row])
